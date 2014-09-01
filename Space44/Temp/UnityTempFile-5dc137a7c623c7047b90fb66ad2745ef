@@ -39,7 +39,7 @@
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_WIN
 Assets/Scripts/IAenemy.cs
-Assets/Scripts/MovePlayer.cs
+Assets/Scripts/PlayerController.cs
 Assets/Scripts/Spawner.cs
 -r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
 -r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"
