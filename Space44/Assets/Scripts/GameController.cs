@@ -4,6 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
 	public GameObject hazard;
+	public Vector3 spawnWaves;
 	// Use this for initialization
 	void Start () {
 	
