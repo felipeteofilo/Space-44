@@ -1,13 +1,10 @@
 -target:library
--i:UnityEngine
--i:System.Collections
--base:UnityEngine.MonoBehaviour
--nowarn:BCW0016
--nowarn:BCW0003
--method:Main
--out:Temp/Assembly-UnityScript-firstpass.dll
--x-type-inference-rule-attribute:UnityEngineInternal.TypeInferenceRuleAttribute
+-nowarn:0169
+-out:Temp/Assembly-CSharp.dll
 -debug
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
 -define:UNITY_4_5_3
 -define:UNITY_4_5
 -define:UNITY_STANDALONE_WIN
@@ -42,7 +39,13 @@
 -define:ENABLE_PROFILER
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_WIN
--r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
--r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
--i:UnityEditor
-"Assets/Standard Assets/Particles/Legacy Particles/TimedObjectDestructor.js"
+Assets/Prefabs/TurretCollision.cs
+Assets/Scripts/AsteroidIA.cs
+Assets/Scripts/GameController.cs
+"Assets/Scripts/IA1ºBoss.cs"
+Assets/Scripts/IAenemy.cs
+Assets/Scripts/PlayerController.cs
+Assets/Scripts/RandomRotator.cs
+Assets/Scripts/Spawner.cs
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"

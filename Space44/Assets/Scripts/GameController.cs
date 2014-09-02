@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
 			for(int j = 0; j < hazardEnemyPerTime; j++){
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
 
-				while((spawnPosition.x - earlierX < 20 || spawnPosition.x - earlierX > -20) && earlierX == spawnPosition.x ){
+				while(earlierX - spawnPosition.x < 2 && earlierX - spawnPosition.x > -2 ){
 					spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
 				}
 
