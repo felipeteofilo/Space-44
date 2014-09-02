@@ -41,6 +41,7 @@
 -define:UNITY_EDITOR_WIN
 Assets/Prefabs/TurretCollision.cs
 Assets/Scripts/AsteroidIA.cs
+Assets/Scripts/ColissionController.cs
 Assets/Scripts/GameController.cs
 "Assets/Scripts/IA1ºBoss.cs"
 Assets/Scripts/IAenemy.cs

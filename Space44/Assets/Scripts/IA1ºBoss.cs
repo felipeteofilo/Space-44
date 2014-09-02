@@ -44,8 +44,6 @@ public class IA1ºBoss : MonoBehaviour {
 				Bullet3.Emit(1);
 				Bullet4.Emit(1);
 				nextFire = Time.time + fireRate;
-			
-			
 			}
 			if(MaxLife1/2 >=Life1)
 			{	Y+=2;
