@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 	public float tilt;
 	public Boundary boundary;
-	public ParticleSystem tiro;
+	public ParticleSystem shoot;
+	public ParticleSystem laser;
+
+	private enum shootSelected{shoot,laser};
 	private float nextFire;
 	public float fireRate;
 	
@@ -42,9 +45,17 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+		switch (shootSelected){
+		case shootSelected.shoot:
+			if (Input.GetButton ("Fire1") && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
-			tiro.Emit(1);
+			shoot.Emit(1);
+			}
+
+		case shootSelected.laser:
+			if (Input.GetButton ("Fire1")) {
+				laser.Emit(2);
+			}
 		}
 
 	}
