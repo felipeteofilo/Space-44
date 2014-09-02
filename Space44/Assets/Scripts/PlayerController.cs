@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 	public ParticleSystem shoot;
 	public ParticleSystem laser;
 
-	private enum shootSelected{shoot,laser};
+	public enum shootSelected{shoot,laser};
 	private float nextFire;
 	public float fireRate;
 	
@@ -45,18 +45,22 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		switch (shootSelected){
-		case shootSelected.shoot:
-			if (Input.GetButton ("Fire1") && Time.time > nextFire) {
-			nextFire = Time.time + fireRate;
-			shoot.Emit(1);
-			}
+		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 
-		case shootSelected.laser:
-			if (Input.GetButton ("Fire1")) {
-				laser.Emit(2);
-			}
 		}
+//
+//		switch (shootSelected){
+//		case shootSelected.shoot:
+//			if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+//			nextFire = Time.time + fireRate;
+//			shoot.Emit(1);
+//			}
+//
+//		case shootSelected.laser:
+//			if (Input.GetButton ("Fire1")) {
+//				laser.Emit(2);
+//			}
+//		}
 
 	}
 }
