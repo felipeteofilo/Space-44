@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour {
 	public ParticleSystem shoot;
 	public ParticleSystem laser;
 
+	public float timeLaser;
+
+	private float passedTimeLaser;
+
+	private float initTimeLaser;
+
 	public enum shootSelected{shoot,laser};
 	public shootSelected selected = shootSelected.shoot;
 
@@ -23,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+		//initTimeLaser = 0;
 	}
 	
 	void FixedUpdate(){
@@ -56,7 +62,12 @@ public class PlayerController : MonoBehaviour {
 			nextFire = Time.time + fireRate;
 			shoot.Emit(1);
 		}
-		if (selected == shootSelected.laser && Input.GetButton ("Fire1")) {
+		if (selected == shootSelected.laser && Input.GetButton ("Fire1") && passedTimeLaser < timeLaser) {
+			if(initTimeLaser == 0){
+				initTimeLaser = Time.time;
+			}
+			passedTimeLaser = Time.time - initTimeLaser;
+			Debug.Log(passedTimeLaser);
 			laser.enableEmission = true;
 		} else {
 			laser.enableEmission = false;
