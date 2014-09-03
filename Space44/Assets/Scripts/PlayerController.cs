@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
 	public ParticleSystem laser;
 
 	public enum shootSelected{shoot,laser};
+	public shootSelected selected = shootSelected.shoot;
+
 	private float nextFire;
 	public float fireRate;
 	
@@ -46,21 +48,20 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
+			selected = shootSelected.laser;
+
 
 		}
-//
-//		switch (shootSelected){
-//		case shootSelected.shoot:
-//			if (Input.GetButton ("Fire1") && Time.time > nextFire) {
-//			nextFire = Time.time + fireRate;
-//			shoot.Emit(1);
-//			}
-//
-//		case shootSelected.laser:
-//			if (Input.GetButton ("Fire1")) {
-//				laser.Emit(2);
-//			}
-//		}
+		if (selected == shootSelected.shoot && Input.GetButton ("Fire1") && Time.time > nextFire) {
+			nextFire = Time.time + fireRate;
+			shoot.Emit(1);
+		}
+		if (selected == shootSelected.laser && Input.GetButton ("Fire1")) {
+			laser.enableEmission = true;
+		} else {
+			laser.enableEmission = false;
+		}
+
 
 	}
 }

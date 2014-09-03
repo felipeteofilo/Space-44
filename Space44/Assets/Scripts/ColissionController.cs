@@ -9,7 +9,7 @@ public class ColissionController : MonoBehaviour {
 	}
 	
 	void OnParticleCollision(GameObject other) {
-		Debug.Log (this.name);
+
 		if (other.tag == "TiroBasico"){
 			Destroy (this.gameObject);
 		}
@@ -19,8 +19,8 @@ public class ColissionController : MonoBehaviour {
 		
 	}
 	void OnCollisionEnter (Collision collision){
-		Debug.Log ("foi");
-		Destroy (this.gameObject);
-		Destroy (collision.gameObject);
+
+		//Destroy (this.gameObject);
+		//Destroy (collision.gameObject);
 	}
 }
