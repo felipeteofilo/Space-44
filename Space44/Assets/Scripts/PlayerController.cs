@@ -72,7 +72,9 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			laser.enableEmission = false;
 		}
+		if(!laser.enableEmission){
 
+		}
 
 	}
 }
