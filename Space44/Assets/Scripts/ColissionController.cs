@@ -13,6 +13,9 @@ public class ColissionController : MonoBehaviour {
 		if (other.tag == "TiroBasico"){
 			Destroy (this.gameObject);
 		}
+		if (other.tag == "Laser") {
+			Destroy (this.gameObject);
+		}
 		if (other.tag == "TiroBasicoInimigo" && this.tag == "Player"){
 			Destroy (this.gameObject);
 		}
@@ -20,7 +23,7 @@ public class ColissionController : MonoBehaviour {
 	}
 	void OnCollisionEnter (Collision collision){
 
-		//Destroy (this.gameObject);
-		//Destroy (collision.gameObject);
+		Destroy (this.gameObject, 1.0f);
+		Destroy (collision.gameObject, 1.0f);
 	}
 }
