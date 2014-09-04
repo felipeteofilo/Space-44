@@ -14,15 +14,20 @@ public class PlayerController : MonoBehaviour {
 	public Boundary boundary;
 	public ParticleSystem shoot;
 	public ParticleSystem laser;
+	public GameObject shield;
 
 	public Vector3 buffervec;
 	public float timeLaser;
-	public float timeReload;
+	public float timeShield;
+	private float timeReload;
+	private float timeReloadShield;
 
 
+	private float passedTimeShield;
 	private float passedTimeLaser;
 
 	private float initTimeLaser;
+	private float initTimeShield;
 
 	public enum shootSelected{shoot,laser};
 	public shootSelected selected = shootSelected.shoot;
@@ -32,26 +37,24 @@ public class PlayerController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		//initTimeLaser = 0;
+
+		shield.renderer.material.color = new Color(shield.renderer.material.color.r,shield.renderer.material.color.g,shield.renderer.material.color.b,0.15f );
+
 	}
 	
 	void FixedUpdate(){
 		float moveHorizontal =Input.GetAxis("Horizontal");
 		float moveVertical = Input.GetAxis("Vertical");
 		
-		buffervec = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-//
-//		rigidbody.velocity = buffervec * speed;
-
-		rigidbody.velocity = Vector3.ClampMagnitude (rigidbody.velocity, speed);
-
+		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		rigidbody.velocity = movement * speed;
 		
 		rigidbody.position = new Vector3
 			(
-				Mathf.Clamp(rigidbody.position.x, boundary.xMin, boundary.xMax),
-				0.0f,
-				Mathf.Clamp(rigidbody.position.z, boundary.zMin, boundary.zMax)
-			 );
+				Mathf.Clamp (rigidbody.position.x, boundary.xMin, boundary.xMax), 
+				0.0f, 
+				Mathf.Clamp (rigidbody.position.z, boundary.zMin, boundary.zMax)
+				);
 		
 		rigidbody.rotation = Quaternion.Euler (0.0f, 0.0f, rigidbody.velocity.x * -tilt);
 	}
@@ -66,6 +69,34 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
 			selected = shootSelected.laser;
 		}
+
+		if (Input.GetKeyDown(KeyCode.Q)) {
+			if(!shield.renderer.enabled && passedTimeShield < timeShield ){
+				shield.renderer.enabled = true;
+				shield.collider.enabled = true;
+				initTimeShield = Time.time;
+			}
+			else{
+				shield.renderer.enabled = false;
+				shield.collider.enabled = false;
+				initTimeShield = 0;
+				timeReloadShield = Time.time + passedTimeShield;
+			}
+		}
+
+		if (passedTimeShield < timeShield && shield.renderer.enabled) {
+			if (initTimeShield != 0) {
+				passedTimeShield += Time.time - initTimeShield;
+			}
+			initTimeShield = Time.time;
+		} 	
+		else  {
+			shield.renderer.enabled = false;
+			shield.collider.enabled = false;
+			initTimeShield= 0;
+		}
+
+
 
 		if (selected == shootSelected.shoot && Input.GetButton ("Fire1") && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
@@ -92,7 +123,15 @@ public class PlayerController : MonoBehaviour {
 			}
 
 		}
-		Debug.Log(passedTimeLaser);
+		if(!shield.renderer.enabled && Time.time > timeReloadShield ){
+			timeReloadShield = Time.time + passedTimeShield;
+			passedTimeShield -= 0.5f;
+			if(passedTimeShield < 0){
+				passedTimeShield = 0;
+			}
+			
+		}
+		Debug.Log(passedTimeShield);
 
 	}
 }
