@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ColissionController : MonoBehaviour {
 
+	private DamageController damageController;
 	// Use this for initialization
 	void Start () {
 	
@@ -11,7 +12,9 @@ public class ColissionController : MonoBehaviour {
 	void OnParticleCollision(GameObject other) {
 
 		if (other.tag == "TiroBasico"){
-			Destroy (this.gameObject);
+			damageController = this.gameObject.GetComponent<DamageController>();
+
+			damageController.AplyDamage(0);
 		}
 		if (other.tag == "Laser") {
 			Destroy (this.gameObject);
@@ -19,7 +22,7 @@ public class ColissionController : MonoBehaviour {
 		if (other.tag == "TiroBasicoInimigo" && this.tag == "Player"){
 			Destroy (this.gameObject);
 		}
-		
+
 	}
 	void OnCollisionEnter (Collision collision){
 

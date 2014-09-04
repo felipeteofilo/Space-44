@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour {
 
 			initTimeLaser = Time.time;
 
-			laser.enableEmission = true;
+			laser.enableEmission =true;
 		} else if(laser.enableEmission) {
 			initTimeLaser = 0;
 			timeReload = Time.time + passedTimeLaser;
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour {
 			}
 			
 		}
-		Debug.Log(passedTimeShield);
+		//Debug.Log(passedTimeShield);
 
 	}
 }
