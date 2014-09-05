@@ -6,14 +6,12 @@ public class ColissionController : MonoBehaviour {
 	private DamageController damageController;
 	// Use this for initialization
 	void Start () {
-	
+		damageController = this.gameObject.GetComponent<DamageController>();
 	}
 	
 	void OnParticleCollision(GameObject other) {
 
 		if (other.tag == "TiroBasico"){
-			damageController = this.gameObject.GetComponent<DamageController>();
-
 			damageController.AplyDamage(0);
 		}
 		if (other.tag == "Laser") {
