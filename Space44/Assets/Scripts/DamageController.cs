@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class Shooot{
@@ -9,22 +10,39 @@ public class Shooot{
 
 public class DamageController : MonoBehaviour {
 
-	public ArrayList dmg1 = new ArrayList();
-	public enum dmg{Default,BasicShoot,PlayerLaser,EnemyBasicShoot,Enemy,BossShoot,BossLaser,BossBomb,Boss,Asteroid};
-	public dmg DMG = dmg.Default;
-	// Use this for initialization
+	private List <Shooot> shootList = new List<Shooot>();
+	public TextAsset shootsReference; 
+
 	void Start () {
-	
+
+		string[] shoots = shootsReference.text.Split('\n');
+
+		for (int i = 0; i < shoots.Length; i++) {
+			string [] shootStatus = shoots[i].Split('=');
+
+			Shooot shoot = new Shooot();
+			shoot.name = shootStatus[0].Trim();
+			shoot.damage = float.Parse(shootStatus[1]);
+			shootList.Add(shoot);
+		}
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
 	}
 
-	public void AplyDamage(string typeOfShoot){
-	
-		dmg1.
+	public void AplyDamage(string typeOfShoot, GameObject hitObject){
+
+		Shooot hitShoot = new Shooot ();
+		for (int i = 0; i<shootList.Count; i++) {
+
+			if(shootList[i].name == typeOfShoot){
+				hitShoot = shootList[i];
+			}
+		}
+		hitObject.GetComponent<Status>().life  =hitObject.GetComponent<Status>().life - hitShoot.damage;
 
 	}
 }

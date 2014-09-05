@@ -28,12 +28,12 @@ public class IAenemy : MonoBehaviour {
 		Way =  GameObject.FindGameObjectWithTag("Player");
 
 		if(enemy == E.JustGo){
-			Speed = 0.1f;
+			Speed = 0.05f;
 			destiny = Way.transform.position;
 			transform.LookAt (destiny);
 		}
 		if(enemy == E.Foward){
-			Speed = 0.1f;
+			Speed = 0.05f;
 		}
 		if(enemy == E.Follower){
 			Speed = 0.1f;

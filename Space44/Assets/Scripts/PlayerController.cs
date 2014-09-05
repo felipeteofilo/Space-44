@@ -9,7 +9,7 @@ public class Boundary
 
 public class PlayerController : MonoBehaviour {
 	
-	public float speed;
+	private Status status;
 	public float tilt;
 	public Boundary boundary;
 	public ParticleSystem shoot;
@@ -33,13 +33,14 @@ public class PlayerController : MonoBehaviour {
 	public shootSelected selected = shootSelected.shoot;
 
 	private float nextFire;
-	public float fireRate;
+
 	
 	// Use this for initialization
 	void Start () {
 
 		shield.renderer.material.color = new Color(shield.renderer.material.color.r,shield.renderer.material.color.g,shield.renderer.material.color.b,0.15f );
 
+		status = this.GetComponent<Status> ();
 	}
 	
 	void FixedUpdate(){
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour {
 		float moveVertical = Input.GetAxis("Vertical");
 		
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		rigidbody.velocity = movement * speed;
+		rigidbody.velocity = movement * status.speed;
 		
 		rigidbody.position = new Vector3
 			(
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour {
 
 
 		if (selected == shootSelected.shoot && Input.GetButton ("Fire1") && Time.time > nextFire) {
-			nextFire = Time.time + fireRate;
+			nextFire = Time.time + status.fireRate;
 			shoot.Emit(1);
 		}
 		if (selected == shootSelected.laser && Input.GetButton ("Fire1") && passedTimeLaser < timeLaser) {

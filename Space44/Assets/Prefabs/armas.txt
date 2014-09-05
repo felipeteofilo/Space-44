@@ -1,0 +1,3 @@
+BasicShoot = 1
+BasicEnemyShoot = 2
+PlayerLaser = 0.1

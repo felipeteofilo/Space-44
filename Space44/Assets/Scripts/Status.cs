@@ -8,7 +8,7 @@ public class Status : MonoBehaviour {
 	public float speed;
 	public float stability;
 	public float damage;
-	public float rateOfFire;
+	public float fireRate;
 	public float shieldResistence;
 
 	// Use this for initialization
@@ -18,6 +18,12 @@ public class Status : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (life <= 0) {
+			//this.gameObject.GetComponentInChildren<ParticleSystem>().GetComponent<ParticleAnimator>().autodestruct = true;
+			//this.gameObject.GetComponentInChildren<ParticleSystem>().transform.parent = null;
+			Destroy(this.gameObject);
+		}
 	
 	}
 }
