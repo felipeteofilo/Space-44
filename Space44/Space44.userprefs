@@ -1,15 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Status.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DamageController.cs">
     <Files>
-      <File FileName="Assets\Scripts\DamageController.cs" Line="44" Column="4" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="35" Column="25" />
+      <File FileName="Assets\Scripts\ColissionController.cs" Line="14" Column="3" />
+      <File FileName="Assets\Scripts\DamageController.cs" Line="49" Column="100" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="51" Column="45" />
       <File FileName="Assets\Scripts\MoveNave.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ColissionController.cs" Line="19" Column="37" />
       <File FileName="Assets\Scripts\Status.cs" Line="23" Column="6" />
       <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Prefabs\armas.txt" Line="2" Column="16" />
-      <File FileName="Assets\Scripts\IAenemy.cs" Line="31" Column="16" />
+      <File FileName="Assets\Prefabs\armas.txt" Line="1" Column="12" />
+      <File FileName="Assets\Scripts\IAenemy.cs" Line="14" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
