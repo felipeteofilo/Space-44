@@ -45,9 +45,7 @@ public class DamageController : MonoBehaviour {
 		if(hitObject.tag == "Player" && !hitShoot.name.Contains("Player")){
 			hitObject.GetComponent<Status>().life  =hitObject.GetComponent<Status>().life - hitShoot.damage;
 		}
-		if(hitObject.tag == "Shield" && !hitShoot.name.Contains("Player")){
-			hitObject.GetComponent<Status>().life  =hitObject.GetComponent<Status>().life - hitShoot.damage ;
-		}
+
 
 		if(hitObject.tag == "Enemy" && !hitShoot.name.Contains("Enemy")){
 			hitObject.GetComponent<Status>().life  =hitObject.GetComponent<Status>().life - hitShoot.damage;

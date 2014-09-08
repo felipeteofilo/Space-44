@@ -14,7 +14,7 @@ public class IAenemy : MonoBehaviour {
 	public GameObject Aim;//Mira do inimigo(usado no W.InTarget)
 	Vector3 Bullet;//Vector 3 do Target
 	public ParticleSystem Tiro;//Particulas de tiros
-	private float cooldown = 0.5f;//cooldown de tiro pra outro
+	private float cooldown = 2.0f;//cooldown de tiro pra outro
 	private float nextFire; //tempo para o proximo tiro
 	public enum E{Foward,JustGo,Follower};//enum de tipos de inimigos(Vai pra frente,vai no player ao ve-lo,segue o player ate bem perto)
 	public E enemy = E.Foward;//Definindo padrao com Foward
@@ -28,12 +28,12 @@ public class IAenemy : MonoBehaviour {
 		Way =  GameObject.FindGameObjectWithTag("Player");
 
 		if(enemy == E.JustGo){
-			Speed = 0.05f;
+			Speed = 0.03f;
 			destiny = Way.transform.position;
 			transform.LookAt (destiny);
 		}
 		if(enemy == E.Foward){
-			Speed = 0.05f;
+			Speed = 0.03f;
 		}
 		if(enemy == E.Follower){
 			Speed = 0.1f;
@@ -75,6 +75,7 @@ public class IAenemy : MonoBehaviour {
 			Tiro.Emit(1);
 			nextFire = Time.time + cooldown;
 		}
+		Tiro.transform.localScale = new Vector3(1,1,1);
 	
 	}
 	void GetDamage(float dmg){

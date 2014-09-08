@@ -20,10 +20,21 @@ public class Status : MonoBehaviour {
 	void Update () {
 
 		if (life <= 0) {
-			//this.gameObject.GetComponentInChildren<ParticleSystem>().GetComponent<ParticleAnimator>().autodestruct = true;
-			//this.gameObject.GetComponentInChildren<ParticleSystem>().transform.parent = null;
+			destroyParticlesByTime();
 			Destroy(this.gameObject);
 		}
+
 	
+	}
+	void destroyParticlesByTime()
+	{
+		ParticleSystem particle;
+		particle = this.gameObject.GetComponentInChildren<ParticleSystem>();
+
+		particle.Stop ();
+
+		particle.transform.parent = null;
+
+		GameObject.Destroy(particle.gameObject,particle.duration);
 	}
 }

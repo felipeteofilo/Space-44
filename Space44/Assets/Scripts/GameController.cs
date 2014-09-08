@@ -3,13 +3,27 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject hazard;
+	public GameObject enemy1;
+	public GameObject enemy2;
+	public GameObject asteroid;
 	public Vector3 spawnWaves;
-	public int hazardCount;
-	public int hazardEnemyPerTime;
+
+	[Range(0,100)]
+	public int percentFirstEnemy;
+
+	[Range(0,100 )]
+	public int percentSecondEnemy;
+
+	[Range(0,100 )]
+	public int percentAsteroid;
+
+//	public int percentThirdEnemy;
+//	public int percentFourthEnemy;
 	public float spawnWait;
 	public float startWait;
 	private float earlierX;
+
+
 	// Use this for initialization
 	void Start () {
 
@@ -19,23 +33,31 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator SpawnWaves(){
 		yield return new WaitForSeconds(startWait);
-		for (int i = 0; i < hazardCount; i++) {
-			for(int j = 0; j < hazardEnemyPerTime; j++){
-				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
+		while(true) {
+			Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
 
-				while(earlierX - spawnPosition.x < 2 && earlierX - spawnPosition.x > -2 ){
-					spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
-				}
+			GameObject enemy = ramdomEnemy();
 
-				earlierX = spawnPosition.x;
-				Instantiate (hazard, spawnPosition, hazard.transform.rotation);
-			}
+			Instantiate (enemy, spawnPosition, enemy.transform.rotation);
 
-			if(i == hazardCount -1){
-				i=0;
-			}
 			yield return new WaitForSeconds(spawnWait);
 		}
+	}
+
+	GameObject ramdomEnemy(){
+		float percent = Random.Range(1,100);
+
+		if (percent <= percentAsteroid) {
+			return asteroid;
+		}
+		if (percent <= percentFirstEnemy) {
+			return enemy1;
+		}
+		else {
+			return enemy2;
+		}
+
+				
 	}
 
 	// Update is called once per frame
