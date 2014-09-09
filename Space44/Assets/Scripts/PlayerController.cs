@@ -75,11 +75,13 @@ public class PlayerController : MonoBehaviour {
 			if(!shield.renderer.enabled && passedTimeShield < timeShield ){
 				shield.renderer.enabled = true;
 				shield.collider.enabled = true;
+				this.gameObject.collider.enabled = false;
 				initTimeShield = Time.time;
 			}
 			else{
 				shield.renderer.enabled = false;
 				shield.collider.enabled = false;
+				this.gameObject.collider.enabled = true;
 				initTimeShield = 0;
 				timeReloadShield = Time.time + passedTimeShield;
 			}
@@ -94,6 +96,7 @@ public class PlayerController : MonoBehaviour {
 		else  {
 			shield.renderer.enabled = false;
 			shield.collider.enabled = false;
+			this.gameObject.collider.enabled = true;
 			initTimeShield= 0;
 		}
 

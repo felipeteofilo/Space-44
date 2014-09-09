@@ -28,18 +28,28 @@ public class IAenemy : MonoBehaviour {
 		Way =  GameObject.FindGameObjectWithTag("Player");
 
 		if(enemy == E.JustGo){
-			Speed = 0.03f;
+			Speed = 0.06f;
 			destiny = Way.transform.position;
 			transform.LookAt (destiny);
 		}
 		if(enemy == E.Foward){
-			Speed = 0.03f;
+			Speed = 0.06f;
 		}
 		if(enemy == E.Follower){
 			Speed = 0.1f;
 
 		}
 	
+	}
+
+	void FixedUpdate(){
+		//Tiro na direçao em que nave olhar
+		//Nao se faz nada
+		if(Time.time >  nextFire){	
+			Tiro.Emit(1);
+			nextFire = Time.time + cooldown;
+		}
+		Tiro.transform.localScale = new Vector3 (1,1,1);
 	}
 	
 	// Update is called once per frame
@@ -69,14 +79,6 @@ public class IAenemy : MonoBehaviour {
 		Bullet = Target.transform.position;
 		Aim.transform.LookAt(Bullet);
 		}
-		//Tiro na direçao em que nave olhar
-		//Nao se faz nada
-		if(Time.time >  nextFire){	
-			Tiro.Emit(1);
-			nextFire = Time.time + cooldown;
-		}
-		Tiro.transform.localScale = new Vector3(1,1,1);
-	
 	}
 	void GetDamage(float dmg){
 		Life -=dmg;
