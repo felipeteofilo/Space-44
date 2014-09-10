@@ -45,10 +45,10 @@ public class IAenemy : MonoBehaviour {
 	void FixedUpdate(){
 		//Tiro na direçao em que nave olhar
 		//Nao se faz nada
-//		if(Time.time >  nextFire){	
-//			Tiro.Emit(1);
-//			nextFire = Time.time + cooldown;
-//		}
+		if(Time.time >  nextFire){	
+			Tiro.Emit(1);
+			nextFire = Time.time + cooldown;
+		}
 
 	}
 	

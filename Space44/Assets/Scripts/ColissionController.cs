@@ -16,11 +16,12 @@ public class ColissionController : MonoBehaviour {
 
 	}
 	void OnCollisionEnter (Collision collision){
-		if (!this.gameObject.CompareTag("Asteroid")) {
+		if (!collision.gameObject.CompareTag ("Limit")) {
 			Destroy (this.gameObject);
 			Object exp = Instantiate (explosion, gameObject.transform.position, Quaternion.identity);
+		
+			Destroy (collision.gameObject);
+			Object exp1 = Instantiate (explosion, collision.gameObject.transform.position, Quaternion.identity);
 		}
-		Destroy (collision.gameObject);
-		Object exp1 = Instantiate(explosion, collision.gameObject.transform.position, Quaternion.identity);
 	}
 }
