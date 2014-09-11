@@ -83,7 +83,6 @@ public class GameController : MonoBehaviour {
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, 30);
 				Instantiate (boss, spawnPosition, boss.transform.rotation);
 				bossIstantiate = true;
-				
 		}
 
 	}
