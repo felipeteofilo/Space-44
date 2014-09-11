@@ -5,7 +5,7 @@ public class HUDscript : MonoBehaviour {
 	private Status status;
 
 	float MaxLife;
-	float CurrentLife;
+public	float CurrentLife;
 	float MaxSpecial;
 	float CurrentSpecial;
 	float MaxShield;
@@ -40,15 +40,17 @@ public class HUDscript : MonoBehaviour {
 	void OnGUI(){
 		GUI.color = Color.white;
 		//Vida
-
-		GUI.Box(new Rect(0.86f*width,10,0.13f*width,20),""+(int)CurrentLife);
-		GUI.Box(new Rect(0.86f*width,10,(0.13f*width)/(MaxLife/CurrentLife),20),"");
+		GUI.TextArea(new Rect(0.86f*width,0,0.13f*width,20),"Life");
+		GUI.Box(new Rect(0.86f*width,20,0.13f*width,20),""+(int)CurrentLife);
+		GUI.Box(new Rect(0.86f*width,20,(0.13f*width)/(MaxLife/CurrentLife),20),"");
 		//Laser
-		GUI.Box(new Rect(0.86f*width,35,0.13f*width,20),""+(int)CurrentSpecial);
-		GUI.Box(new Rect(0.86f*width,35,(0.13f*width)/(MaxSpecial/CurrentSpecial),20),"");
+		GUI.TextArea(new Rect(0.86f*width,45,0.13f*width,20),"Special");
+		GUI.Box(new Rect(0.86f*width,65,0.13f*width,20),""+(int)CurrentSpecial);
+		GUI.Box(new Rect(0.86f*width,65,(0.13f*width)/(MaxSpecial/CurrentSpecial),20),"");
 		//Escudo
-		GUI.Box(new Rect(0.86f*width,60,0.13f*width,20),""+(int)CurrentShield);
-		GUI.Box(new Rect(0.86f*width,60,(0.13f*width)/(MaxShield/CurrentShield),20),"");
+		GUI.TextArea(new Rect(0.86f*width,90,0.13f*width,20),"Shield");
+		GUI.Box(new Rect(0.86f*width,110,0.13f*width,20),""+(int)CurrentShield);
+		GUI.Box(new Rect(0.86f*width,110,(0.13f*width)/(MaxShield/CurrentShield),20),"");
 		
 		
 	}

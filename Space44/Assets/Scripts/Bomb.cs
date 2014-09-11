@@ -21,6 +21,7 @@ public class Bomb : MonoBehaviour {
 		}
 
 		X = Time.time;
+
 	}
 	
 	// Update is called once per frame

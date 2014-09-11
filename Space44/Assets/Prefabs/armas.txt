@@ -1,3 +1,6 @@
 BasicPlayerShoot = 1
 BasicEnemyShoot = 2
-PlayerLaser = 0.1
+PlayerLaser = 0.2
+BossBullet = 3
+BossLaser = 0.3
+Boom = 5
