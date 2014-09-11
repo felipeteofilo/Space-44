@@ -32,15 +32,25 @@ public class PlayerController : MonoBehaviour {
 	public enum shootSelected{shoot,laser};
 	public shootSelected selected = shootSelected.shoot;
 
+	private AudioSource shootAudio;
+	private AudioSource laserAudio;
+	private AudioSource shieldAudio;
+
 	private float nextFire;
 
 	
 	// Use this for initialization
 	void Start () {
 
+
 		shield.renderer.material.color = new Color(shield.renderer.material.color.r,shield.renderer.material.color.g,shield.renderer.material.color.b,0.15f );
 
 		status = this.GetComponent<Status> ();
+		AudioSource[] audios = GetComponents<AudioSource>();
+		shootAudio = audios[0];
+		laserAudio = audios[1];
+		shieldAudio = audios[2];
+
 	}
 	
 	void FixedUpdate(){
@@ -77,13 +87,15 @@ public class PlayerController : MonoBehaviour {
 				shield.collider.enabled = true;
 				this.gameObject.collider.enabled = false;
 				initTimeShield = Time.time;
+				shieldAudio.Play();
 			}
 			else{
+				shieldAudio.Play();
 				shield.renderer.enabled = false;
-				shield.collider.enabled = false;
 				this.gameObject.collider.enabled = true;
 				initTimeShield = 0;
 				timeReloadShield = Time.time + passedTimeShield;
+
 			}
 		}
 
@@ -93,11 +105,12 @@ public class PlayerController : MonoBehaviour {
 			}
 			initTimeShield = Time.time;
 		} 	
-		else  {
+		else if(shield.renderer.enabled) {
 			shield.renderer.enabled = false;
 			shield.collider.enabled = false;
 			this.gameObject.collider.enabled = true;
 			initTimeShield= 0;
+			shieldAudio.Play();
 		}
 
 
@@ -105,6 +118,8 @@ public class PlayerController : MonoBehaviour {
 		if (selected == shootSelected.shoot && Input.GetButton ("Fire1") && Time.time > nextFire) {
 			nextFire = Time.time + status.fireRate;
 			shoot.Emit(1);
+			shootAudio.Play();
+
 		}
 		if (selected == shootSelected.laser && Input.GetButton ("Fire1") && passedTimeLaser < timeLaser) {
 			if(initTimeLaser != 0){
@@ -112,10 +127,14 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			initTimeLaser = Time.time;
+			if(!laserAudio.isPlaying){
+				laserAudio.Play();
+			}
 
 			laser.enableEmission =true;
 		} else if(laser.enableEmission) {
 			initTimeLaser = 0;
+			laserAudio.Stop();
 			timeReload = Time.time + passedTimeLaser;
 			laser.enableEmission = false;
 		}

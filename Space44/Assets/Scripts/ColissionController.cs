@@ -11,17 +11,21 @@ public class ColissionController : MonoBehaviour {
 	}
 	
 	void OnParticleCollision(GameObject other) {
-		damageController.AplyDamage (other.tag, this.gameObject);
+		if (this.gameObject.collider.enabled) {
+			damageController.AplyDamage (other.tag, this.gameObject);
+		}
 
 
 	}
 	void OnCollisionEnter (Collision collision){
+
+
 		if (!collision.gameObject.CompareTag ("Limit")) {
 			Destroy (this.gameObject);
-			Object exp = Instantiate (explosion, gameObject.transform.position, Quaternion.identity);
+			Instantiate (explosion, gameObject.transform.position, Quaternion.identity);
 		
 			Destroy (collision.gameObject);
-			Object exp1 = Instantiate (explosion, collision.gameObject.transform.position, Quaternion.identity);
+			Instantiate (explosion, collision.gameObject.transform.position, Quaternion.identity);
 		}
 	}
 }

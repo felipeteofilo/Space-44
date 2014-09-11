@@ -28,7 +28,7 @@ public class IAenemy : MonoBehaviour {
 		Way =  GameObject.FindGameObjectWithTag("Player");
 
 		if(enemy == E.JustGo){
-			Speed = 0.06f;
+			Speed = 0.09f;
 			destiny = Way.transform.position;
 			transform.LookAt (destiny);
 		}

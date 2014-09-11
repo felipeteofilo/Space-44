@@ -4,9 +4,9 @@ using System.Collections;
 public class AsteroidIA : MonoBehaviour {
 	public float speed;
 	// Use this for initialization
-	void Start () {
+	void Update () {
 
-		rigidbody.velocity = transform.forward * speed;
+		transform.Translate(transform.forward*-speed);
 	
 	}
 	

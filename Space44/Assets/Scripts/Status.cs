@@ -10,6 +10,7 @@ public class Status : MonoBehaviour {
 	public float damage;
 	public float fireRate;
 	public float shieldResistence;
+	public Transform explosion;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,7 @@ public class Status : MonoBehaviour {
 		if (life <= 0) {
 			destroyParticlesByTime();
 			Destroy(this.gameObject);
+			Instantiate (explosion, this.gameObject.transform.position, Quaternion.identity);
 		}
 
 	

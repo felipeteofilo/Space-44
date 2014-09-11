@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour {
 
 	public GameObject enemy1;
 	public GameObject enemy2;
+	public GameObject background;
 	public GameObject asteroid;
 	public Vector3 spawnWaves;
 
@@ -37,7 +38,12 @@ public class GameController : MonoBehaviour {
 			Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
 
 			GameObject enemy = ramdomEnemy();
-
+			if(enemy == asteroid){
+				Instantiate (enemy, spawnPosition, enemy.transform.rotation);
+				spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
+				Instantiate (enemy, spawnPosition, enemy.transform.rotation);
+				spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
+			}
 			Instantiate (enemy, spawnPosition, enemy.transform.rotation);
 
 			yield return new WaitForSeconds(spawnWait);
@@ -50,18 +56,22 @@ public class GameController : MonoBehaviour {
 		if (percent <= percentAsteroid) {
 			return asteroid;
 		}
-		if (percent <= percentFirstEnemy) {
+		else if (percent <= percentAsteroid + percentFirstEnemy) {
 			return enemy1;
 		}
-		else {
+		else if(percent <= percentAsteroid + percentFirstEnemy+ percentSecondEnemy){
 			return enemy2;
 		}
-
+		return null;
 				
 	}
 
 	// Update is called once per frame
 	void Update () {
-	
+
+		if (background.transform.localPosition.z >2.6f) {
+			background.transform.Translate (background.transform.forward * -0.01f);
+		}
+
 	}
 }

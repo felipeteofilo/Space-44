@@ -43,8 +43,9 @@ public class DamageController : MonoBehaviour {
 			}
 		}
 		if(hitObject.tag == "Player" && !hitShoot.name.Contains("Player")){
-			Debug.Log("Foi mano");
+
 			hitObject.GetComponent<Status>().life  =hitObject.GetComponent<Status>().life - hitShoot.damage;
+
 		}
 
 
