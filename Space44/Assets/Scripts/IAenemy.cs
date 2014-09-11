@@ -28,7 +28,7 @@ public class IAenemy : MonoBehaviour {
 		Way =  GameObject.FindGameObjectWithTag("Player");
 
 		if(enemy == E.JustGo){
-			Speed = 0.09f;
+			Speed = 0.1f;
 			destiny = Way.transform.position;
 			transform.LookAt (destiny);
 		}
@@ -40,16 +40,6 @@ public class IAenemy : MonoBehaviour {
 
 		}
 	
-	}
-
-	void FixedUpdate(){
-		//Tiro na direçao em que nave olhar
-		//Nao se faz nada
-		if(Time.time >  nextFire){	
-			Tiro.Emit(1);
-			nextFire = Time.time + cooldown;
-		}
-
 	}
 	
 	// Update is called once per frame
@@ -79,41 +69,13 @@ public class IAenemy : MonoBehaviour {
 		Bullet = Target.transform.position;
 		Aim.transform.LookAt(Bullet);
 		}
-	}
-	void GetDamage(float dmg){
-		Life -=dmg;
-		if(Life<=0){
-			//play animation of explosion
-			Destroy(gameObject);
+		//Tiro na direçao em que nave olhar
+		//Nao se faz nada
+		if(Time.time >  nextFire &&  transform.position.z > Target.transform.position.z ){	
+			Tiro.Emit(1);
+			nextFire = Time.time + cooldown;
 		}
-
+	
 	}
-//	void OnTriggerEnter(Collider others){
-//
-//		if(others.tag == "Player"){
-//		//Send colision to player
-//			others.transform.Translate(new Vector3 (0, 0, (Speed*(-15))));
-//			transform.Translate (new Vector3 (0, 0, (Speed*(-15))));
-//
-//			GetDamage(DmgPerColison/2);
-//
-//		//empurra player pra tras
-//		}
-//		if(others.tag == "Enemy")
-//		{	
-//			GetDamage(DmgPerColison/4);
-//
-//			transform.Translate (new Vector3 (0, 0, (Speed*-2)));
-//			destiny.x = -destiny.x;
-//			transform.LookAt(destiny);
-//			//so funciona com goto
-//
-//
-//			//empurra inimigo para lado oposto que veio
-//
-//		}
-//		if(others.tag =="Meteor"){
-//			GetDamage(Life);
-//		}
-//	}
 }
+

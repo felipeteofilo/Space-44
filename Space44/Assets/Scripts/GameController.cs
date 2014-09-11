@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour {
 
 	public GameObject enemy1;
 	public GameObject enemy2;
+	public GameObject boss;
 	public GameObject background;
 	public GameObject asteroid;
 	public Vector3 spawnWaves;
@@ -23,6 +24,8 @@ public class GameController : MonoBehaviour {
 	public float spawnWait;
 	public float startWait;
 	private float earlierX;
+
+	bool bossIstantiate;
 
 
 	// Use this for initialization
@@ -69,8 +72,14 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (background.transform.localPosition.z >2.6f) {
-			background.transform.Translate (background.transform.forward * -0.01f);
+		if (background.transform.localPosition.z > 2.6f) {
+						background.transform.Translate (background.transform.forward * -0.01f);
+		} else if(!bossIstantiate){
+				
+				StopAllCoroutines();
+				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, 30);
+				Instantiate (boss, spawnPosition, boss.transform.rotation);
+				bossIstantiate = true;
 		}
 
 	}

@@ -46,12 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Prefabs\TurretCollision.cs" />
      <Compile Include="Assets\Scripts\AsteroidIA.cs" />
+     <Compile Include="Assets\Scripts\Bomb.cs" />
      <Compile Include="Assets\Scripts\ColissionController.cs" />
+     <Compile Include="Assets\Scripts\ColliderBoss.cs" />
      <Compile Include="Assets\Scripts\DamageController.cs" />
      <Compile Include="Assets\Scripts\FuzilFPS.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\HUDscript.cs" />
      <Compile Include="Assets\Scripts\IA1ºBoss.cs" />
      <Compile Include="Assets\Scripts\IAenemy.cs" />
      <Compile Include="Assets\Scripts\MoveNave.cs" />
