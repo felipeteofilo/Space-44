@@ -17,14 +17,12 @@ public class PlayerController : MonoBehaviour {
 	public GameObject shield;
 
 	public Vector3 buffervec;
-	public float timeLaser;
-	public float timeShield;
+
 	private float timeReload;
 	private float timeReloadShield;
 
 
-	private float passedTimeShield;
-	private float passedTimeLaser;
+
 
 	private float initTimeLaser;
 	private float initTimeShield;
@@ -82,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.Q)) {
-			if(!shield.renderer.enabled && passedTimeShield < timeShield ){
+			if(!shield.renderer.enabled && status.actualShieldTime < status.timeShield ){
 				shield.renderer.enabled = true;
 				shield.collider.enabled = true;
 				this.gameObject.collider.enabled = false;
@@ -94,14 +92,14 @@ public class PlayerController : MonoBehaviour {
 				shield.renderer.enabled = false;
 				this.gameObject.collider.enabled = true;
 				initTimeShield = 0;
-				timeReloadShield = Time.time + passedTimeShield;
+				timeReloadShield = Time.time + status.actualShieldTime;
 
 			}
 		}
 
-		if (passedTimeShield < timeShield && shield.renderer.enabled) {
+		if (status.actualShieldTime < status.timeShield && shield.renderer.enabled) {
 			if (initTimeShield != 0) {
-				passedTimeShield += Time.time - initTimeShield;
+				status.actualShieldTime += Time.time - initTimeShield;
 			}
 			initTimeShield = Time.time;
 		} 	
@@ -121,9 +119,9 @@ public class PlayerController : MonoBehaviour {
 			shootAudio.Play();
 
 		}
-		if (selected == shootSelected.laser && Input.GetButton ("Fire1") && passedTimeLaser < timeLaser) {
+		if (selected == shootSelected.laser && Input.GetButton ("Fire1") && status.actualLaserTime < status.timeLaser) {
 			if(initTimeLaser != 0){
-				passedTimeLaser += Time.time - initTimeLaser;
+				status.actualLaserTime += Time.time - initTimeLaser;
 			}
 
 			initTimeLaser = Time.time;
@@ -135,22 +133,22 @@ public class PlayerController : MonoBehaviour {
 		} else if(laser.enableEmission) {
 			initTimeLaser = 0;
 			laserAudio.Stop();
-			timeReload = Time.time + passedTimeLaser;
+			timeReload = Time.time + status.actualLaserTime;
 			laser.enableEmission = false;
 		}
 		if(!laser.enableEmission && Time.time > timeReload ){
-			timeReload = Time.time + passedTimeLaser;
-			passedTimeLaser -= 0.1f;
-			if(passedTimeLaser < 0){
-				passedTimeLaser = 0;
+			timeReload = Time.time + status.actualLaserTime;
+			status.actualLaserTime -= status.rechargeLaser;
+			if(status.actualLaserTime < 0){
+				status.actualLaserTime = 0;
 			}
 
 		}
 		if(!shield.renderer.enabled && Time.time > timeReloadShield ){
-			timeReloadShield = Time.time + passedTimeShield;
-			passedTimeShield -= 0.5f;
-			if(passedTimeShield < 0){
-				passedTimeShield = 0;
+			timeReloadShield = Time.time + status.actualShieldTime;
+			status.actualShieldTime -= status.rechargeShield;
+			if(status.actualShieldTime < 0){
+				status.actualShieldTime = 0;
 			}
 			
 		}

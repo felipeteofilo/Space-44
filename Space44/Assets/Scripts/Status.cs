@@ -9,8 +9,15 @@ public class Status : MonoBehaviour {
 	public float stability;
 	public float damage;
 	public float fireRate;
+	public float rechargeShield;
+	public float rechargeLaser;
+	public float timeShield;
+	public float timeLaser;
+	public float actualLaserTime;
+	public float actualShieldTime;
 	public float shieldResistence;
 	public Transform explosion;
+
 
 	// Use this for initialization
 	void Start () {
