@@ -24,13 +24,15 @@ public class GameController : MonoBehaviour {
 	public float spawnWait;
 	public float startWait;
 	private float earlierX;
+	private AudioSource bossSong;
 
 	bool bossIstantiate;
 
 
 	// Use this for initialization
 	void Start () {
-
+		AudioSource[] audios = GetComponents<AudioSource>();
+		bossSong = audios [1];
 		StartCoroutine (SpawnWaves ());
 	
 	}
@@ -75,11 +77,13 @@ public class GameController : MonoBehaviour {
 		if (background.transform.localPosition.z > 2.6f) {
 						background.transform.Translate (background.transform.forward * -0.01f);
 		} else if(!bossIstantiate){
-				
+				audio.Stop();
+				bossSong.Play();
 				StopAllCoroutines();
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, 30);
 				Instantiate (boss, spawnPosition, boss.transform.rotation);
 				bossIstantiate = true;
+				
 		}
 
 	}
