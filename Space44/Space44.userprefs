@@ -1,17 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\IA1ºBoss.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HUDscript.cs">
     <Files>
-      <File FileName="Assets\Scripts\IA1ºBoss.cs" Line="69" Column="3" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\OutOfView.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\IAenemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ColissionController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AsteroidIA.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DamageController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Status.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ColliderBoss.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HUDscript.cs" Line="44" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
