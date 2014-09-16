@@ -113,13 +113,13 @@ public class PlayerController : MonoBehaviour {
 
 
 
-		if (selected == shootSelected.shoot && Input.GetButton ("Fire1") && Time.time > nextFire) {
+		if (selected == shootSelected.shoot && Input.GetKey(KeyCode.E) && Time.time > nextFire) {
 			nextFire = Time.time + status.fireRate;
 			shoot.Emit(1);
 			shootAudio.Play();
 
 		}
-		if (selected == shootSelected.laser && Input.GetButton ("Fire1") && status.actualLaserTime < status.timeLaser) {
+		if (selected == shootSelected.laser && Input.GetKey(KeyCode.E) && status.actualLaserTime < status.timeLaser) {
 			if(initTimeLaser != 0){
 				status.actualLaserTime += Time.time - initTimeLaser;
 			}

@@ -52,6 +52,9 @@ public	float CurrentLife;
 		GUI.Box(new Rect(0.86f*width,110,0.13f*width,20),""+(int)CurrentShield);
 		GUI.Box(new Rect(0.86f*width,110,(0.13f*width)/(MaxShield/CurrentShield),20),"");
 		
+		GUI.Box(new Rect(0.86f*width,150,0.13f*width,20),"Time: "+(int)(Time.time/60)+":"+(int)(Time.time%60));
+
+		
 		
 	}
 }

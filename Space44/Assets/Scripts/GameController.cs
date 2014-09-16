@@ -71,6 +71,24 @@ public class GameController : MonoBehaviour
 				return null;
 				
 		}
+		
+		void FixedUpdate ()
+		{
+				if (background.transform.localPosition.z > 2.6f) {
+						background.transform.Translate (background.transform.forward * -0.05f);
+				} else if (!bossIstantiate) {
+						audio.Stop ();
+						bossSong.Play ();
+						StopAllCoroutines ();
+						ParticleSystem[] stars = GameObject.FindGameObjectWithTag ("Stars").GetComponentsInChildren<ParticleSystem> ();
+						for (int i =0; i< stars.Length; i++) {
+								stars [i].Pause ();
+						}
+						Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, 30);
+						Instantiate (boss, spawnPosition, boss.transform.rotation);
+						bossIstantiate = true;
+				}
+		}
 
 		// Update is called once per frame
 		void Update ()
@@ -85,22 +103,5 @@ public class GameController : MonoBehaviour
 						}
 
 				}
-
-				if (background.transform.localPosition.z > 2.6f) {
-						background.transform.Translate (background.transform.forward * -0.01f);
-				} else if (!bossIstantiate) {
-						audio.Stop ();
-						bossSong.Play ();
-						StopAllCoroutines ();
-						ParticleSystem[] stars = GameObject.FindGameObjectWithTag ("Stars").GetComponentsInChildren<ParticleSystem> ();
-						for (int i =0; i< stars.Length; i++) {
-								stars [i].Pause ();
-						}
-						Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, 30);
-						Instantiate (boss, spawnPosition, boss.transform.rotation);
-						bossIstantiate = true;
-				}
-
-
 		}
 }
