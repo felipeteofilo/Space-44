@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour {
 	private float timeReload;
 	private float timeReloadShield;
 
+	private Vector3 movement;
+
 
 
 
@@ -52,12 +54,12 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void FixedUpdate(){
-		float moveHorizontal =Input.GetAxis("Horizontal");
-		float moveVertical = Input.GetAxis("Vertical");
-		
-		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		rigidbody.velocity = movement * status.speed;
-		
+
+
+
+		rigidbody.velocity = movement;
+
+
 		rigidbody.position = new Vector3
 			(
 				Mathf.Clamp (rigidbody.position.x, boundary.xMin, boundary.xMax), 
@@ -70,6 +72,12 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		float moveHorizontal =Input.GetAxis("Horizontal");
+		float moveVertical = Input.GetAxis("Vertical");
+		
+		movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		movement = movement * status.speed;
 
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			selected = shootSelected.shoot;
