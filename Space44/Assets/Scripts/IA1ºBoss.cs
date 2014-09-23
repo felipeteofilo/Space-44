@@ -136,15 +136,21 @@ public class IA1ºBoss : MonoBehaviour
 				}
 				if (W == Weapon.Laser) {
 
-						Laser1.Emit (5);
-						Laser2.Emit (5);
+						if (!Laser1.isPlaying && !Laser2.isPlaying) {
+								Laser1.Play();
+								Laser2.Play();
+						}
+						
 
 
 						if (MaxLife2 / 2 >= Life2 || Life2 <= 0) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
-							
+								Laser1.Stop();
+								Laser2.Stop();
+								
 								if (Y == 120) {
+
 										audio.Play ();
 										Y = 0;
 										W = Weapon.Bomb;
@@ -198,11 +204,14 @@ public class IA1ºBoss : MonoBehaviour
 						if (W == Weapon.Laser) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
+
+				//Laser1.Stop();
+				//Laser2.Stop();
 								
 								if (Y == 240) {
 										audio.Play ();			
 										Y = 0;
-
+										
 										W = Weapon.Bullet;
 										R = 0;
 								}
@@ -245,6 +254,7 @@ public class IA1ºBoss : MonoBehaviour
 								transform.Rotate (new Vector3 (0, 2, 0));
 								
 								if (Y == 360) {
+
 										audio.Play ();
 										Y = 0;
 
@@ -287,8 +297,12 @@ public class IA1ºBoss : MonoBehaviour
 						if (W == Weapon.Laser) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
+
+				//Laser1.Stop();
+				//Laser2.Stop();
 								
 								if (Y == 120) {
+									
 										audio.Play ();			
 										Y = 0;
 

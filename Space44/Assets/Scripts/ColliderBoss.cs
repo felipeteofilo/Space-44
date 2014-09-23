@@ -3,6 +3,9 @@ using System.Collections;
 
 public class ColliderBoss : MonoBehaviour {
 
+	private float timeNextFlash;
+	private float timeToFlash = 0.2f;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,6 +18,12 @@ public class ColliderBoss : MonoBehaviour {
 	void OnParticleCollision(GameObject others){
 		//conferir as particulas
 		//setar dmg
+		if (Time.time > timeNextFlash && this.gameObject.collider.enabled == true) {
+			timeNextFlash = Time.time + timeToFlash;
+			StartCoroutine (FlashPlayer (0.03f));
+
+		}
+
 		if(others.tag != "BossBullet" || others.tag != "BossLaser"){
 			if(others.tag == "BasicPlayerShoot")
 				SendMessageUpwards("AplyDamage",1);
@@ -23,4 +32,26 @@ public class ColliderBoss : MonoBehaviour {
 		}
 
 	}
+	IEnumerator FlashPlayer (float intervalTime)
+	{
+		
+		float elapsedTime = 0f;
+		float time = Time.deltaTime;
+		Color color = new Color(0,0,0); 
+		
+		Transform rendererBoss = transform;
+		color = rendererBoss.renderer.material.color;
+
+		while (elapsedTime < time) {
+			if (rendererBoss != null) {
+				rendererBoss.renderer.material.color = new Color (255,255,255);
+			}
+			elapsedTime += Time.deltaTime;
+			yield return new WaitForSeconds (intervalTime);
+		}
+		if (rendererBoss != null) {
+			rendererBoss.renderer.material.color = color;
+		}
+	}
+
 }
