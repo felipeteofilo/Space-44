@@ -10,6 +10,7 @@ public class Boundary
 public class PlayerController : MonoBehaviour {
 	
 	private Status status;
+	public float estabilidade;
 	public float tilt;
 	public Boundary boundary;
 	public ParticleSystem shoot;
@@ -42,8 +43,8 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-
-		shield.renderer.material.color = new Color(shield.renderer.material.color.r,shield.renderer.material.color.g,shield.renderer.material.color.b,0.15f );
+		rigidbody.drag = estabilidade;
+		shield.renderer.material.color = new Color(shield.renderer.material.color.r,shield.renderer.material.color.g,shield.renderer.material.color.b,0.25f );
 
 		status = this.GetComponent<Status> ();
 		AudioSource[] audios = GetComponents<AudioSource>();
@@ -55,9 +56,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void FixedUpdate(){
 
-
-
-		rigidbody.velocity = movement;
+		rigidbody.AddForce( movement);
 
 
 		rigidbody.position = new Vector3
@@ -121,13 +120,13 @@ public class PlayerController : MonoBehaviour {
 
 
 
-		if (selected == shootSelected.shoot && Input.GetKey(KeyCode.E) && Time.time > nextFire) {
+		if (selected == shootSelected.shoot && Input.GetButton("Fire1") && Time.time > nextFire) {
 			nextFire = Time.time + status.fireRate;
 			shoot.Emit(1);
 			shootAudio.Play();
 
 		}
-		if (selected == shootSelected.laser && Input.GetKey(KeyCode.E) && status.actualLaserTime < status.timeLaser) {
+		if (selected == shootSelected.laser && Input.GetButton("Fire1")  && status.actualLaserTime < status.timeLaser) {
 			if(initTimeLaser != 0){
 				status.actualLaserTime += Time.time - initTimeLaser;
 			}
