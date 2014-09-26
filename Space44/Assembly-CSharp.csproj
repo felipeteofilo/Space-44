@@ -48,9 +48,11 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AsteroidIA.cs" />
      <Compile Include="Assets\Scripts\Bomb.cs" />
+     <Compile Include="Assets\Scripts\BonusItem.cs" />
      <Compile Include="Assets\Scripts\ColissionController.cs" />
      <Compile Include="Assets\Scripts\ColliderBoss.cs" />
      <Compile Include="Assets\Scripts\DamageController.cs" />
+     <Compile Include="Assets\Scripts\EnemyStatus.cs" />
      <Compile Include="Assets\Scripts\FuzilFPS.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HUDscript.cs" />
