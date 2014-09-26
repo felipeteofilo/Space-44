@@ -58,9 +58,7 @@ public class ColissionController : MonoBehaviour
 		void OnCollisionEnter (Collision collision)
 		{
 
-
-
-				if (!collision.gameObject.CompareTag ("Limit")) {
+		if (collision.gameObject.layer != 11) {
 						Destroy (this.gameObject);
 						Instantiate (explosion, gameObject.transform.position, Quaternion.identity);
 						if (collision.gameObject.tag != "Boss") {

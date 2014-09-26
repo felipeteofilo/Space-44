@@ -50,7 +50,7 @@ public class DamageController : MonoBehaviour {
 
 
 		if(hitObject.tag == "Enemy" && !hitShoot.name.Contains("Enemy")){
-			hitObject.GetComponent<Status>().life  =hitObject.GetComponent<Status>().life - hitShoot.damage;
+			hitObject.GetComponent<EnemyStatus>().life  = hitObject.GetComponent<EnemyStatus>().life - hitShoot.damage;
 		}
 	}
 }
