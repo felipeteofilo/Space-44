@@ -4,23 +4,29 @@ using System.Collections;
 public class BonusItem : MonoBehaviour
 {
 
-		public float points;
+		public int points;
 		public float life;
+		public float activeTime;
+		public float deadTime;
 
 
 		// Use this for initialization
 		void Start ()
 		{
+
+				activeTime = Time.time;
 	
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-	
+				if (Time.time - activeTime >= deadTime) {
+						Destroy (gameObject);
+				}
 		}
 
-		void AumentarVida (Collider other)
+		void AddLife (Collider other)
 		{
 				if (other.GetComponent<Status> ().life + life < other.GetComponent<Status> ().MaxLife) {
 						other.GetComponent<Status> ().life = other.GetComponent<Status> ().life + life;
@@ -29,15 +35,21 @@ public class BonusItem : MonoBehaviour
 				}
 		}
 
+		void AddPoints (Collider other)
+		{
+				other.GetComponent<Status> ().ReceivePoints (points);
+
+		}
+
 		void OnTriggerEnter (Collider other)
 		{
 
 				if (other.tag == "Player") {
 						if (life > 0) {
-								AumentarVida (other);
+								AddLife (other);
 						}
 						if (points > 0) {
-								Debug.Log ("foi mano" + points);
+								AddPoints (other);
 						}
 						Destroy (gameObject);
 				}

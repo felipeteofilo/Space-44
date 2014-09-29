@@ -1,49 +1,62 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Status : MonoBehaviour {
+public class Status : MonoBehaviour
+{
 
-	public float MaxLife;
-	public float life;
-	public float speed;
-	public float stability;
-	public float damage;
-	public float fireRate;
-	public float rechargeShield;
-	public float rechargeLaser;
-	public float timeShield;
-	public float timeLaser;
-	public float actualLaserTime;
-	public float actualShieldTime;
-	public float shieldResistence;
-	public Transform explosion;
+		public float MaxLife;
+		public float life;
+		public float speed;
+		public float stability;
+		public float damage;
+		public float fireRate;
+		public float rechargeShield;
+		public float rechargeLaser;
+		public float timeShield;
+		public float timeLaser;
+		public float actualLaserTime;
+		public float actualShieldTime;
+		public float shieldResistence;
+		public Transform explosion;
+		public int levelPoints;
+		public int totalPoints;
 
 
-	// Use this for initialization
-	void Start () {
+		// Use this for initialization
+		void Start ()
+		{
 	
-	}
+		}
 	
-	// Update is called once per frame
-	void Update () {
+		// Update is called once per frame
+		void Update ()
+		{
 
-		if (life <= 0) {
-			destroyParticlesByTime();
-			Destroy(this.gameObject);
-			Instantiate (explosion, this.gameObject.transform.position, Quaternion.identity);
+				if (life <= 0) {
+						destroyParticlesByTime ();
+						Destroy (this.gameObject);
+						Instantiate (explosion, this.gameObject.transform.position, Quaternion.identity);
+				}
+
+	
 		}
 
-	
-	}
-	void destroyParticlesByTime()
-	{
-		ParticleSystem particle;
-		particle = this.gameObject.GetComponentInChildren<ParticleSystem>();
+		public void ReceivePoints (int pointsToReceive)
+		{
 
-		particle.Stop ();
+				levelPoints += pointsToReceive;
 
-		particle.transform.parent = null;
+		}
 
-		GameObject.Destroy(particle.gameObject,particle.duration);
-	}
+		void destroyParticlesByTime ()
+		{
+				ParticleSystem particle;
+				particle = this.gameObject.GetComponentInChildren<ParticleSystem> ();
+
+				particle.Stop ();
+
+				particle.transform.parent = null;
+
+				GameObject.Destroy (particle.gameObject, particle.duration);
+		}
 }

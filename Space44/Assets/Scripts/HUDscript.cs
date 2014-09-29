@@ -10,6 +10,8 @@ public	float CurrentLife;
 	float CurrentSpecial;
 	float MaxShield;
 	float CurrentShield;
+
+	int levelPoints;
 	
 	float tester;
 	float width;
@@ -31,6 +33,7 @@ public	float CurrentLife;
 		CurrentLife = status.life;
 		CurrentSpecial = status.actualLaserTime;
 		CurrentShield = status.actualShieldTime;
+		levelPoints = status.levelPoints;
 
 		
 		width = Screen.width;
@@ -51,8 +54,11 @@ public	float CurrentLife;
 		GUI.TextArea(new Rect(0.86f*width,90,0.13f*width,20),"Shield");
 		GUI.Box(new Rect(0.86f*width,110,0.13f*width,20),""+(int)CurrentShield);
 		GUI.Box(new Rect(0.86f*width,110,(0.13f*width)/(MaxShield/CurrentShield),20),"");
+		//Pontos
+		GUI.TextArea(new Rect(0.86f*width,135,0.13f*width,20),"Points");
+		GUI.Box(new Rect(0.86f*width,155,0.13f*width,20),""+levelPoints);
 		
-		GUI.Box(new Rect(0.86f*width,150,0.13f*width,20),"Time: "+(int)(Time.timeSinceLevelLoad/60)+":"+(int)(Time.timeSinceLevelLoad%60));
+		GUI.Box(new Rect(0.86f*width,200,0.13f*width,20),"Time: "+(int)(Time.timeSinceLevelLoad/60)+":"+(int)(Time.timeSinceLevelLoad%60));
 
 		
 		

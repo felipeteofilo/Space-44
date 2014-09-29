@@ -9,8 +9,8 @@ public class EnemyStatus : MonoBehaviour
 		public float speed;
 		public float damage;
 		public float fireRate;
-		public float pointsByDead;
-		public float pointsByDrop;
+		public int pointsByDead;
+		public int pointsByDrop;
 		public Transform explosion;
 		public GameObject lifeObject;
 		public GameObject pointsObject;
@@ -36,6 +36,7 @@ public class EnemyStatus : MonoBehaviour
 						destroyParticlesByTime ();
 						Destroy (this.gameObject);
 						Instantiate (explosion, this.gameObject.transform.position, Quaternion.identity);
+						GameObject.FindGameObjectWithTag ("Player").GetComponent<Status> ().ReceivePoints (pointsByDead);
 						Drop ();
 				}
 	

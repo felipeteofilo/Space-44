@@ -94,9 +94,12 @@ public class IA1ºBoss : MonoBehaviour
 						if ((MaxLife1 / 2 >= Life1) || Life1 <= 0) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
+								if (!audio.isPlaying) {		
+										audio.Play ();
+								}
 								
 								if (Y == 120) {
-										audio.Play ();
+										
 										Y = 0;
 										W = Weapon.Laser;
 										Z = 0;
@@ -120,8 +123,11 @@ public class IA1ºBoss : MonoBehaviour
 						if (MaxLife3 / 2 >= Life3 || Life3 <= 0) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
-								if (Y == 120) {
+								if (!audio.isPlaying) {		
 										audio.Play ();
+								}
+								if (Y == 120) {
+										
 										Y = 0;
 										W = Weapon.Bullet;
 										Z = 0;
@@ -137,8 +143,8 @@ public class IA1ºBoss : MonoBehaviour
 				if (W == Weapon.Laser) {
 
 						if (!Laser1.isPlaying && !Laser2.isPlaying) {
-								Laser1.Play();
-								Laser2.Play();
+								Laser1.Play ();
+								Laser2.Play ();
 						}
 						
 
@@ -146,12 +152,14 @@ public class IA1ºBoss : MonoBehaviour
 						if (MaxLife2 / 2 >= Life2 || Life2 <= 0) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
-								Laser1.Stop();
-								Laser2.Stop();
-								
-								if (Y == 120) {
-
+								Laser1.Stop ();
+								Laser2.Stop ();
+								if (!audio.isPlaying) {		
 										audio.Play ();
+								}
+								if (Y == 120) {
+										
+										
 										Y = 0;
 										W = Weapon.Bomb;
 										Z = 0;
@@ -193,7 +201,7 @@ public class IA1ºBoss : MonoBehaviour
 								transform.Rotate (new Vector3 (0, 2, 0));
 								
 								if (Y == 360) {
-										audio.Play ();			
+												
 										Y = 0;
 						
 										R = 0;
@@ -204,12 +212,14 @@ public class IA1ºBoss : MonoBehaviour
 						if (W == Weapon.Laser) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
-
-				//Laser1.Stop();
-				//Laser2.Stop();
+								if (!audio.isPlaying) {		
+										audio.Play ();
+								}
+								//Laser1.Stop();
+								//Laser2.Stop();
 								
 								if (Y == 240) {
-										audio.Play ();			
+												
 										Y = 0;
 										
 										W = Weapon.Bullet;
@@ -221,9 +231,11 @@ public class IA1ºBoss : MonoBehaviour
 						if (W == Weapon.Bomb) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
-								
+								if (!audio.isPlaying) {		
+										audio.Play ();
+								}
 								if (Y == 120) {
-										audio.Play ();			
+											
 										Y = 0;
 						
 										W = Weapon.Bullet;
@@ -238,9 +250,11 @@ public class IA1ºBoss : MonoBehaviour
 						if (W == Weapon.Bullet) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
-								
-								if (Y == 120) {
+								if (!audio.isPlaying) {		
 										audio.Play ();
+								}
+								if (Y == 120) {
+											
 										Y = 0;
 
 										W = Weapon.Laser;
@@ -255,7 +269,6 @@ public class IA1ºBoss : MonoBehaviour
 								
 								if (Y == 360) {
 
-										audio.Play ();
 										Y = 0;
 
 										R = 0;
@@ -267,8 +280,11 @@ public class IA1ºBoss : MonoBehaviour
 						if (W == Weapon.Bomb) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
+								if (!audio.isPlaying) {		
+										audio.Play ();
+								}
 								if (Y == 240) {
-										audio.Play ();		
+										
 										Y = 0;
 
 										W = Weapon.Laser;
@@ -283,9 +299,11 @@ public class IA1ºBoss : MonoBehaviour
 						if (W == Weapon.Bullet) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
-								
+								if (!audio.isPlaying) {		
+										audio.Play ();
+								}
 								if (Y == 240) {
-										audio.Play ();			
+												
 										Y = 0;
 				
 										W = Weapon.Bomb;
@@ -297,13 +315,15 @@ public class IA1ºBoss : MonoBehaviour
 						if (W == Weapon.Laser) {
 								Y += 2;
 								transform.Rotate (new Vector3 (0, 2, 0));
-
-				//Laser1.Stop();
-				//Laser2.Stop();
+								if (!audio.isPlaying) {		
+										audio.Play ();
+								}
+								//Laser1.Stop();
+								//Laser2.Stop();
 								
 								if (Y == 120) {
 									
-										audio.Play ();			
+												
 										Y = 0;
 
 										R = 0;
@@ -318,7 +338,7 @@ public class IA1ºBoss : MonoBehaviour
 								transform.Rotate (new Vector3 (0, 2, 0));
 								
 								if (Y == 360) {
-										audio.Play ();			
+											
 										Y = 0;
 
 										R = 0;
