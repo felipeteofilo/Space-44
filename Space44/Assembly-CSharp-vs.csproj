@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\ColliderBoss.cs" />
      <Compile Include="Assets\Scripts\DamageController.cs" />
      <Compile Include="Assets\Scripts\EnemyStatus.cs" />
+     <Compile Include="Assets\Scripts\ExperienceMoviment.cs" />
      <Compile Include="Assets\Scripts\FuzilFPS.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HUDscript.cs" />
@@ -67,7 +68,7 @@
      <None Include="Assets\Prefabs\armas.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Users/Felipe/Desktop/Space-44/Space44/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/felipe/Desktop/Projetos Unity/Space-44/Space44/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

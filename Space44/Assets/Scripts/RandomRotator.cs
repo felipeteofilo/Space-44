@@ -17,11 +17,5 @@ public class RandomRotator : MonoBehaviour {
 	
 	}
 
-	void OnParticleCollision(GameObject other) {
 
-		if (other.tag == "TiroBasico"){
-			Destroy (this.gameObject);
-		}
-
-	}
 }

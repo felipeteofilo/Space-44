@@ -8,6 +8,7 @@ public class BonusItem : MonoBehaviour
 		public float life;
 		public float activeTime;
 		public float deadTime;
+		public ParticleSystem collision;
 
 
 		// Use this for initialization
@@ -43,7 +44,7 @@ public class BonusItem : MonoBehaviour
 
 		void OnTriggerEnter (Collider other)
 		{
-
+				
 				if (other.tag == "Player") {
 						if (life > 0) {
 								AddLife (other);
@@ -51,6 +52,9 @@ public class BonusItem : MonoBehaviour
 						if (points > 0) {
 								AddPoints (other);
 						}
+						collision.Play ();
+						collision.transform.parent = null;
+						Destroy (collision, collision.duration);
 						Destroy (gameObject);
 				}
 		}
