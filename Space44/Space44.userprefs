@@ -1,15 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BonusItem.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
     <Files>
-      <File FileName="Space44.sln" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyStatus.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BonusItem.cs" Line="57" Column="42" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="13" Column="17" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="16" Column="30" />
       <File FileName="Assets\Scripts\Status.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HUDscript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ExperienceMoviment.cs" Line="19" Column="48" />
-      <File FileName="Assets\Scripts\RandomRotator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AsteroidIA.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

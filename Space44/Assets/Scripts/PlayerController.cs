@@ -10,46 +10,26 @@ public class Boundary
 public class PlayerController : MonoBehaviour {
 	
 	private Status status;
-	public float estabilidade;
-	public float tilt;
-	public Boundary boundary;
-	public ParticleSystem shoot;
-	public ParticleSystem laser;
+
 	public GameObject shield;
 
-	public Vector3 buffervec;
-
-	private float timeReload;
+	public float tilt;
+	public Boundary boundary;
+	private float initTimeShield;
 	private float timeReloadShield;
-
+	private AudioSource shieldAudio;
+	public Vector3 buffervec;
 	private Vector3 movement;
 
-
-
-
-	private float initTimeLaser;
-	private float initTimeShield;
-
-	public enum shootSelected{shoot,laser};
-	public shootSelected selected = shootSelected.shoot;
-
-	private AudioSource shootAudio;
-	private AudioSource laserAudio;
-	private AudioSource shieldAudio;
-
-	private float nextFire;
 
 	
 	// Use this for initialization
 	void Start () {
-
-		rigidbody.drag = estabilidade;
 		shield.renderer.material.color = new Color(shield.renderer.material.color.r,shield.renderer.material.color.g,shield.renderer.material.color.b,0.25f );
-
 		status = this.GetComponent<Status> ();
+		rigidbody.drag = status.stability;
 		AudioSource[] audios = GetComponents<AudioSource>();
-		shootAudio = audios[0];
-		laserAudio = audios[1];
+		
 		shieldAudio = audios[2];
 
 	}
@@ -78,14 +58,6 @@ public class PlayerController : MonoBehaviour {
 		movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 		movement = movement * status.speed;
 
-		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			selected = shootSelected.shoot;
-		}
-
-		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			selected = shootSelected.laser;
-		}
-
 		if (Input.GetKeyDown(KeyCode.Q)) {
 			if(!shield.renderer.enabled && status.actualShieldTime < status.timeShield ){
 				shield.renderer.enabled = true;
@@ -100,10 +72,10 @@ public class PlayerController : MonoBehaviour {
 				this.gameObject.collider.enabled = true;
 				initTimeShield = 0;
 				timeReloadShield = Time.time + status.actualShieldTime;
-
+				
 			}
 		}
-
+		
 		if (status.actualShieldTime < status.timeShield && shield.renderer.enabled) {
 			if (initTimeShield != 0) {
 				status.actualShieldTime += Time.time - initTimeShield;
@@ -118,39 +90,6 @@ public class PlayerController : MonoBehaviour {
 			shieldAudio.Play();
 		}
 
-
-
-		if (selected == shootSelected.shoot && Input.GetButton("Fire1") && Time.time > nextFire) {
-			nextFire = Time.time + status.fireRate;
-			shoot.Emit(1);
-			shootAudio.Play();
-
-		}
-		if (selected == shootSelected.laser && Input.GetButton("Fire1")  && status.actualLaserTime < status.timeLaser) {
-			if(initTimeLaser != 0){
-				status.actualLaserTime += Time.time - initTimeLaser;
-			}
-
-			initTimeLaser = Time.time;
-			if(!laserAudio.isPlaying){
-				laserAudio.Play();
-			}
-
-			laser.enableEmission =true;
-		} else if(laser.enableEmission) {
-			initTimeLaser = 0;
-			laserAudio.Stop();
-			timeReload = Time.time + status.actualLaserTime;
-			laser.enableEmission = false;
-		}
-		if(!laser.enableEmission && Time.time > timeReload ){
-			timeReload = Time.time + status.actualLaserTime;
-			status.actualLaserTime -= status.rechargeLaser;
-			if(status.actualLaserTime < 0){
-				status.actualLaserTime = 0;
-			}
-
-		}
 		if(!shield.renderer.enabled && Time.time > timeReloadShield ){
 			timeReloadShield = Time.time + status.actualShieldTime;
 			status.actualShieldTime -= status.rechargeShield;
@@ -159,7 +98,6 @@ public class PlayerController : MonoBehaviour {
 			}
 			
 		}
-		//Debug.Log(passedTimeShield);
 
 	}
 }
