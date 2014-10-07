@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class HUDscript : MonoBehaviour {
@@ -22,7 +22,7 @@ public	float CurrentLife;
 
 		status = GameObject.FindGameObjectWithTag ("Player").GetComponent<Status> ();
 		MaxLife = status.MaxLife;
-		MaxSpecial = status.timeLaser;
+		MaxSpecial = status.timeSpecific;
 		MaxShield = status.timeShield;
 	
 	}
@@ -31,7 +31,7 @@ public	float CurrentLife;
 	void Update () {
 
 		CurrentLife = status.life;
-		CurrentSpecial = status.actualLaserTime;
+		CurrentSpecial = status.actualSpecificTime;
 		CurrentShield = status.actualShieldTime;
 		levelPoints = status.levelPoints;
 

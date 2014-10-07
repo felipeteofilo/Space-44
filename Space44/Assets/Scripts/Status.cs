@@ -11,10 +11,10 @@ public class Status : MonoBehaviour
 		public float damage;
 		public float fireRate;
 		public float rechargeShield;
-		public float rechargeLaser;
+		public float rechargeSpecific;
 		public float timeShield;
-		public float timeLaser;
-		public float actualLaserTime;
+		public float timeSpecific;
+		public float actualSpecificTime;
 		public float actualShieldTime;
 		public float shieldResistence;
 		public Transform explosion;

@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 		rigidbody.drag = status.stability;
 		AudioSource[] audios = GetComponents<AudioSource>();
 		
-		shieldAudio = audios[2];
+		shieldAudio = audios[1];
 
 	}
 	

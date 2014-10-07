@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerWeapons : MonoBehaviour {
+public class PlayerSpeedWeapons : MonoBehaviour {
 	private Status status;
 	private float nextFire;
 	public ParticleSystem shoot;
@@ -26,7 +26,7 @@ public class PlayerWeapons : MonoBehaviour {
 		status = this.GetComponent<Status> ();
 		AudioSource[] audios = GetComponents<AudioSource>();
 		shootAudio = audios[0];
-		laserAudio = audios[1];
+		laserAudio = audios[2];
 
 	}
 	
@@ -46,9 +46,9 @@ public class PlayerWeapons : MonoBehaviour {
 			shootAudio.Play();
 			
 		}
-		if (selected == shootSelected.laser && Input.GetButton("Fire1")  && status.actualLaserTime < status.timeLaser) {
+		if (selected == shootSelected.laser && Input.GetButton("Fire1")  && status.actualSpecificTime < status.timeSpecific) {
 			if(initTimeLaser != 0){
-				status.actualLaserTime += Time.time - initTimeLaser;
+				status.actualSpecificTime += Time.time - initTimeLaser;
 			}
 			
 			initTimeLaser = Time.time;
@@ -60,14 +60,14 @@ public class PlayerWeapons : MonoBehaviour {
 		} else if(laser.enableEmission) {
 			initTimeLaser = 0;
 			laserAudio.Stop();
-			timeReload = Time.time + status.actualLaserTime;
+			timeReload = Time.time + status.actualSpecificTime;
 			laser.enableEmission = false;
 		}
 		if(!laser.enableEmission && Time.time > timeReload ){
-			timeReload = Time.time + status.actualLaserTime;
-			status.actualLaserTime -= status.rechargeLaser;
-			if(status.actualLaserTime < 0){
-				status.actualLaserTime = 0;
+			timeReload = Time.time + status.actualSpecificTime;
+			status.actualSpecificTime -= status.rechargeSpecific;
+			if(status.actualSpecificTime < 0){
+				status.actualSpecificTime = 0;
 			}
 			
 		}

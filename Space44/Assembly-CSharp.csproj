@@ -62,10 +62,15 @@
      <Compile Include="Assets\Scripts\MoveNave.cs" />
      <Compile Include="Assets\Scripts\OutOfView.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\PlayerWeapons.cs" />
+     <Compile Include="Assets\Scripts\PlayerPowerWeapons.cs" />
+     <Compile Include="Assets\Scripts\PlayerSpeedWeapons.cs" />
      <Compile Include="Assets\Scripts\RandomRotator.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\Status.cs" />
+     <Compile Include="Assets\Weapons\BombPlayer.cs" />
+     <Compile Include="Assets\Weapons\ColliderExplosion.cs" />
+     <Compile Include="Assets\Weapons\Expanding.cs" />
+     <Compile Include="Assets\Weapons\Rastreador.cs" />
      <None Include="Assets\Prefabs\armas.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
   </ItemGroup>
