@@ -50,7 +50,7 @@ public class PlayerPowerWeapons : MonoBehaviour {
 			shootAudio.Play();
 			
 		}
-		if (selected == shootSelected.bomb && Input.GetButtonDown("Fire1")  
+		if (selected == shootSelected.bomb && Input.GetButton("Fire1")  
 		    && status.actualSpecificTime < status.timeSpecific) {
 			if(Time.time > nextBomb){
 			Instantiate(Bomb,SBomb.transform.position,SBomb.transform.rotation);
@@ -62,6 +62,7 @@ public class PlayerPowerWeapons : MonoBehaviour {
 		if(Time.time > timeReload){
 			if(status.actualSpecificTime > 0){
 				status.actualSpecificTime -=1;
+				timeReload = Time.time +status.rechargeSpecific;
 
 			}
 

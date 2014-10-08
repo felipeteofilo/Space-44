@@ -10,6 +10,7 @@ public class Status : MonoBehaviour
 		public float stability;
 		public float damage;
 		public float fireRate;
+		public float damageSpecific;
 		public float rechargeShield;
 		public float rechargeSpecific;
 		public float timeShield;

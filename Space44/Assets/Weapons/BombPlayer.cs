@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BombPlayer : MonoBehaviour {
 
+
+
 	public float Timer;
 	public float speed;
 	public float dmg;
@@ -16,6 +18,7 @@ public class BombPlayer : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		dmg = GameObject.FindWithTag("Player").GetComponent<Status> ().damageSpecific;
 		X = Time.time;
 		//explosion.SendMessageUpwards("setDmg",dmg);
 	}
