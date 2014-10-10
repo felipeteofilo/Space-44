@@ -37,6 +37,7 @@ public class Expanding : MonoBehaviour {
 	void OnCollisionEnter(Collision c){
 
 		if(c.transform.tag != "Player" ){
+			 
 			c.transform.SendMessageUpwards("AplyDamage",dmg);
 		}
 

@@ -45,18 +45,15 @@ public class DamageController : MonoBehaviour {
 		if(hitObject.tag == "Player" && !hitShoot.name.Contains("Player")){
 
 			hitObject.GetComponent<Status>().life  =hitObject.GetComponent<Status>().life - hitShoot.damage;
-			Debug.Log(hitObject.GetComponent<Status>().life);
+
 		}
 
 
 		if(hitObject.tag == "Enemy" && !hitShoot.name.Contains("Enemy")){
 			hitObject.GetComponent<EnemyStatus>().life  = hitObject.GetComponent<EnemyStatus>().life - hitShoot.damage;
-			Debug.Log(hitObject.GetComponent<Status>().life);
+
 
 		}
-		if(hitObject.tag == "Fdp"){
-			hitObject.GetComponent<EnemyStatus>().life  = hitObject.GetComponent<EnemyStatus>().life - hitShoot.damage;
-			Debug.Log(hitObject.GetComponent<Status>().life);
-		}
+
 	}
 }

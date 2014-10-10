@@ -13,6 +13,7 @@ public class BombPlayer : MonoBehaviour {
 	public Light TimerLight;
 	private float nextLight;
 	private float lightRate;
+	public GameObject pai;
 
 	
 	
@@ -60,31 +61,20 @@ public class BombPlayer : MonoBehaviour {
 				
 			}
 			else{
-				transform.Translate(new Vector3(0,0,speed));
+				pai.transform.Translate(new Vector3(0,0,speed));
 				
 			}
 		
 
 		
 	}
-	void OnCollisionEnter(Collision collison){
-		//Explode
-		
-		
-		
-		if(collison.transform.CompareTag("Enemy")||collison.transform.CompareTag("Boss")){
-			
-			//Explode
-			Instantiate (explosion,transform.position,transform.rotation);
-			//explosion.SendMessageUpwards("setDmg",dmg);
-			GameObject.FindWithTag("Boom").SendMessage("setDmg",dmg);
-			Destroy(gameObject);
+	void OnTriggerEnter(Collider c){
 
-			
-			
-			
+		if(c.tag != "Player"){
+	Instantiate (explosion,transform.position,transform.rotation);
+	//explosion.SendMessageUpwards("setDmg",dmg);
+	GameObject.FindWithTag("Boom").SendMessage("setDmg",dmg);
+	Destroy(gameObject);
 		}
-		
-		
 	}
 }

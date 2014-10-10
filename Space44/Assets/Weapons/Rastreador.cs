@@ -82,7 +82,7 @@ public class Rastreador : MonoBehaviour
 		{
 
 				if (c.tag == "Enemy" || c.tag == "Boss") {
-						c.SendMessageUpwards ("Aplydamage", dmg);
+						c.SendMessageUpwards ("AplyDamage", dmg);
 						//	Instantiate(explosion,pai.transform.position,pai.transform.rotation);
 						Destroy (pai);
 

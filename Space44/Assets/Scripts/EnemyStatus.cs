@@ -67,4 +67,8 @@ public class EnemyStatus : MonoBehaviour
 		
 				GameObject.Destroy (particle.gameObject, particle.duration);
 		}
+
+	void AplyDamage(float dmg){
+		life -=dmg;
+	}
 }

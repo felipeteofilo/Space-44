@@ -65,7 +65,7 @@ public class PlayerDefenseWeapons : MonoBehaviour {
 		}
 		if(Time.time > timeReload){
 			if(status.actualSpecificTime > 0){
-					Debug.Log("Caiu");
+			
 				status.actualSpecificTime -=1;
 				timeReload = Time.time +status.rechargeSpecific;
 				
