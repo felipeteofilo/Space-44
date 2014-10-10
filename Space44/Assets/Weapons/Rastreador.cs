@@ -8,14 +8,21 @@ public class Rastreador : MonoBehaviour
 		public GameObject pai;
 		public GameObject explosion;
 		public float speed;
-		public float dmg;//pegar do status
+	public float dmg ;
 		private float timeToFollow;
+	private float TimeStart;
+	public float TimeToDie;
+	public float[] limitsX = new float[2];
+	public float[] limitsZ = new float[2];
 
 
 		// Use this for initialization
 		void Start ()
 		{
 				FindTarget ();
+		TimeStart = Time.time;
+		dmg = GameObject.FindWithTag("Player").GetComponent<Status>().damageSpecific;
+		Debug.Log(dmg);
 		}
 
 		void FindTarget ()
@@ -59,6 +66,15 @@ public class Rastreador : MonoBehaviour
 						pai.transform.Translate (new Vector3 (0, 0, speed));
 						FindTarget ();
 				}
+		if(TimeToDie < Time.time - TimeStart){
+			Destroy(pai);
+			//	Instantiate(explosion,pai.transform.position,pai.transform.rotation);
+		}
+		/*if((pai.transform.position.x > limitsX[0] || pai.transform.position.x < limitsX[1])
+		   || (pai.transform.position.z > limitsZ[0] || pai.transform.position.z < limitsZ[1])){
+			Destroy(pai);
+
+		}*/
 
 		}
 
@@ -67,7 +83,7 @@ public class Rastreador : MonoBehaviour
 
 				if (c.tag == "Enemy" || c.tag == "Boss") {
 						c.SendMessageUpwards ("Aplydamage", dmg);
-						//	Instantiate(explosion,transform.position,transform.rotation);
+						//	Instantiate(explosion,pai.transform.position,pai.transform.rotation);
 						Destroy (pai);
 
 

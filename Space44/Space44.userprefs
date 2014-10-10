@@ -1,18 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Weapons\Rastreador.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Weapons\Expanding.cs">
     <Files>
-      <File FileName="Assets\Weapons\Rastreador.cs" Line="58" Column="13" />
-      <File FileName="Assets\Scripts\PlayerPowerWeapons.cs" Line="72" Column="2" />
-      <File FileName="Assets\Scripts\PlayerSpeedWeapons.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ColissionController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HUDscript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Weapons\BombPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Status.cs" Line="1" Column="1" />
-      <File FileName="Assets\Weapons\ColliderExplosion.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DamageController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerStabilityWeapons.cs" Line="11" Column="30" />
+      <File FileName="Assets\Weapons\Expanding.cs" Line="24" Column="3" />
+      <File FileName="Assets\Weapons\PlayerDefenseWeapons.cs" Line="35" Column="3" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerPowerWeapons.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

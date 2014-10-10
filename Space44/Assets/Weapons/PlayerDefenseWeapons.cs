@@ -1,23 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerStabilityWeapons : MonoBehaviour {
-	
+public class PlayerDefenseWeapons : MonoBehaviour {
 	private Status status;
 	private float nextFire;
 	public ParticleSystem shoot;
-	public GameObject Missel;
-	public GameObject SMissel;
-	private float MisselRate = 1f;
-	private float nextMissel;
+	public GameObject ShockWave;
 	
 	
+
 	
+	public float timeReload;
+	public float timer;
 	
-	private float timeReload;
-	
-	
-	public enum shootSelected{shoot,missel};
+	public enum shootSelected{shoot,shock};
 	public shootSelected selected = shootSelected.shoot;
 	
 	private AudioSource shootAudio;
@@ -29,19 +25,21 @@ public class PlayerStabilityWeapons : MonoBehaviour {
 		status = this.GetComponent<Status> ();
 		AudioSource[] audios = GetComponents<AudioSource>();
 		shootAudio = audios[0];
-		
-		
+
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		ShockWave.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+		ShockWave.transform.localPosition = new Vector3(0,0.3079902f,0);
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			selected = shootSelected.shoot;
 		}
 		
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			selected = shootSelected.missel;
+			selected = shootSelected.shock;
 		}
 		
 		if (selected == shootSelected.shoot && Input.GetButton("Fire1") && Time.time > nextFire) {
@@ -50,17 +48,24 @@ public class PlayerStabilityWeapons : MonoBehaviour {
 			shootAudio.Play();
 			
 		}
-		if (selected == shootSelected.missel && Input.GetButton("Fire1")  
+		if (selected == shootSelected.shock && Input.GetButton("Fire1")  
 		    && status.actualSpecificTime < status.timeSpecific) {
-			if(Time.time > nextMissel){
-				Instantiate(Missel,SMissel.transform.position,SMissel.transform.rotation);
+			if(!ShockWave.activeSelf){
+				ShockWave.SetActive(true);
 				status.actualSpecificTime +=1;
-				nextMissel = Time.time + MisselRate;
 				timeReload = Time.time +status.rechargeSpecific;
 			}
 		}
+			if(!ShockWave.activeSelf){
+				collider.isTrigger = false;
+			}else{
+				collider.isTrigger = true;
+				ShockWave.SendMessage("setdmg",status.damageSpecific);
+
+		}
 		if(Time.time > timeReload){
 			if(status.actualSpecificTime > 0){
+					Debug.Log("Caiu");
 				status.actualSpecificTime -=1;
 				timeReload = Time.time +status.rechargeSpecific;
 				
@@ -69,4 +74,4 @@ public class PlayerStabilityWeapons : MonoBehaviour {
 		}
 		
 	}
-}
+	}
