@@ -68,13 +68,13 @@ public class BombPlayer : MonoBehaviour {
 
 		
 	}
-	void OnTriggerEnter(Collider c){
+	void OnCollisionEnter(Collision c){
 
-		if(c.tag != "Player"){
+		if(c.transform.tag != "Player"){
 	Instantiate (explosion,transform.position,transform.rotation);
 	//explosion.SendMessageUpwards("setDmg",dmg);
 	GameObject.FindWithTag("Boom").SendMessage("setDmg",dmg);
-	Destroy(gameObject);
+	Destroy(pai.gameObject);
 		}
 	}
 }
