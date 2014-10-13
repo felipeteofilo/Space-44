@@ -22,6 +22,11 @@ public class NewGameController : MonoBehaviour
 						if (spaceShipChose >= spaceShips.Length) {
 								spaceShipChose = spaceShips.Length - 1;
 						}
+						else{
+							ChangeSpaceShip(true);
+						}
+
+
 
 				}
 				if (Input.GetKeyDown (KeyCode.RightArrow)) {
@@ -30,5 +35,31 @@ public class NewGameController : MonoBehaviour
 								spaceShipChose = 0;
 						}
 				}
+	}
+
+	void ChangeSpaceShip(bool left){
+
+		if(left){
+			for(int i = 0; i< spaceShips.Length;i++){
+				float x = spaceShips[i].transform.position.x;
+				float y = spaceShips[i].transform.position.y;
+				float z;
+				x -=0.7f;
+				if(i  == spaceShipChose){
+					z = -0.6f;
+					
+
+				}
+				else{
+					z = 0f;
+				}
+
+				Debug.Log(z);
+				spaceShips[i].transform.position = new Vector3(x,y,z);
+			}
+		}
+
+		
+
 	}
 }
