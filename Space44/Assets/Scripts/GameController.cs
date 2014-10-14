@@ -27,6 +27,9 @@ public class GameController : MonoBehaviour
 		private float earlierX;
 		private AudioSource bossSong;
 		bool bossIstantiate;
+		
+	public int s;
+	public GameObject[] players = new GameObject[4];
 
 
 		// Use this for initialization
@@ -35,6 +38,8 @@ public class GameController : MonoBehaviour
 				AudioSource[] audios = GetComponents<AudioSource> ();
 				bossSong = audios [1];
 				StartCoroutine (SpawnWaves ());
+		Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
+
 	
 		}
 

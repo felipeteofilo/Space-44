@@ -32,8 +32,7 @@ public class PlayerDefenseWeapons : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		ShockWave.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
-		ShockWave.transform.localPosition = new Vector3(0,0.3079902f,0);
+
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			selected = shootSelected.shoot;
 		}
@@ -51,6 +50,7 @@ public class PlayerDefenseWeapons : MonoBehaviour {
 		if (selected == shootSelected.shock && Input.GetButton("Fire1")  
 		    && status.actualSpecificTime < status.timeSpecific) {
 			if(!ShockWave.activeSelf){
+				collider.isTrigger = true;
 				ShockWave.SetActive(true);
 				status.actualSpecificTime +=1;
 				timeReload = Time.time +status.rechargeSpecific;
@@ -61,6 +61,8 @@ public class PlayerDefenseWeapons : MonoBehaviour {
 			}else{
 				collider.isTrigger = true;
 				ShockWave.SendMessage("setdmg",status.damageSpecific);
+				ShockWave.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+				ShockWave.transform.localPosition = new Vector3(0,0.3079902f,0);
 
 		}
 		if(Time.time > timeReload){

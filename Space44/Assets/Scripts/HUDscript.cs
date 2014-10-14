@@ -20,7 +20,7 @@ public	float CurrentLife;
 		
 		width = Screen.width;
 
-		status = GameObject.FindGameObjectWithTag ("Player").GetComponent<Status> ();
+
 		MaxLife = status.MaxLife;
 		MaxSpecial = status.timeSpecific;
 		MaxShield = status.timeShield;
@@ -29,12 +29,14 @@ public	float CurrentLife;
 	
 	// Update is called once per frame
 	void Update () {
-
-		CurrentLife = status.life;
-		CurrentSpecial = status.actualSpecificTime;
-		CurrentShield = status.actualShieldTime;
-		levelPoints = status.levelPoints;
-
+		if (status == null) {
+						status = GameObject.FindGameObjectWithTag ("Player").GetComponent<Status> ();
+				} else {			
+						CurrentLife = status.life;
+						CurrentSpecial = status.actualSpecificTime;
+						CurrentShield = status.actualShieldTime;
+						levelPoints = status.levelPoints;
+				}	
 		
 		width = Screen.width;
 		//Pegar Status do Jogador e setar nas tretas
