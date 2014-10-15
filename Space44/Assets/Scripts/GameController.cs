@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
 		
 	public int s;
 	public GameObject[] players = new GameObject[4];
+	public GameObject planetas ;
 
 
 		// Use this for initialization
@@ -81,6 +82,7 @@ public class GameController : MonoBehaviour
 		{
 				if (background.transform.localPosition.z > 2.6f) {
 						background.transform.Translate (background.transform.forward * -0.05f);
+						planetas.transform.Translate (background.transform.forward * -0.025f);
 				} else if (!bossIstantiate) {
 						audio.Stop ();
 						bossSong.Play ();

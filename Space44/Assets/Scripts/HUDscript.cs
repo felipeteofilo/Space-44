@@ -43,24 +43,26 @@ public	float CurrentLife;
 		
 	}
 	void OnGUI(){
-		GUI.color = Color.white;
-		//Vida
-		GUI.TextArea(new Rect(0.86f*width,0,0.13f*width,20),"Life");
-		GUI.Box(new Rect(0.86f*width,20,0.13f*width,20),""+(int)CurrentLife);
-		GUI.Box(new Rect(0.86f*width,20,(0.13f*width)/(MaxLife/CurrentLife),20),"");
-		//Laser
-		GUI.TextArea(new Rect(0.86f*width,45,0.13f*width,20),"Special");
-		GUI.Box(new Rect(0.86f*width,65,0.13f*width,20),""+(int)CurrentSpecial);
-		GUI.Box(new Rect(0.86f*width,65,(0.13f*width)/(MaxSpecial/CurrentSpecial),20),"");
-		//Escudo
-		GUI.TextArea(new Rect(0.86f*width,90,0.13f*width,20),"Shield");
-		GUI.Box(new Rect(0.86f*width,110,0.13f*width,20),""+(int)CurrentShield);
-		GUI.Box(new Rect(0.86f*width,110,(0.13f*width)/(MaxShield/CurrentShield),20),"");
-		//Pontos
-		GUI.TextArea(new Rect(0.86f*width,135,0.13f*width,20),"Points");
-		GUI.Box(new Rect(0.86f*width,155,0.13f*width,20),""+levelPoints);
+				if (status != null) {
+						GUI.color = Color.white;
+						//Vida
+						GUI.TextArea (new Rect (0.86f * width, 0, 0.13f * width, 20), "Life");
+						GUI.Box (new Rect (0.86f * width, 20, 0.13f * width, 20), "" + (int)CurrentLife);
+						GUI.Box (new Rect (0.86f * width, 20, (0.13f * width) / (MaxLife / CurrentLife), 20), "");
+						//Laser
+						GUI.TextArea (new Rect (0.86f * width, 45, 0.13f * width, 20), "Special");
+						GUI.Box (new Rect (0.86f * width, 65, 0.13f * width, 20), "" + (int)CurrentSpecial);
+						GUI.Box (new Rect (0.86f * width, 65, (0.13f * width) / (MaxSpecial / CurrentSpecial), 20), "");
+						//Escudo
+						GUI.TextArea (new Rect (0.86f * width, 90, 0.13f * width, 20), "Shield");
+						GUI.Box (new Rect (0.86f * width, 110, 0.13f * width, 20), "" + (int)CurrentShield);
+						GUI.Box (new Rect (0.86f * width, 110, (0.13f * width) / (MaxShield / CurrentShield), 20), "");
+						//Pontos
+						GUI.TextArea (new Rect (0.86f * width, 135, 0.13f * width, 20), "Points");
+						GUI.Box (new Rect (0.86f * width, 155, 0.13f * width, 20), "" + levelPoints);
 		
-		GUI.Box(new Rect(0.86f*width,200,0.13f*width,20),"Time: "+(int)(Time.timeSinceLevelLoad/60)+":"+(int)(Time.timeSinceLevelLoad%60));
+						GUI.Box (new Rect (0.86f * width, 200, 0.13f * width, 20), "Time: " + (int)(Time.timeSinceLevelLoad / 60) + ":" + (int)(Time.timeSinceLevelLoad % 60));
+				}
 
 		
 		
