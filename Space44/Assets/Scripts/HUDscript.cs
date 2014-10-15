@@ -17,13 +17,13 @@ public	float CurrentLife;
 	float width;
 	// Use this for initialization
 	void Start () {
-		
+		/*
 		width = Screen.width;
 
 
 		MaxLife = status.MaxLife;
 		MaxSpecial = status.timeSpecific;
-		MaxShield = status.timeShield;
+		MaxShield = status.timeShield;*/
 	
 	}
 	
@@ -36,6 +36,9 @@ public	float CurrentLife;
 						CurrentSpecial = status.actualSpecificTime;
 						CurrentShield = status.actualShieldTime;
 						levelPoints = status.levelPoints;
+						MaxLife = status.MaxLife;
+						MaxSpecial = status.timeSpecific;
+						MaxShield = status.timeShield;
 				}	
 		
 		width = Screen.width;

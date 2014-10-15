@@ -421,7 +421,7 @@ public class IA1ºBoss : MonoBehaviour
 				}
 				Instantiate (bigExplosion, SpotsOfExplosion [9].transform.position, SpotsOfExplosion [9].transform.rotation);
 				yield return new WaitForSeconds (0.5f);
-				Destroy (gameObject);
+				Destroy (Front);
 
 
 

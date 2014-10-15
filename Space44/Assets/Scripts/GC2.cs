@@ -1,0 +1,121 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class GC2 : MonoBehaviour {
+
+		public GUIText restart;
+		public GameObject Formacao1;
+		public GameObject Formacao2;
+		public GameObject Formacao3;
+		public GameObject Cinturao;
+		public GameObject boss;
+		public GameObject background;
+		public Vector3 spawnWaves;
+		[Range(0,100)]
+		public int
+			percentF1;
+		[Range(0,100 )]
+		public int
+			percentF2;
+		[Range(0,100 )]
+		public int
+			percentF3;
+		
+		//	public int percentThirdEnemy;
+		//	public int percentFourthEnemy;
+		public float spawnRate;
+		public float nextSpawn;
+		private float earlierX;
+		private AudioSource bossSong;
+		bool bossIstantiate;
+	bool cinturaoInstantiate = false;
+		
+		public int s;
+		public GameObject[] players = new GameObject[4];
+		public GameObject planetas ;
+		
+		
+		// Use this for initialization
+		void Start ()
+		{
+			AudioSource[] audios = GetComponents<AudioSource> ();
+			bossSong = audios [1];
+			Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
+			
+			
+		}
+		
+		
+		
+		GameObject ramdomEnemy ()
+		{
+			float percent = Random.Range (1, 100);
+			
+			if (percent <= percentF3) {
+				return Formacao3;
+			} else if (percent <= percentF3 + percentF1) {
+				return Formacao1;
+			} else if (percent <= percentF3 + percentF1 + percentF2) {
+				return Formacao2;
+			}
+			return null;
+			
+		}
+		
+		void FixedUpdate ()
+		{
+
+			
+
+
+			if (background.transform.localPosition.z > 2.6f) {
+				background.transform.Translate (background.transform.forward * -0.05f);
+				//planetas.transform.Translate (background.transform.forward * -0.025f);
+			if(background.transform.localPosition.z < 210f && background.transform.localPosition.z > 100f){
+				if(!cinturaoInstantiate){
+					Instantiate(Cinturao,new Vector3(0,0,41.45f),Cinturao.transform.rotation);
+					cinturaoInstantiate = true;
+				}
+			}else{
+				cinturaoInstantiate = false;
+			}
+
+			} else if (!bossIstantiate) {
+				audio.Stop ();
+				bossSong.Play ();
+				ParticleSystem[] stars = GameObject.FindGameObjectWithTag ("Stars").GetComponentsInChildren<ParticleSystem> ();
+			for (int i =0; i< stars.Length; i++) {
+					stars [i].Pause ();
+				}
+				Vector3 spawnPosition = new Vector3 (0,0, 30);
+				Instantiate (boss, spawnPosition, boss.transform.rotation);
+				bossIstantiate = true;
+			}
+		}
+		
+		// Update is called once per frame
+		void Update ()
+		{
+			if (!GameObject.FindGameObjectWithTag ("Player")) {
+				if (!restart.gameObject.activeSelf) {
+					restart.gameObject.SetActive (true);
+				}
+				if (Input.GetKeyDown (KeyCode.R)) {
+					Application.LoadLevel (Application.loadedLevel);
+					
+				}
+				
+			}
+		if(Time.time > nextSpawn && !cinturaoInstantiate && !bossIstantiate){
+			nextSpawn = Time.time + spawnRate;
+			GameObject g = ramdomEnemy();
+			Instantiate(g,new Vector3(0,0,23.5f),g.transform.rotation);
+
+
+		}
+
+
+
+
+		}
+	}
