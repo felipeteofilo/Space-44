@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BarStatus : MonoBehaviour {
 	public GameObject background;
+	public float 
 
 
 	
