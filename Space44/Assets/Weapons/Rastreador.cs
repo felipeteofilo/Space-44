@@ -46,8 +46,8 @@ public class Rastreador : MonoBehaviour
 						}
 				}
 				if (GameObject.FindGameObjectWithTag ("Boss") != null) {
-						enemies [0] = GameObject.FindGameObjectWithTag ("Boss");
-						target = enemies [0];
+			target =  GameObject.FindGameObjectWithTag ("Boss");
+						
 				}
 		}
 

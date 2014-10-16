@@ -11,6 +11,7 @@ public class GC2 : MonoBehaviour {
 		public GameObject boss;
 		public GameObject background;
 		public Vector3 spawnWaves;
+	private bool stopspwan = false;
 		[Range(0,100)]
 		public int
 			percentF1;
@@ -71,14 +72,7 @@ public class GC2 : MonoBehaviour {
 			if (background.transform.localPosition.z > 2.6f) {
 				background.transform.Translate (background.transform.forward * -0.05f);
 				//planetas.transform.Translate (background.transform.forward * -0.025f);
-			if(background.transform.localPosition.z < 210f && background.transform.localPosition.z > 100f){
-				if(!cinturaoInstantiate){
-					Instantiate(Cinturao,new Vector3(0,0,41.45f),Cinturao.transform.rotation);
-					cinturaoInstantiate = true;
-				}
-			}else{
-				cinturaoInstantiate = false;
-			}
+
 
 			} else if (!bossIstantiate) {
 				audio.Stop ();
@@ -87,7 +81,7 @@ public class GC2 : MonoBehaviour {
 			for (int i =0; i< stars.Length; i++) {
 					stars [i].Pause ();
 				}
-				Vector3 spawnPosition = new Vector3 (0,0, 30);
+				Vector3 spawnPosition = new Vector3 (0,0, 15);
 				Instantiate (boss, spawnPosition, boss.transform.rotation);
 				bossIstantiate = true;
 			}
@@ -106,7 +100,24 @@ public class GC2 : MonoBehaviour {
 				}
 				
 			}
-		if(Time.time > nextSpawn && !cinturaoInstantiate && !bossIstantiate){
+		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 100f){
+			if(!cinturaoInstantiate){
+				Instantiate(Cinturao,new Vector3(0,0,41.50f),Cinturao.transform.rotation);
+				cinturaoInstantiate = true;
+				stopspwan= true;
+			}
+		}else{
+			cinturaoInstantiate = false;
+			stopspwan= false;
+		}
+		if(background.transform.localPosition.z < 10){
+			stopspwan= true;
+
+		}
+
+
+
+		if(Time.time > nextSpawn && !stopspwan){
 			nextSpawn = Time.time + spawnRate;
 			GameObject g = ramdomEnemy();
 			Instantiate(g,new Vector3(0,0,23.5f),g.transform.rotation);

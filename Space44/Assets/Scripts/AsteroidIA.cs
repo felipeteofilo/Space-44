@@ -9,6 +9,9 @@ public class AsteroidIA : MonoBehaviour {
 		transform.Translate(transform.forward*-speed);
 	
 	}
+	void AplyDamage(float f){
+		//dont do nothing
+	}
 	
 
 }
