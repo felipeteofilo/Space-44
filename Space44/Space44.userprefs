@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BarStatus.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NewGameController.cs">
     <Files>
-      <File FileName="Assets\HealthBarScript.js" Line="25" Column="126" />
-      <File FileName="Assets\Scripts\BarStatus.cs" Line="11" Column="3" />
-      <File FileName="Assets\Scripts\HUDscript.cs" Line="59" Column="38" />
+      <File FileName="Assets\Scripts\NewGameController.cs" Line="22" Column="17" />
+      <File FileName="Assets\Scripts\BarStatus.cs" Line="1" Column="1" />
+      <File FileName="Assets\HealthBarScript.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HUDscript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\IA1ºBoss.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

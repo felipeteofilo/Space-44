@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class NewGameController : MonoBehaviour
@@ -8,6 +9,7 @@ public class NewGameController : MonoBehaviour
 		private int spaceShipChose;
 		public string[] names;
 		public TextMesh spaceShipName;
+		public Slider [] status;
 
 		// Use this for initialization
 		void Start ()
