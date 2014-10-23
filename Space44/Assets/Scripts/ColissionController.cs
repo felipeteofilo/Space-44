@@ -55,8 +55,8 @@ public class ColissionController : MonoBehaviour
 				}
 		}
 
-		void OnCollisionEnter (Collision collision)
-		{
+		void OnCollisionEnter (Collision collision){
+
 
 		if (collision.gameObject.layer != 11) {
 						Destroy (this.gameObject);

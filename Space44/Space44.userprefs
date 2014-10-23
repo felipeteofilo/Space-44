@@ -1,14 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AsteroidIA.cs">
     <Files>
-      <File FileName="Assets\Boss2Stuffs\IA2ºBoss.cs" Line="207" Column="4" />
-      <File FileName="Assets\Scripts\HUDscript.cs" Line="15" Column="6" />
-      <File FileName="Assets\Scripts\GC2.cs" Line="84" Column="49" />
-      <File FileName="Assets\Prefabs\armas.txt" Line="9" Column="15" />
+      <File FileName="Assets\Scripts\IAenemy.cs" Line="116" Column="4" />
+      <File FileName="Assets\Boss2Stuffs\IA2ºBoss.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HUDscript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GC2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Prefabs\armas.txt" Line="1" Column="1" />
       <File FileName="Assets\Weapons\BombPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Weapons\Rastreador.cs" Line="50" Column="7" />
+      <File FileName="Assets\Weapons\Rastreador.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\AsteroidIA.cs" Line="13" Column="20" />
+      <File FileName="Assets\Scripts\ColissionController.cs" Line="58" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -17,6 +17,7 @@ public class IAenemy : MonoBehaviour
 		public ParticleSystem Tiro;//Particulas de tiros
 		private float cooldown = 2.0f;//cooldown de tiro pra outro
 		private float nextFire; //tempo para o proximo tiro
+		public GameObject explosion; 
 		public enum E
 		{
 				Foward,
@@ -59,7 +60,7 @@ public class IAenemy : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				
+				Physics.IgnoreLayerCollision (8,12);
 				if (enemy == E.JustGo) {
 						transform.Translate (new Vector3 (0, 0, Speed));
 
@@ -96,6 +97,27 @@ public class IAenemy : MonoBehaviour
 						nextFire = Time.time + cooldown;
 				}
 		}
+	void OnCollisionEnter (Collision collision){
+		if(collision.transform.tag == "Player"){
+			Instantiate(explosion,transform.position,transform.rotation);
+			Destroy(gameObject);
+		}
+		if(collision.transform.tag == "Enemy"){
+			if(enemy == E.JustGo ){
+				destiny = new Vector3(-Way.transform.position.x,Way.transform.position.y,Way.transform.position.z);
+			}
+			SendMessage("AplyDamage",2f);
+		}
+		if(collision.transform.tag == "Boss"){
+			Instantiate(explosion,transform.position,transform.rotation);
+			Destroy(gameObject);
+		}
+		if(collision.transform.tag == "Asteroid"){
+
+		}
+
+
+	} 
 	
 		
 }
