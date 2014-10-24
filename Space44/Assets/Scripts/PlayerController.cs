@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(status.life <0){
+			status.life =0;
+		}
 
 		float moveHorizontal =Input.GetAxis("Horizontal");
 		float moveVertical = Input.GetAxis("Vertical");
@@ -133,6 +136,9 @@ public class PlayerController : MonoBehaviour {
 						status.life -= dmg;
 				} else {
 			status.life -= dmg/2;
+		}
+		if(status.life <0){
+			status.life =0;
 		}
 	}
 }
