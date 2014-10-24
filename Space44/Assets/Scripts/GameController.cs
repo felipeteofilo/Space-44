@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
 		void FixedUpdate ()
 		{
 				if (background.transform.localPosition.z > 2.6f) {
-						//background.transform.Translate (background.transform.forward * -0.05f);
+						background.transform.Translate (background.transform.forward * -0.05f);
 						//planetas.transform.Translate (background.transform.forward * -0.025f);
 				} else if (!bossIstantiate) {
 						audio.Stop ();
