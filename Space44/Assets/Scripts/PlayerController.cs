@@ -36,7 +36,9 @@ public class PlayerController : MonoBehaviour {
 	
 	void FixedUpdate(){
 
-		rigidbody.AddForce( movement);
+
+		rigidbody.AddForce (movement);
+
 
 
 		rigidbody.position = new Vector3

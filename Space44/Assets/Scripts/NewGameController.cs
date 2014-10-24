@@ -9,7 +9,11 @@ public class NewGameController : MonoBehaviour
 		private int spaceShipChose;
 		public string[] names;
 		public TextMesh spaceShipName;
-		public Slider [] status;
+		public Slider[] status;
+		public Button next;
+		public Button previous;
+		
+		
 
 		// Use this for initialization
 		void Start ()
@@ -22,29 +26,49 @@ public class NewGameController : MonoBehaviour
 		void Update ()
 		{
 
-				if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-						spaceShipChose += 1;
-						if (spaceShipChose >= spaceShips.Length / 3) {
-								spaceShipChose = spaceShips.Length / 3 - 1;
-						} else {
-								ChangeSpaceShip (true);
-						}
-						spaceShipName.text = names [spaceShipChose];
-
-
-
-
+				if (spaceShips [spaceShipChose +8].GetComponent<Status> ()) {
+						Debug.Log ("foi");
+						Status shipStatus = spaceShips [spaceShipChose + 8].GetComponent<Status> ();
+						status [0].value = shipStatus.damage;
+						status [1].value = shipStatus.MaxLife;
+						status [2].value = shipStatus.speed;
+						status [3].value = shipStatus.stability;
 				}
-				if (Input.GetKeyDown (KeyCode.RightArrow)) {
-						spaceShipChose -= 1;
-						if (spaceShipChose < 0) {
-								spaceShipChose = 0;
-						} else {
-								ChangeSpaceShip (false);
-						}
-						spaceShipName.text = names [spaceShipChose];
 
+				if (spaceShipChose >= spaceShips.Length / 3 - 1) {
+						previous.interactable = false;
+
+				} else if (spaceShipChose <= 0) {
+						next.interactable = false;
 				}
+				
+		}
+		
+		void PreviousSpaceShip ()
+		{
+				spaceShipChose += 1;
+				if (spaceShipChose >= spaceShips.Length / 3) {
+						spaceShipChose = spaceShips.Length / 3 - 1;
+						
+				} else {
+						next.interactable = true;
+						ChangeSpaceShip (true);
+				}
+				spaceShipName.text = names [spaceShipChose];
+		}
+
+		void NextSpaceShip ()
+		{
+				spaceShipChose -= 1;
+				if (spaceShipChose < 0) {
+						spaceShipChose = 0;
+						
+				} else {
+						previous.interactable = true;
+						
+						ChangeSpaceShip (false);
+				}
+				spaceShipName.text = names [spaceShipChose];
 		}
 
 		void ChangeSpaceShip (bool left)
@@ -53,6 +77,7 @@ public class NewGameController : MonoBehaviour
 						float x = spaceShips [i].transform.position.x;
 						float y = spaceShips [i].transform.position.y;
 						float z = spaceShips [i].transform.position.z;
+						
 						if (left) {
 								x -= 5.5f;
 						} else {

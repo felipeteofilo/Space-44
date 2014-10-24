@@ -50,8 +50,6 @@
      <Compile Include="Assets\Scripts\camera.js" />
      <None Include="Assets\Prefabs\armas.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
-     <None Include="Assets\GameBarCreationSystem\Shaders\UnlitAlphaWithFade.shader" />
-     <None Include="Assets\GameBarCreationSystem\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
