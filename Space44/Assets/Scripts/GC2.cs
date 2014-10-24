@@ -7,6 +7,8 @@ public class GC2 : MonoBehaviour {
 		public GameObject Formacao1;
 		public GameObject Formacao2;
 		public GameObject Formacao3;
+		public GameObject Formacao4;
+		public GameObject Formacao5;
 		public GameObject Cinturao;
 		public GameObject boss;
 		public GameObject background;
@@ -21,6 +23,12 @@ public class GC2 : MonoBehaviour {
 		[Range(0,100 )]
 		public int
 			percentF3;
+		[Range(0,100 )]
+		public int
+			percentF4;
+		[Range(0,100 )]
+		public int
+			percentF5;
 		
 		//	public int percentThirdEnemy;
 		//	public int percentFourthEnemy;
@@ -52,12 +60,16 @@ public class GC2 : MonoBehaviour {
 		{
 			float percent = Random.Range (1, 100);
 			
-			if (percent <= percentF3) {
-				return Formacao3;
-			} else if (percent <= percentF3 + percentF1) {
+			if (percent <= percentF1) {
 				return Formacao1;
-			} else if (percent <= percentF3 + percentF1 + percentF2) {
+			} else if (percent <= percentF1 + percentF2) {
 				return Formacao2;
+			} else if (percent <= percentF1 + percentF2 + percentF3) {
+				return Formacao3;
+			}else if (percent <= percentF1 + percentF2 + percentF3 +percentF4) {
+				return Formacao4;
+			}else if (percent <= percentF1 + percentF2 + percentF3 +percentF4 +percentF5) {
+				return Formacao5;
 			}
 			return null;
 			
@@ -100,7 +112,7 @@ public class GC2 : MonoBehaviour {
 				}
 				
 			}
-		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 100f){
+		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 120.4f){
 			if(!cinturaoInstantiate){
 				Instantiate(Cinturao,new Vector3(0,0,41.50f),Cinturao.transform.rotation);
 				cinturaoInstantiate = true;
@@ -120,7 +132,7 @@ public class GC2 : MonoBehaviour {
 		if(Time.time > nextSpawn && !stopspwan){
 			nextSpawn = Time.time + spawnRate;
 			GameObject g = ramdomEnemy();
-			Instantiate(g,new Vector3(0,0,23.5f),g.transform.rotation);
+			Instantiate(g,new Vector3(Random.Range(-6.5f,6.5f),0,23.5f),g.transform.rotation);
 
 
 		}

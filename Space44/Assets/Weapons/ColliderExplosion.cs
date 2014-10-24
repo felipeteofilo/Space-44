@@ -20,7 +20,7 @@ public class ColliderExplosion : MonoBehaviour {
 
 	}
 	void OnTriggerEnter(Collider c){
-
+		Debug.Log (c.name);
 			c.SendMessageUpwards("AplyDamage",Dmg);
 			
 

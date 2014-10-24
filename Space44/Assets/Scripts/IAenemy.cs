@@ -10,7 +10,7 @@ public class IAenemy : MonoBehaviour
 		public float DmgPerColison;//Dano ao colidir 
 		public float Speed;//velocidade de movimento
 		public GameObject Way;//Caminho ate Player
-		Vector3 destiny;//Vector 3 do Caminho
+		public Vector3 destiny;//Vector 3 do Caminho
 		public GameObject Target;//Player marcado como alvo de tiros
 		public GameObject Aim;//Mira do inimigo(usado no W.InTarget)
 		Vector3 Bullet;//Vector 3 do Target
@@ -105,20 +105,21 @@ public class IAenemy : MonoBehaviour
 		if(collision.transform.tag == "Enemy"){
 			if(enemy == E.JustGo ){
 				destiny = new Vector3(-Way.transform.position.x,Way.transform.position.y,Way.transform.position.z);
+				transform.LookAt(destiny);
 			}
-			SendMessage("AplyDamage",2f);
+
 		}
 		if(collision.transform.tag == "Boss"){
 			Instantiate(explosion,transform.position,transform.rotation);
 			Destroy(gameObject);
 		}
 		if(collision.transform.tag == "Asteroid"){
+			SendMessage("AplyDamage",1f);
+			Destroy(collision.gameObject,0.5f);
 
 		}
+		 
 
-
-	} 
-	
 		
-}
+	}}
 
