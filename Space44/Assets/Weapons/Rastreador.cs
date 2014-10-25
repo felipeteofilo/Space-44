@@ -22,7 +22,7 @@ public class Rastreador : MonoBehaviour
 				FindTarget ();
 		TimeStart = Time.time;
 		dmg = GameObject.FindWithTag("Player").GetComponent<Status>().damageSpecific;
-		Debug.Log(dmg);
+	
 		}
 
 		void FindTarget ()

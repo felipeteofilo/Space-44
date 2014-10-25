@@ -16,9 +16,8 @@ public class PlayerPowerWeapons : MonoBehaviour {
 
 	private float timeReload;
 	
-	
-	public enum shootSelected{shoot,bomb};
-	public shootSelected selected = shootSelected.shoot;
+	private int inUse=0;
+
 	
 	private AudioSource shootAudio;
 
@@ -36,29 +35,35 @@ public class PlayerPowerWeapons : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			selected = shootSelected.shoot;
-		}
+
 		
-		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			selected = shootSelected.bomb;
-		}
-		
-		if (selected == shootSelected.shoot && Input.GetButton("Fire1") && Time.time > nextFire) {
+		if ( Input.GetButton("Fire1")&& inUse != 2){ 
+			inUse = 1;
+			if( Time.time > nextFire  ) {
 			nextFire = Time.time + status.fireRate;
 			shoot.Emit(1);
 			shootAudio.Play();
 			
+			}
+		}else{
+			inUse = 0;
 		}
-		if (selected == shootSelected.bomb && Input.GetButton("Fire1")  
-		    && status.actualSpecificTime < status.timeSpecific) {
+
+		if ( Input.GetButton("Fire2") && inUse != 1){ 
+			inUse = 2;
+		    if( status.actualSpecificTime < status.timeSpecific ) {
 			if(Time.time > nextBomb){
 			Instantiate(Bomb,SBomb.transform.position,SBomb.transform.rotation);
 			status.actualSpecificTime +=1;
 			nextBomb = Time.time + BombRate;
 			timeReload = Time.time +status.rechargeSpecific;
+				}
 			}
-		}
+			}else{
+				inUse =0;
+			}
+
+
 		if(Time.time > timeReload){
 			if(status.actualSpecificTime > 0){
 				status.actualSpecificTime -=1;

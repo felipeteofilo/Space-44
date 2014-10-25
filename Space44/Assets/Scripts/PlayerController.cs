@@ -62,30 +62,23 @@ public class PlayerController : MonoBehaviour {
 		movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 		movement = movement * status.speed;
 
-		if (Input.GetKeyDown(KeyCode.Q)) {
-						if (!shield.renderer.enabled && status.actualShieldTime < status.timeShield) {
+		if (Input.GetAxis("Jump")!= 0 && status.actualShieldTime < status.timeShield) {
+						if (!shield.renderer.enabled ) {
 								shield.renderer.enabled = true;
 								shield.collider.enabled = true;
 								this.gameObject.collider.enabled = false;
 								initTimeShield = Time.time;
 								shieldAudio.Play ();
-						} else {
-								shieldAudio.Play ();
-								shield.renderer.enabled = false;
-								this.gameObject.collider.enabled = true;
-								initTimeShield = 0;
-								timeReloadShield = Time.time + status.actualShieldTime;
-				
-						}
+						} 
 				} 
-		/*else {
-				shieldAudio.Play ();
+		else {
+				
 				shield.renderer.enabled = false;
 				this.gameObject.collider.enabled = true;
 				initTimeShield = 0;
 				timeReloadShield = Time.time + status.actualShieldTime;
 				
-		}*/
+		}
 		
 		if (status.actualShieldTime < status.timeShield && shield.renderer.enabled) {
 			if (initTimeShield != 0) {

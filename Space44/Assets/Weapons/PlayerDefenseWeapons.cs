@@ -7,14 +7,13 @@ public class PlayerDefenseWeapons : MonoBehaviour {
 	public ParticleSystem shoot;
 	public GameObject ShockWave;
 	
-	
+	private int inUse =0;
 
 	
 	public float timeReload;
 	public float timer;
 	
-	public enum shootSelected{shoot,shock};
-	public shootSelected selected = shootSelected.shoot;
+
 	
 	private AudioSource shootAudio;
 	
@@ -33,28 +32,31 @@ public class PlayerDefenseWeapons : MonoBehaviour {
 	void Update () {
 
 
-		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			selected = shootSelected.shoot;
-		}
+	
 		
-		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			selected = shootSelected.shock;
-		}
-		
-		if (selected == shootSelected.shoot && Input.GetButton("Fire1") && Time.time > nextFire) {
+		if ( Input.GetButton("Fire1")&& inUse != 2){ 
+			inUse =1;
+			if( Time.time > nextFire) {
 			nextFire = Time.time + status.fireRate;
 			shoot.Emit(1);
 			shootAudio.Play();
-			
+			}
 		}
-		if (selected == shootSelected.shock && Input.GetButton("Fire1")  
-		    && status.actualSpecificTime < status.timeSpecific) {
+		else{
+			inUse =0;
+		}
+		if (Input.GetButton("Fire2")&& inUse != 1){ 
+			inUse = 2;
+		    if( status.actualSpecificTime < status.timeSpecific) {
 			if(!ShockWave.activeSelf){
 				collider.isTrigger = true;
 				ShockWave.SetActive(true);
 				status.actualSpecificTime +=1;
 				timeReload = Time.time +status.rechargeSpecific;
 			}
+			}
+		}else{
+			inUse = 0;
 		}
 			if(!ShockWave.activeSelf){
 				collider.isTrigger = false;

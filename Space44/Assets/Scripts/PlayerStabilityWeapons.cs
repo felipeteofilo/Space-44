@@ -10,15 +10,14 @@ public class PlayerStabilityWeapons : MonoBehaviour {
 	public GameObject SMissel;
 	private float MisselRate = 1f;
 	private float nextMissel;
-	
+	public int inUse =0;
 	
 	
 	
 	private float timeReload;
 	
 	
-	public enum shootSelected{shoot,missel};
-	public shootSelected selected = shootSelected.shoot;
+
 	
 	private AudioSource shootAudio;
 	
@@ -36,28 +35,31 @@ public class PlayerStabilityWeapons : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			selected = shootSelected.shoot;
-		}
+	
 		
-		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			selected = shootSelected.missel;
-		}
-		
-		if (selected == shootSelected.shoot && Input.GetButton("Fire1") && Time.time > nextFire) {
+		if (Input.GetButton("Fire1")&& inUse != 2){
+			inUse = 1;
+		    if( Time.time > nextFire) {
 			nextFire = Time.time + status.fireRate;
 			shoot.Emit(1);
 			shootAudio.Play();
-			
+			}
+		}else{
+			inUse = 0;
 		}
-		if (selected == shootSelected.missel && Input.GetButton("Fire1")  
-		    && status.actualSpecificTime < status.timeSpecific) {
+
+		if ( Input.GetButton("Fire2")&& inUse != 1) {
+			inUse =2;
+		    if( status.actualSpecificTime < status.timeSpecific) {
 			if(Time.time > nextMissel){
 				Instantiate(Missel,SMissel.transform.position,SMissel.transform.rotation);
 				status.actualSpecificTime +=1;
 				nextMissel = Time.time + MisselRate;
 				timeReload = Time.time +status.rechargeSpecific;
 			}
+		}
+		}else{
+			inUse = 0;
 		}
 		if(Time.time > timeReload){
 			if(status.actualSpecificTime > 0){

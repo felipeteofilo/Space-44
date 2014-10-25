@@ -69,6 +69,7 @@ public class BonusItem : MonoBehaviour
 						collision.transform.parent = null;
 						Destroy (collision, collision.duration);
 						Destroy (gameObject);
+						
 				}
 		}
 }

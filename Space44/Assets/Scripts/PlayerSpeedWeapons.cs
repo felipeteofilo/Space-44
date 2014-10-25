@@ -6,7 +6,7 @@ public class PlayerSpeedWeapons : MonoBehaviour {
 	private float nextFire;
 	public ParticleSystem shoot;
 	public ParticleSystem laser;
-
+	private int inUse =0;
 
 	private float initTimeLaser;
 
@@ -14,8 +14,7 @@ public class PlayerSpeedWeapons : MonoBehaviour {
 	private float timeReload;
 
 
-	public enum shootSelected{shoot,laser};
-	public shootSelected selected = shootSelected.shoot;
+
 	
 	private AudioSource shootAudio;
 	private AudioSource laserAudio;
@@ -32,21 +31,23 @@ public class PlayerSpeedWeapons : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			selected = shootSelected.shoot;
-		}
-		
-		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			selected = shootSelected.laser;
-		}
 
-		if (selected == shootSelected.shoot && Input.GetButton("Fire1") && Time.time > nextFire) {
+
+		if ( Input.GetButton("Fire1") && inUse !=2){ 
+			inUse = 1;
+			if( Time.time > nextFire) {
 			nextFire = Time.time + status.fireRate;
 			shoot.Emit(1);
 			shootAudio.Play();
-			
+			}
 		}
-		if (selected == shootSelected.laser && Input.GetButton("Fire1")  && status.actualSpecificTime < status.timeSpecific) {
+		else {
+			inUse = 0;
+		}
+
+		if (  Input.GetButton("Fire2") && inUse !=1  
+		    && status.actualSpecificTime < status.timeSpecific) {
+			inUse =2;
 			if(initTimeLaser != 0){
 				status.actualSpecificTime += Time.time - initTimeLaser;
 			}
@@ -58,6 +59,7 @@ public class PlayerSpeedWeapons : MonoBehaviour {
 			
 			laser.enableEmission =true;
 		} else if(laser.enableEmission) {
+			inUse = 0;
 			initTimeLaser = 0;
 			laserAudio.Stop();
 			timeReload = Time.time + status.actualSpecificTime;

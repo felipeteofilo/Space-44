@@ -14,7 +14,9 @@ public class RandomRotator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(tag != "Life"){
 		transform.localPosition = new Vector3(0,0,0);
+		}
 	}
 
 
