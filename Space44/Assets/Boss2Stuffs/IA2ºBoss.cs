@@ -453,6 +453,8 @@ public class IA2ºBoss : MonoBehaviour
 			yield return new WaitForSeconds (0.25f);
 			
 		}
+		GameObject player = GameObject.FindGameObjectWithTag("Player");		
+		player.GetComponent<Status>().ReceivePoints(7500);
 		Instantiate (bigExplosion, SpotsOfExplosion [7].transform.position, SpotsOfExplosion [7].transform.rotation);
 		yield return new WaitForSeconds (0.75f);
 		Destroy (Front);

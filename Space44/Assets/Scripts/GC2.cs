@@ -42,13 +42,14 @@ public class GC2 : MonoBehaviour {
 		public int s;
 		public GameObject[] players = new GameObject[4];
 		public GameObject planetas ;
-		
+		AudioSource[] audios;
 		
 		// Use this for initialization
 		void Start ()
 		{
-			AudioSource[] audios = GetComponents<AudioSource> ();
-			bossSong = audios [1];
+			 audios = GetComponents<AudioSource> ();
+				audios[s].Play();
+				bossSong = audios [4];
 			Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
 			
 			
@@ -87,7 +88,7 @@ public class GC2 : MonoBehaviour {
 
 
 			} else if (!bossIstantiate) {
-				audio.Stop ();
+				audios[s].Stop();
 				bossSong.Play ();
 				ParticleSystem[] stars = GameObject.FindGameObjectWithTag ("Stars").GetComponentsInChildren<ParticleSystem> ();
 			for (int i =0; i< stars.Length; i++) {
@@ -136,9 +137,13 @@ public class GC2 : MonoBehaviour {
 
 
 		}
-
-
-
+		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
+			Application.LoadLevel("lvl1");
 
 		}
+	}
+
+
+
+
 	}

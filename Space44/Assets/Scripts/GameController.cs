@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
 		private float earlierX;
 		private AudioSource bossSong;
 		bool bossIstantiate;
-		
+	AudioSource[] audios ;
 	public int s;
 	public GameObject[] players = new GameObject[4];
 	public GameObject planetas ;
@@ -36,8 +36,9 @@ public class GameController : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				AudioSource[] audios = GetComponents<AudioSource> ();
-				bossSong = audios [1];
+				 audios = GetComponents<AudioSource> ();
+				audios[s].Play();
+				bossSong = audios [4];
 				StartCoroutine (SpawnWaves ());
 		Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
 
@@ -84,7 +85,7 @@ public class GameController : MonoBehaviour
 						background.transform.Translate (background.transform.forward * -0.05f);
 						//planetas.transform.Translate (background.transform.forward * -0.025f);
 				} else if (!bossIstantiate) {
-						audio.Stop ();
+						audios[s].Stop();
 						bossSong.Play ();
 						StopAllCoroutines ();
 						ParticleSystem[] stars = GameObject.FindGameObjectWithTag ("Stars").GetComponentsInChildren<ParticleSystem> ();
@@ -110,5 +111,9 @@ public class GameController : MonoBehaviour
 						}
 
 				}
+		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
+			Application.LoadLevel("lvl2");
+			
+		}
 		}
 }
