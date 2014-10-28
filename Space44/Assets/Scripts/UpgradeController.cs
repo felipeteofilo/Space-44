@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class UpgradeController : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class UpgradeController : MonoBehaviour {
 	public Slider[] status;
 	public Button [] buttons;
 	public Sprite text;
-	
+	public EventSystem eventSystem;
 	
 	
 	// Use this for initialization
@@ -26,13 +27,12 @@ public class UpgradeController : MonoBehaviour {
 		for (int i = 0; i < spaceShipChose; i++) {
 			ShowSpaceShip();
 				}
-		
+
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-
 		if (spaceShips [spaceShipChose +8].GetComponent<Status> ()) {
 
 			Status shipStatus = spaceShips [spaceShipChose + 8].GetComponent<Status> ();
@@ -49,8 +49,8 @@ public class UpgradeController : MonoBehaviour {
 		if (image != null) {
 			Debug.Log("foi");
 				}
-		button.image.sprite = image;
 
+		Debug.Log("foi");
 	}
 
 
