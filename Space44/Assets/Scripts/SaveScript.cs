@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-[System.Serializable]
 
-public class SaveScript : MonoBehaviour {
+
+[System.Serializable]
+public class SaveScript{
 
 
 	 public int nave;
@@ -21,5 +22,4 @@ public class SaveScript : MonoBehaviour {
 
 	//pontos
 	 public float TotalPoints;
-	
 }
