@@ -5,7 +5,9 @@ public class PlayerPowerWeapons : MonoBehaviour {
 
 	private Status status;
 	private float nextFire;
-	public ParticleSystem shoot;
+	public ParticleSystem shootM;
+	public ParticleSystem shootR;
+	public ParticleSystem shootL;
 	public GameObject Bomb;
 	public GameObject SBomb;
 	private float BombRate = 1.3f;
@@ -38,12 +40,31 @@ public class PlayerPowerWeapons : MonoBehaviour {
 
 		
 		if ( Input.GetButton("Fire1")&& inUse != 2){ 
+
 			inUse = 1;
 			if( Time.time > nextFire  ) {
+					if(status.bullets ==1){
 			nextFire = Time.time + status.fireRate;
-			shoot.Emit(1);
+			shootM.Emit(1);
 			shootAudio.Play();
+				}
 			
+				if(status.bullets ==2){
+					nextFire = Time.time + status.fireRate;
+					shootR.Emit(1);
+					shootL.Emit(1);
+					shootAudio.Play();
+
+				}
+			if(status.bullets ==3){
+				nextFire = Time.time + status.fireRate;
+				shootR.Emit(1);
+				shootM.Emit(1);
+				shootL.Emit(1);
+
+				shootAudio.Play();
+				
+			}
 			}
 		}else{
 			inUse = 0;

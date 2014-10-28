@@ -37,11 +37,12 @@ public class GameController : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
+				//s = SaveScript.nave;
 				 audios = GetComponents<AudioSource> ();
 				audios[s].Play();
 				bossSong = audios [4];
 				StartCoroutine (SpawnWaves ());
-		Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
+				Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
 
 	
 		}

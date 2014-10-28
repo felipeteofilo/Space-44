@@ -5,7 +5,9 @@ public class PlayerStabilityWeapons : MonoBehaviour {
 	
 	private Status status;
 	private float nextFire;
-	public ParticleSystem shoot;
+	public ParticleSystem shootM;
+	public ParticleSystem shootR;
+	public ParticleSystem shootL;
 	public GameObject Missel;
 	public GameObject SMissel;
 	private float MisselRate = 1f;
@@ -37,12 +39,32 @@ public class PlayerStabilityWeapons : MonoBehaviour {
 	void Update () {
 	
 		
-		if (Input.GetButton("Fire1")&& inUse != 2){
+		if ( Input.GetButton("Fire1")&& inUse != 2){ 
+			
 			inUse = 1;
-		    if( Time.time > nextFire) {
-			nextFire = Time.time + status.fireRate;
-			shoot.Emit(1);
-			shootAudio.Play();
+			if( Time.time > nextFire  ) {
+				if(status.bullets ==1){
+					nextFire = Time.time + status.fireRate;
+					shootM.Emit(1);
+					shootAudio.Play();
+				}
+				
+				if(status.bullets ==2){
+					nextFire = Time.time + status.fireRate;
+					shootR.Emit(1);
+					shootL.Emit(1);
+					shootAudio.Play();
+					
+				}
+				if(status.bullets ==3){
+					nextFire = Time.time + status.fireRate;
+					shootR.Emit(1);
+					shootM.Emit(1);
+					shootL.Emit(1);
+					
+					shootAudio.Play();
+					
+				}
 			}
 		}else{
 			inUse = 0;
