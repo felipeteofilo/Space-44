@@ -104,7 +104,7 @@ public class IAenemy : MonoBehaviour
 		}
 		if(collision.transform.tag == "Enemy"){
 			if(enemy == E.JustGo ){
-				destiny = new Vector3(-Way.transform.position.x,Way.transform.position.y,Way.transform.position.z);
+				destiny = new Vector3(-destiny.x,destiny.y,destiny.z);
 				transform.LookAt(destiny);
 			}
 

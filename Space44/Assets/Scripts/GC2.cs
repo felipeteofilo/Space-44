@@ -84,7 +84,7 @@ public class GC2 : MonoBehaviour {
 			
 
 
-			if (background.transform.localPosition.z > 2.6f) {
+		if (background.transform.localPosition.z > -44.15f) {
 				background.transform.Translate (background.transform.forward * -0.075f);
 			background2.transform.Translate (background2.transform.forward * 0.05f);	
 			//planetas.transform.Translate (background.transform.forward * -0.025f);
@@ -116,7 +116,7 @@ public class GC2 : MonoBehaviour {
 				}
 				
 			}
-		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 120.4f){
+		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 69.8f){
 			if(!cinturaoInstantiate){
 				Instantiate(Cinturao,new Vector3(0,0,41.50f),Cinturao.transform.rotation);
 				cinturaoInstantiate = true;
@@ -126,7 +126,7 @@ public class GC2 : MonoBehaviour {
 			cinturaoInstantiate = false;
 			stopspwan= false;
 		}
-		if(background.transform.localPosition.z < 10){
+		if(background.transform.localPosition.z < -30){
 			stopspwan= true;
 
 		}

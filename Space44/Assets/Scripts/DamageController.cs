@@ -25,7 +25,8 @@ public class DamageController : MonoBehaviour {
 			shoot.damage = float.Parse(shootStatus[1]);
 			shootList.Add(shoot);
 		}
-
+		shootList[0].damage *=GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().damage*
+			GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().lvlDamage;
 	}
 
 	// Update is called once per frame
@@ -50,7 +51,8 @@ public class DamageController : MonoBehaviour {
 
 
 		if(hitObject.tag == "Enemy" && !hitShoot.name.Contains("Enemy")){
-			hitObject.GetComponent<EnemyStatus>().life  = hitObject.GetComponent<EnemyStatus>().life - hitShoot.damage;
+			hitObject.GetComponent<EnemyStatus>().life  -=  hitShoot.damage;
+
 
 
 		}
