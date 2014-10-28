@@ -27,7 +27,7 @@ public class NewGameController : MonoBehaviour
 		{
 
 				if (spaceShips [spaceShipChose +8].GetComponent<Status> ()) {
-						Debug.Log ("foi");
+						
 						Status shipStatus = spaceShips [spaceShipChose + 8].GetComponent<Status> ();
 						status [0].value = shipStatus.damage;
 						status [1].value = shipStatus.MaxLife;
@@ -42,6 +42,14 @@ public class NewGameController : MonoBehaviour
 						next.interactable = false;
 				}
 				
+		}
+
+		void Choose(){
+
+		PlayerPrefs.SetInt ("NaveEscolhida",spaceShipChose);
+
+		Application.LoadLevel("CenaUpgrade");
+
 		}
 		
 		void PreviousSpaceShip ()
