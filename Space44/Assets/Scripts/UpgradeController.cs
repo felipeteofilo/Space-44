@@ -43,13 +43,29 @@ public class UpgradeController : MonoBehaviour {
 		}
 	}
 
+
+	public void Highlight(Button button){
+
+		string imageName = button.image.sprite.name.Substring(7,1);
+	
+		int number = int.Parse(imageName);
+		if (number < 4) {
+			Sprite image = Resources.Load<Sprite> ("upgrade" + (number + 1));
+			button.image.sprite = image;
+		}
+	}
+	public void ExitHighlight(Button button){
+		
+		string imageName = button.image.sprite.name.Substring(7,1);
+
+		int number = int.Parse(imageName);
+		if (number >= 1) {
+			Sprite image = Resources.Load<Sprite> ("upgrade" + (number - 1));
+			button.image.sprite = image;
+		}
+	}
+
 	public void Buy(Button button){
-		Sprite image = Resources.Load<Sprite>("seta");
-
-		if (image != null) {
-			Debug.Log("foi");
-				}
-
 		Debug.Log("foi");
 	}
 
