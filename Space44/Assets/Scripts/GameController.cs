@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 		public GameObject enemy2;
 		public GameObject boss;
 		public GameObject background;
+		public GameObject background2;
 		public GameObject asteroid;
 		public Vector3 spawnWaves;
 		[Range(0,100)]
@@ -83,6 +84,7 @@ public class GameController : MonoBehaviour
 		{
 				if (background.transform.localPosition.z > 2.6f) {
 						background.transform.Translate (background.transform.forward * -0.05f);
+						background2.transform.Translate (background2.transform.forward * 0.025f);
 						//planetas.transform.Translate (background.transform.forward * -0.025f);
 				} else if (!bossIstantiate) {
 						audios[s].Stop();

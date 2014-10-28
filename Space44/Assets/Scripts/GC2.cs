@@ -12,7 +12,9 @@ public class GC2 : MonoBehaviour {
 		public GameObject Cinturao;
 		public GameObject boss;
 		public GameObject background;
-		public Vector3 spawnWaves;
+	public GameObject background2;
+
+	public Vector3 spawnWaves;
 	private bool stopspwan = false;
 		[Range(0,100)]
 		public int
@@ -83,8 +85,9 @@ public class GC2 : MonoBehaviour {
 
 
 			if (background.transform.localPosition.z > 2.6f) {
-				background.transform.Translate (background.transform.forward * -0.05f);
-				//planetas.transform.Translate (background.transform.forward * -0.025f);
+				background.transform.Translate (background.transform.forward * -0.075f);
+			background2.transform.Translate (background2.transform.forward * 0.05f);	
+			//planetas.transform.Translate (background.transform.forward * -0.025f);
 
 
 			} else if (!bossIstantiate) {
