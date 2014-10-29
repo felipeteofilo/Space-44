@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-		public GUIText restart;
+		public GameObject restart;
 		public GameObject enemy1;
 		public GameObject enemy2;
 		public GameObject boss;
@@ -112,10 +113,7 @@ public class GameController : MonoBehaviour
 						if (!restart.gameObject.activeSelf) {
 								restart.gameObject.SetActive (true);
 						}
-						if (Input.GetKeyDown (KeyCode.R)) {
-								Application.LoadLevel (Application.loadedLevel);
-
-						}
+						
 
 				}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
@@ -127,4 +125,11 @@ public class GameController : MonoBehaviour
 			
 		}
 		}
+	public void RestartLevel(){
+		Application.LoadLevel (Application.loadedLevel);
+	}
+	public void ExitLevel(){
+		Application.LoadLevel ("NewGame");
+	}
+
 }

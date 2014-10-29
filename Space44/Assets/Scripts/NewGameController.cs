@@ -66,7 +66,7 @@ public class NewGameController : MonoBehaviour
 
 		void Choose(){
 		Status ();
-		Application.LoadLevel("lvl1");
+		Application.LoadLevel("lvl2");
 
 		}
 		

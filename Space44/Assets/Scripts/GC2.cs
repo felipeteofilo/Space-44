@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GC2 : MonoBehaviour {
 
-		public GUIText restart;
+		public GameObject restart;
 		public GameObject Formacao1;
 		public GameObject Formacao2;
 		public GameObject Formacao3;
@@ -40,7 +40,7 @@ public class GC2 : MonoBehaviour {
 		private float earlierX;
 		private AudioSource bossSong;
 		bool bossIstantiate;
-	bool cinturaoInstantiate = false;
+		bool cinturaoInstantiate = false;
 		
 		public int s;
 		public GameObject[] players = new GameObject[4];
@@ -111,14 +111,14 @@ public class GC2 : MonoBehaviour {
 		// Update is called once per frame
 		void Update ()
 		{
+
+
+
 			if (!GameObject.FindGameObjectWithTag ("Player")) {
 				if (!restart.gameObject.activeSelf) {
 					restart.gameObject.SetActive (true);
 				}
-				if (Input.GetKeyDown (KeyCode.R)) {
-					Application.LoadLevel (Application.loadedLevel);
-					
-				}
+				
 				
 			}
 		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 59.8f){
@@ -151,8 +151,23 @@ public class GC2 : MonoBehaviour {
 			sa.faseAtual +=1;
 			SAVEaNDLOAD.Save(sa,s);
 			Application.LoadLevel("upgrade");
+		
+		
+		
 		}
+
+
+	
+	
 	}
+	public void RestartLevel(){
+		Application.LoadLevel (Application.loadedLevel);
+	}
+	public void ExitLevel(){
+		Application.LoadLevel ("NewGame");
+	}
+
+
 
 
 

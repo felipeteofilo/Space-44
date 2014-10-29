@@ -77,6 +77,10 @@ public class IAenemy : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+
+
+
+
 				Physics.IgnoreLayerCollision (8,12);
 				if (enemy == E.JustGo) {
 						transform.Translate (new Vector3 (0, 0, Speed));
