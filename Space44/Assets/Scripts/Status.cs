@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Status : MonoBehaviour
 {
-
+		
 		public float MaxLife;
 		public float life;
 		public float BonusLife = 0;//
@@ -29,12 +29,15 @@ public class Status : MonoBehaviour
 		public Transform explosion;
 		public int levelPoints;
 		public int totalPoints;
+		public int nave;
 
 	private SaveScript s = new SaveScript();
 		// Use this for initialization
 		void Start ()
 		{
-		/*if (SaveScript.BonusSpeed != null) {
+		s = SAVEaNDLOAD.Load (0);
+		if (s != null) {
+			Debug.Log("caiu aqui!");
 						BonusLife = s.BonusLife;
 						bonusRate = s.BonusRate;
 						BonusSpeed = s.BonusSpeed;
@@ -42,7 +45,7 @@ public class Status : MonoBehaviour
 						bonusSpecific = s.BonusSpecific;
 						bonusTimeShield = s.BonusShield;
 						bullets = s.bullets;
-				}*/
+				}
 
 		MaxLife = MaxLife + BonusLife;
 		life = MaxLife;
@@ -73,11 +76,12 @@ public class Status : MonoBehaviour
 			 s.BonusSpecific = bonusSpecific;
 			 s.BonusShield = bonusTimeShield;
 			 s.bullets = bullets ;
-			s.TotalPoints = levelPoints ;
+			 s.TotalPoints = levelPoints ;
+			 s.nave = nave;
 
 
 
-			SAVEaNDLOAD.Save(s,0);
+			SAVEaNDLOAD.Save(s,nave);
 		}
 	
 		}

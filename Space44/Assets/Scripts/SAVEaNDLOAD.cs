@@ -19,6 +19,7 @@ public class SAVEaNDLOAD : MonoBehaviour {
 	
 	}
 	public static void Save(SaveScript s,int p){
+		Load (0);
 		saves[p]=s;
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file = File.Create (Application.persistentDataPath + "/savedGames.gd");
@@ -28,15 +29,18 @@ public class SAVEaNDLOAD : MonoBehaviour {
 
 
 	}
-	public static void Load(){
+	public static SaveScript Load(int p){
 		if(File.Exists(Application.persistentDataPath + "/savedGames.gd")) {
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
 			saves = (SaveScript[])bf.Deserialize(file);
 			file.Close();
-
+			return saves[p];
 
 		
 	}
+		return null;
 }
+
+
 }

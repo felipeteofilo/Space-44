@@ -37,7 +37,10 @@ public class GameController : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				//s = SaveScript.nave;
+	if (SAVEaNDLOAD.Load (0).nave != null) {
+						s = SAVEaNDLOAD.Load (0).nave;
+				}
+
 				 audios = GetComponents<AudioSource> ();
 				audios[s].Play();
 				bossSong = audios [4];
