@@ -54,6 +54,9 @@ public class ColissionController : MonoBehaviour
 						childRenderer.renderer.material.color = color;
 				}
 		}
+	void PiscaAe(float t){
+		StartCoroutine(FlashPlayer(t));
+	}
 
 		
 }

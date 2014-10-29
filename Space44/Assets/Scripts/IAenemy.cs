@@ -165,7 +165,9 @@ public class IAenemy : MonoBehaviour
 	void OnCollisionEnter (Collision collision){
 		if(collision.transform.tag == "Player"){
 			Instantiate(explosion,transform.position,transform.rotation);
+			GetComponent<ColissionController>().SendMessage("PiscaAe",0.03f);
 			Destroy(gameObject);
+
 		}
 		if(collision.transform.tag == "Enemy"){
 			if(enemy == E.JustGo ){

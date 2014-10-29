@@ -108,7 +108,8 @@ public class PlayerController : MonoBehaviour {
 
 		if(collision.transform.tag == "Enemy"){
 			SendMessage("AplyDamage",10f);
-			
+			GetComponent<ColissionController>().SendMessage("PiscaAe",0.03f);
+
 		}
 		if(collision.transform.tag == "Boss"){
 			Instantiate(explosion,transform.position,transform.rotation);
@@ -116,6 +117,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		if(collision.transform.tag == "Asteroid"){
 			SendMessage("AplyDamage",5f);
+			GetComponent<ColissionController>().SendMessage("PiscaAe",0.03f);
 			Instantiate(explosion,collision.transform.position,collision.transform.rotation);
 			Destroy(collision.gameObject,0.1f);
 			

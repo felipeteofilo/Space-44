@@ -25,7 +25,7 @@ public class DamageController : MonoBehaviour {
 			shoot.damage = float.Parse(shootStatus[1]);
 			shootList.Add(shoot);
 		}
-		shootList[0].damage *=GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().damage*
+		shootList[0].damage =GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().damage*
 			GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().lvlDamage;
 		Debug.Log(shootList[0].damage);
 	}
