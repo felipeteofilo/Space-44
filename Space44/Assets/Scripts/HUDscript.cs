@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HUDscript : MonoBehaviour {
 	private Status status;
@@ -11,6 +12,8 @@ public	float CurrentLife;
 	public float MaxShield;
 	public float CurrentShield;
 
+	public Slider[] Hud;
+	public Text Pontos;
 	public int levelPoints;
 	bool onTurn = false;
 	float tester;
@@ -40,38 +43,20 @@ public	float CurrentLife;
 						MaxLife = status.MaxLife;
 						MaxSpecial = status.timeSpecific;
 						MaxShield = status.timeShield;
-				}	
-		
+				}
+
+		Hud[0].maxValue = MaxLife;
+		Hud[0].value = CurrentLife;
+		Hud[1].maxValue = MaxShield;
+		Hud[1].value = MaxShield - CurrentShield;
+
+		Hud[2].maxValue = MaxSpecial;
+		Hud[2].value = MaxSpecial - CurrentSpecial;
+
+		Pontos.text ="" + levelPoints;
 		width = Screen.width;
 		//Pegar Status do Jogador e setar nas tretas
 		
 	}
-	void OnGUI(){
-				if (status != null) {
-			onTurn = true;}
-		if(onTurn){
-			GUI.color = Color.white;
-			//Vida
-			GUI.TextArea (new Rect (0.86f * width, 0, 0.13f * width, 20), "Life");
-			GUI.Box (new Rect (0.86f * width, 20, 0.13f * width, 20), "" + (int)CurrentLife);
-			GUI.Box (new Rect (0.86f * width, 20, (0.13f * width) / (MaxLife / CurrentLife), 20), "");
-			//Laser
-			GUI.TextArea (new Rect (0.86f * width, 45, 0.13f * width, 20), "Special");
-			GUI.Box (new Rect (0.86f * width, 65, 0.13f * width, 20), "" + (int)CurrentSpecial);
-			GUI.Box (new Rect (0.86f * width, 65, (0.13f * width) / (MaxSpecial / CurrentSpecial), 20), "");
-			//Escudo
-			GUI.TextArea (new Rect (0.86f * width, 90, 0.13f * width, 20), "Shield");
-			GUI.Box (new Rect (0.86f * width, 110, 0.13f * width, 20), "" + (int)CurrentShield);
-			GUI.Box (new Rect (0.86f * width, 110, (0.13f * width) / (MaxShield / CurrentShield), 20), "");
-			//Pontos
-			GUI.TextArea (new Rect (0.86f * width, 135, 0.13f * width, 20), "Points");
-			GUI.Box (new Rect (0.86f * width, 155, 0.13f * width, 20), "" + levelPoints);
-			
-			GUI.Box (new Rect (0.86f * width, 200, 0.13f * width, 20), "Time: " + (int)(Time.timeSinceLevelLoad / 60) + ":" + (int)(Time.timeSinceLevelLoad % 60));
 
-		}
-
-		
-		
-	}
 }

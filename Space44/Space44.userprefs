@@ -1,21 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NewGameController.cs">
     <Files>
-      <File FileName="Assets\Scripts\GC2.cs" Line="148" Column="4" />
-      <File FileName="Assets\Scripts\SaveScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SAVEaNDLOAD.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="125" Column="37" />
-      <File FileName="Assets\Scripts\Status.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DamageController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\IAenemy.cs" Line="153" Column="20" />
-      <File FileName="Assets\Scripts\BonusItem.cs" Line="70" Column="38" />
+      <File FileName="Assets\Scripts\HUDscript.cs" Line="54" Column="45" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="40" Column="3" />
+      <File FileName="Assets\Scripts\PlayerStabilityWeapons.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GlobalStatus.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\NewGameController.cs" Line="69" Column="30" />
+      <File FileName="Assets\Weapons\ColliderExplosion.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GC2.cs" Line="124" Column="94" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="D:\PI\Space-44\Space44\Assets\Scripts\DamageController.cs" line="28" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

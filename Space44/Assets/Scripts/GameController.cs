@@ -37,8 +37,9 @@ public class GameController : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-	if (SAVEaNDLOAD.Load (0).nave != null) {
-						s = SAVEaNDLOAD.Load (0).nave;
+		GlobalStatus global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
+		if (global != null) {
+						s = global.status.nave;
 				}
 
 				 audios = GetComponents<AudioSource> ();

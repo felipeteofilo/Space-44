@@ -5,6 +5,8 @@ Project("{27547406-09D9-B675-B22C-2ADD6619460B}") = "Space44", "Assembly-CSharp.
 EndProject
 Project("{27547406-09D9-B675-B22C-2ADD6619460B}") = "Space44", "Assembly-UnityScript-firstpass.unityproj", "{2024C3AA-A78D-D42C-67C8-651BF5AEE464}"
 EndProject
+Project("{27547406-09D9-B675-B22C-2ADD6619460B}") = "Space44", "Assembly-UnityScript.unityproj", "{01987236-C542-531A-CB3C-FAC2257D695C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,11 +21,15 @@ Global
 		{2024C3AA-A78D-D42C-67C8-651BF5AEE464}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2024C3AA-A78D-D42C-67C8-651BF5AEE464}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2024C3AA-A78D-D42C-67C8-651BF5AEE464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01987236-C542-531A-CB3C-FAC2257D695C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01987236-C542-531A-CB3C-FAC2257D695C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01987236-C542-531A-CB3C-FAC2257D695C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01987236-C542-531A-CB3C-FAC2257D695C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																							GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																									GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
