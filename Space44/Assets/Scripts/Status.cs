@@ -35,17 +35,6 @@ public class Status : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-		s = SAVEaNDLOAD.Load (0);
-		if (s != null) {
-			Debug.Log("caiu aqui!");
-						BonusLife = s.BonusLife;
-						bonusRate = s.BonusRate;
-						BonusSpeed = s.BonusSpeed;
-						BonusStabilty = s.BonusStability;
-						bonusSpecific = s.BonusSpecific;
-						bonusTimeShield = s.BonusShield;
-						bullets = s.bullets;
-				}
 
 		MaxLife = MaxLife + BonusLife;
 		life = MaxLife;

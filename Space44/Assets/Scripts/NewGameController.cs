@@ -59,6 +59,7 @@ public class NewGameController : MonoBehaviour
 			global.status.BonusStability = shipStatus.BonusStabilty;
 			global.status.bullets = shipStatus.bullets;
 			global.status.nave = spaceShipChose;
+			global.status.faseAtual = 1;
 		}
 
 
@@ -66,7 +67,7 @@ public class NewGameController : MonoBehaviour
 
 		void Choose(){
 		Status ();
-		Application.LoadLevel("lvl1");
+		Application.LoadLevel("HangarScene");
 
 		}
 		

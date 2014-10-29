@@ -19,6 +19,10 @@ public class SaveScript{
 	 public float BonusStability;
 	 public int bullets;
 
+	//level Upgrades
+	public int[]levelButtons = new int[8];
+
+
 
 	//pontos
 	 public float TotalPoints;

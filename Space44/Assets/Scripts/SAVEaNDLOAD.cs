@@ -23,7 +23,6 @@ public class SAVEaNDLOAD : MonoBehaviour {
 		saves[p]=s;
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file = File.Create (Application.persistentDataPath + "/savedGames.gd");
-		Debug.Log (Application.persistentDataPath + "/savedGames.gd");
 		bf.Serialize(file, saves);
 		file.Close();
 
@@ -36,9 +35,7 @@ public class SAVEaNDLOAD : MonoBehaviour {
 			saves = (SaveScript[])bf.Deserialize(file);
 			file.Close();
 			return saves[p];
-
-		
-	}
+		}
 		return null;
 }
 
