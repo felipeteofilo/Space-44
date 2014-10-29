@@ -47,6 +47,7 @@ public	float CurrentLife;
 
 		Hud[0].maxValue = MaxLife;
 		Hud[0].value = CurrentLife;
+
 		Hud[1].maxValue = MaxShield;
 		Hud[1].value = MaxShield - CurrentShield;
 

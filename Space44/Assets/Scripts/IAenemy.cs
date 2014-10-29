@@ -77,7 +77,7 @@ public class IAenemy : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-
+			if(Time.timeScale != 0){
 
 
 
@@ -160,7 +160,7 @@ public class IAenemy : MonoBehaviour
 
 			}
 		}
-
+		}
 	}
 	void OnCollisionEnter (Collision collision){
 		if(collision.transform.tag == "Player"){

@@ -4,6 +4,9 @@ using System.Collections;
 public class GC2 : MonoBehaviour {
 
 		public GameObject restart;
+		public GameObject player;
+		public float speed;
+		public GameObject levelComplete;
 		public GameObject Formacao1;
 		public GameObject Formacao2;
 		public GameObject Formacao3;
@@ -116,6 +119,7 @@ public class GC2 : MonoBehaviour {
 
 			if (!GameObject.FindGameObjectWithTag ("Player")) {
 				if (!restart.gameObject.activeSelf) {
+				Time.timeScale =0;
 					restart.gameObject.SetActive (true);
 				}
 				
@@ -146,14 +150,20 @@ public class GC2 : MonoBehaviour {
 
 		}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
-			SaveScript sa = SAVEaNDLOAD.Load(s);
+			/*SaveScript sa = SAVEaNDLOAD.Load(s);
 			sa.TotalPoints += GameObject.FindWithTag("Player").GetComponent<Status>().levelPoints;
 			sa.faseAtual +=1;
-			SAVEaNDLOAD.Save(sa,s);
-			Application.LoadLevel("upgrade");
-		
-		
-		
+			SAVEaNDLOAD.Save(sa,s);*/
+			player = GameObject.FindWithTag("Player");
+			player.GetComponent<PlayerController>().enabled = false;
+			player.transform.Translate(new Vector3(0,0,speed));
+			levelComplete.SetActive(true);
+			if(player.transform.position.z > 21f){
+				Application.LoadLevel("NewGame");
+			}else{
+				speed += 0.005f;
+			}
+			
 		}
 
 

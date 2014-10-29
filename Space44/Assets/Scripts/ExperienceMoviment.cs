@@ -16,6 +16,8 @@ public class ExperienceMoviment : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Time.timeScale != 0){
 		transform.Translate (new Vector3(0,0,speed));
+		}
 	}
 }
