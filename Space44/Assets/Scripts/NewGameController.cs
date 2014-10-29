@@ -46,9 +46,7 @@ public class NewGameController : MonoBehaviour
 
 		void Choose(){
 
-		PlayerPrefs.SetInt ("NaveEscolhida",spaceShipChose);
-
-		Application.LoadLevel("CenaUpgrade");
+			Application.LoadLevel("CenaUpgrade");
 
 		}
 		

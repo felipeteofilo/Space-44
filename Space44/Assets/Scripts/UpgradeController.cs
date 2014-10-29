@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class UpgradeController : MonoBehaviour {
 
 	public GameObject[] spaceShips;
-	private int spaceShipChose;
+	public int spaceShipChose;
 	public string[] names;
 	public TextMesh spaceShipName;
 	public Slider[] status;
@@ -20,9 +20,9 @@ public class UpgradeController : MonoBehaviour {
 	{
 		spaceShipName.text = names [spaceShipChose];
 
-		if (PlayerPrefs.HasKey("NaveEscolhida")) {
-			spaceShipChose = PlayerPrefs.GetInt ("NaveEscolhida");
-		}
+//		if (PlayerPrefs.HasKey("NaveEscolhida")) {
+//			spaceShipChose = PlayerPrefs.GetInt ("NaveEscolhida");
+//		}
 
 		for (int i = 0; i < spaceShipChose; i++) {
 			ShowSpaceShip();
@@ -66,7 +66,7 @@ public class UpgradeController : MonoBehaviour {
 	}
 
 	public void Buy(Button button){
-		Debug.Log("foi");
+
 	}
 
 
