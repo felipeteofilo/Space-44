@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
 		public GameObject restart;
+		public GameObject player;
+		public float speed;
+		public GameObject levelComplete;
 		public GameObject enemy1;
 		public GameObject enemy2;
 		public GameObject boss;
@@ -117,12 +120,20 @@ public class GameController : MonoBehaviour
 
 				}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
-			SaveScript sa = SAVEaNDLOAD.Load(s);
+			/*SaveScript sa = SAVEaNDLOAD.Load(s);
 			sa.TotalPoints += GameObject.FindWithTag("Player").GetComponent<Status>().levelPoints;
 			sa.faseAtual +=1;
-			SAVEaNDLOAD.Save(sa,s);
-			Application.LoadLevel("upgrade");
-			
+			SAVEaNDLOAD.Save(sa,s);*/
+			player = GameObject.FindWithTag("Player");
+			player.GetComponent<PlayerController>().enabled = false;
+			player.transform.Translate(new Vector3(0,0,speed));
+			levelComplete.SetActive(true);
+			if(player.transform.position.z > 21f){
+			Application.LoadLevel("NewGame");
+			}else{
+				speed += 0.005f;
+			}
+
 		}
 		}
 	public void RestartLevel(){
