@@ -44,9 +44,29 @@ public class NewGameController : MonoBehaviour
 				
 		}
 
-		void Choose(){
+	void Status(){
+		GlobalStatus global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
 
-			Application.LoadLevel("CenaUpgrade");
+		if (spaceShips [spaceShipChose +8].GetComponent<Status> ()) {
+			
+			Status shipStatus = spaceShips [spaceShipChose + 8].GetComponent<Status> ();
+			global.status.lvlDamage = shipStatus.lvlDamage;
+			global.status.BonusLife = shipStatus.BonusLife;
+			global.status.BonusRate = shipStatus.bonusRate;
+			global.status.BonusShield =shipStatus.bonusTimeShield;
+			global.status.BonusSpecific = shipStatus.bonusSpecific;
+			global.status.BonusSpeed = shipStatus.BonusSpeed;
+			global.status.BonusStability = shipStatus.BonusStabilty;
+			global.status.bullets = shipStatus.bullets;
+			global.status.nave = spaceShipChose;
+		}
+
+
+		}
+
+		void Choose(){
+		Status ();
+		Application.LoadLevel("lvl1");
 
 		}
 		

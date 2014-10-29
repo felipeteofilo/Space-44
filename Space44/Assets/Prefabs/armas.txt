@@ -4,3 +4,6 @@ PlayerLaser = 0.2
 BossBullet = 3
 BossLaser = 0.3
 Boom = 5
+BigLaser = 10
+FBullets = 1.5
+SBullets = 2.5

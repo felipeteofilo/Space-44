@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 	private AudioSource shieldAudio;
 	public Vector3 buffervec;
 	private Vector3 movement;
+	public GameObject explosion;
 
 
 	
@@ -30,15 +31,13 @@ public class PlayerController : MonoBehaviour {
 		rigidbody.drag = status.stability;
 		AudioSource[] audios = GetComponents<AudioSource>();
 		
-		shieldAudio = audios[2];
+		shieldAudio = audios[1];
 
 	}
 	
 	void FixedUpdate(){
 
-
-		rigidbody.AddForce (movement);
-
+		rigidbody.AddForce( movement);
 
 
 		rigidbody.position = new Vector3
@@ -53,6 +52,9 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(status.life <0){
+			status.life =0;
+		}
 
 		float moveHorizontal =Input.GetAxis("Horizontal");
 		float moveVertical = Input.GetAxis("Vertical");
@@ -60,22 +62,22 @@ public class PlayerController : MonoBehaviour {
 		movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 		movement = movement * status.speed;
 
-		if (Input.GetKeyDown(KeyCode.Q)) {
-			if(!shield.renderer.enabled && status.actualShieldTime < status.timeShield ){
-				shield.renderer.enabled = true;
-				shield.collider.enabled = true;
-				this.gameObject.collider.enabled = false;
-				initTimeShield = Time.time;
-				shieldAudio.Play();
-			}
-			else{
-				shieldAudio.Play();
+		if (Input.GetAxis("Jump")!= 0 && status.actualShieldTime < status.timeShield) {
+						if (!shield.renderer.enabled ) {
+								shield.renderer.enabled = true;
+								shield.collider.enabled = true;
+								this.gameObject.collider.enabled = false;
+								initTimeShield = Time.time;
+								shieldAudio.Play ();
+						} 
+				} 
+		else {
+				
 				shield.renderer.enabled = false;
 				this.gameObject.collider.enabled = true;
 				initTimeShield = 0;
 				timeReloadShield = Time.time + status.actualShieldTime;
 				
-			}
 		}
 		
 		if (status.actualShieldTime < status.timeShield && shield.renderer.enabled) {
@@ -101,5 +103,35 @@ public class PlayerController : MonoBehaviour {
 			
 		}
 
+	}
+	void OnCollisionEnter (Collision collision){
+
+		if(collision.transform.tag == "Enemy"){
+			SendMessage("AplyDamage",10f);
+			
+		}
+		if(collision.transform.tag == "Boss"){
+			Instantiate(explosion,transform.position,transform.rotation);
+			Destroy(gameObject);
+		}
+		if(collision.transform.tag == "Asteroid"){
+			SendMessage("AplyDamage",5f);
+			Instantiate(explosion,collision.transform.position,collision.transform.rotation);
+			Destroy(collision.gameObject,0.1f);
+			
+		}
+		
+		
+		
+	}
+	void AplyDamage(float dmg){
+		if (!shield.renderer.enabled) {
+						status.life -= dmg;
+				} else {
+			status.life -= dmg/2;
+		}
+		if(status.life <0){
+			status.life =0;
+		}
 	}
 }

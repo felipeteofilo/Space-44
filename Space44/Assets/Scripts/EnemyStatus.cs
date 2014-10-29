@@ -23,9 +23,9 @@ public class EnemyStatus : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				lifeDropRate = 25;
-				pointsDropRate = 45;
-				energyDropRate = 10;
+				lifeDropRate = 20;
+				pointsDropRate = 80;
+				
 		}
 	
 		// Update is called once per frame
@@ -34,7 +34,7 @@ public class EnemyStatus : MonoBehaviour
 
 				if (life <= 0) {
 						destroyParticlesByTime ();
-						Destroy (this.gameObject);
+						Destroy (gameObject);
 						Instantiate (explosion, this.gameObject.transform.position, Quaternion.identity);
 						GameObject.FindGameObjectWithTag ("Player").GetComponent<Status> ().ReceivePoints (pointsByDead);
 						Drop ();
@@ -46,14 +46,11 @@ public class EnemyStatus : MonoBehaviour
 		{
 				float percent = Random.Range (1, 100);
 				
-				if (percent <= energyDropRate) {
-						Instantiate (energyObject, this.gameObject.transform.position, Quaternion.identity);
-				} else if (percent <= lifeDropRate) {
-						Instantiate (lifeObject, this.gameObject.transform.position, Quaternion.identity);
-				} else if (percent <= pointsDropRate) {
-						pointsObject.GetComponent<BonusItem> ().points = pointsByDrop;
+				if (percent <= pointsDropRate) {
 						Instantiate (pointsObject, this.gameObject.transform.position, Quaternion.identity);
-				}
+				} else if (percent <= lifeDropRate + pointsDropRate) {
+						Instantiate (lifeObject, this.gameObject.transform.position, Quaternion.identity);
+				} 
 		}
 
 		void destroyParticlesByTime ()
@@ -67,4 +64,8 @@ public class EnemyStatus : MonoBehaviour
 		
 				GameObject.Destroy (particle.gameObject, particle.duration);
 		}
+
+	void AplyDamage(float dmg){
+		life -=dmg;
+	}
 }

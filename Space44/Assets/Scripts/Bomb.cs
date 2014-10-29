@@ -78,9 +78,9 @@ public class Bomb : MonoBehaviour {
 
 
 		if(collison.transform.CompareTag("Player")){
-
+		
 			//Explode
-			Destroy(collison.gameObject);
+			collison.transform.SendMessageUpwards("AplyDamage",15f);
 			Destroy(gameObject);
 			Instantiate (explosion,transform.position,transform.rotation);
 		
