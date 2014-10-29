@@ -118,7 +118,11 @@ public class GameController : MonoBehaviour
 
 				}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
-			Application.LoadLevel("lvl2");
+			SaveScript sa = SAVEaNDLOAD.Load(s);
+			sa.TotalPoints += GameObject.FindWithTag("Player").GetComponent<Status>().levelPoints;
+			sa.faseAtual +=1;
+			SAVEaNDLOAD.Save(sa,s);
+			Application.LoadLevel("upgrade");
 			
 		}
 		}

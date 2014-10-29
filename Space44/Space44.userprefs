@@ -2,11 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController.cs">
     <Files>
-      <File FileName="Assets\Scripts\SaveScript.cs" Line="9" Column="19" />
-      <File FileName="Assets\Scripts\SAVEaNDLOAD.cs" Line="22" Column="12" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="41" Column="30" />
-      <File FileName="Assets\Scripts\Status.cs" Line="80" Column="18" />
-      <File FileName="Assets\Scripts\DamageController.cs" Line="28" Column="1" />
+      <File FileName="Assets\Scripts\GC2.cs" Line="148" Column="4" />
+      <File FileName="Assets\Scripts\SaveScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SAVEaNDLOAD.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="125" Column="37" />
+      <File FileName="Assets\Scripts\Status.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DamageController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\IAenemy.cs" Line="153" Column="20" />
+      <File FileName="Assets\Scripts\BonusItem.cs" Line="70" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

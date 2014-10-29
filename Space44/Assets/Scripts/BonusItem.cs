@@ -65,13 +65,13 @@ public class BonusItem : MonoBehaviour
 						if (points > 0) {
 								AddPoints (other);
 						}
+
 						collision.Play ();
-			Destroy (gameObject,collision.duration);
+			collision.transform.parent = null;
+			Destroy(collision,collision.duration);
+			Destroy (gameObject,collision.duration/10);
 						
 				}
-		if(other.tag == "Limit"){
-			Debug.Log("teste1");
-			Destroy(gameObject);
-		}
+
 		}
 }

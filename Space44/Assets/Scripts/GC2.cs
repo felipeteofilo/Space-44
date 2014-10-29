@@ -11,6 +11,7 @@ public class GC2 : MonoBehaviour {
 		public GameObject Formacao5;
 		public GameObject Cinturao;
 		public GameObject boss;
+	public GameObject Enemy3;
 		public GameObject background;
 	public GameObject background2;
 
@@ -49,6 +50,9 @@ public class GC2 : MonoBehaviour {
 		// Use this for initialization
 		void Start ()
 		{
+		/*if (SAVEaNDLOAD.Load (0).nave != null) {
+			s = SAVEaNDLOAD.Load (0).nave;
+		}*/
 			 audios = GetComponents<AudioSource> ();
 				audios[s].Play();
 				bossSong = audios [4];
@@ -116,7 +120,7 @@ public class GC2 : MonoBehaviour {
 				}
 				
 			}
-		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 69.8f){
+		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 49.8f){
 			if(!cinturaoInstantiate){
 				Instantiate(Cinturao,new Vector3(0,0,41.50f),Cinturao.transform.rotation);
 				cinturaoInstantiate = true;
@@ -141,8 +145,11 @@ public class GC2 : MonoBehaviour {
 
 		}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
-			Application.LoadLevel("lvl1");
-
+			SaveScript sa = SAVEaNDLOAD.Load(s);
+			sa.TotalPoints += GameObject.FindWithTag("Player").GetComponent<Status>().levelPoints;
+			sa.faseAtual +=1;
+			SAVEaNDLOAD.Save(sa,s);
+			Application.LoadLevel("upgrade");
 		}
 	}
 
