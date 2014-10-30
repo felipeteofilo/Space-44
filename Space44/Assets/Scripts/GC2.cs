@@ -3,7 +3,10 @@ using System.Collections;
 
 public class GC2 : MonoBehaviour {
 
-		public GUIText restart;
+		public GameObject restart;
+		public GameObject player;
+		public float speed;
+		public GameObject levelComplete;
 		public GameObject Formacao1;
 		public GameObject Formacao2;
 		public GameObject Formacao3;
@@ -40,19 +43,21 @@ public class GC2 : MonoBehaviour {
 		private float earlierX;
 		private AudioSource bossSong;
 		bool bossIstantiate;
-	bool cinturaoInstantiate = false;
+		bool cinturaoInstantiate = false;
 		
 		public int s;
 		public GameObject[] players = new GameObject[4];
 		public GameObject planetas ;
 		AudioSource[] audios;
+		GlobalStatus global;
 		
 		// Use this for initialization
 		void Start ()
 		{
-		/*if (SAVEaNDLOAD.Load (0).nave != null) {
-			s = SAVEaNDLOAD.Load (0).nave;
-		}*/
+		global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
+		if (global != null) {
+			s = global.status.nave;
+		}
 			 audios = GetComponents<AudioSource> ();
 				audios[s].Play();
 				bossSong = audios [4];
@@ -110,17 +115,17 @@ public class GC2 : MonoBehaviour {
 		// Update is called once per frame
 		void Update ()
 		{
+
+
+
 			if (!GameObject.FindGameObjectWithTag ("Player")) {
-				if (!restart.gameObject.activeSelf) {
-					restart.gameObject.SetActive (true);
-				}
-				if (Input.GetKeyDown (KeyCode.R)) {
-					Application.LoadLevel (Application.loadedLevel);
-					
+				if (!restart.gameObject.activeSelf) {					
+				restart.gameObject.SetActive (true);
 				}
 				
+				
 			}
-		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 49.8f){
+		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 59.8f){
 			if(!cinturaoInstantiate){
 				Instantiate(Cinturao,new Vector3(0,0,41.50f),Cinturao.transform.rotation);
 				cinturaoInstantiate = true;
@@ -145,13 +150,34 @@ public class GC2 : MonoBehaviour {
 
 		}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
-			SaveScript sa = SAVEaNDLOAD.Load(s);
-			sa.TotalPoints += GameObject.FindWithTag("Player").GetComponent<Status>().levelPoints;
-			sa.faseAtual +=1;
-			SAVEaNDLOAD.Save(sa,s);
-			Application.LoadLevel("upgrade");
+
+			player = GameObject.FindWithTag("Player");
+			player.GetComponent<PlayerController>().enabled = false;
+			player.transform.Translate(new Vector3(0,0,speed));
+			levelComplete.SetActive(true);
+			if(player.transform.position.z > 21f){
+
+				global.status.TotalPoints += player.GetComponent<Status>().levelPoints;
+				global.status.faseAtual =1;
+				Application.LoadLevel("HangarScene");
+			}else{
+				speed += 0.005f;
+			}
+			
 		}
+
+
+	
+	
 	}
+	public void RestartLevel(){
+		Application.LoadLevel (Application.loadedLevel);
+	}
+	public void ExitLevel(){
+		Application.LoadLevel ("HangarScene");
+	}
+
+
 
 
 

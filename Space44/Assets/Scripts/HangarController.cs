@@ -34,6 +34,8 @@ public class HangarController : MonoBehaviour
 		void PlayLevel ()
 		{
 				GlobalStatus global = GameObject.FindGameObjectWithTag ("Global").GetComponent<GlobalStatus> ();
+
+
 				if (global != null) {
 						Application.LoadLevel ("lvl" + global.status.faseAtual);
 				} else {

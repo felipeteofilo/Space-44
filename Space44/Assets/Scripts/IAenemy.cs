@@ -77,6 +77,10 @@ public class IAenemy : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+			
+
+
+
 				Physics.IgnoreLayerCollision (8,12);
 				if (enemy == E.JustGo) {
 						transform.Translate (new Vector3 (0, 0, Speed));
@@ -156,12 +160,14 @@ public class IAenemy : MonoBehaviour
 
 			}
 		}
+		}
 
-	}
 	void OnCollisionEnter (Collision collision){
 		if(collision.transform.tag == "Player"){
 			Instantiate(explosion,transform.position,transform.rotation);
+			GetComponent<ColissionController>().SendMessage("PiscaAe",0.03f);
 			Destroy(gameObject);
+
 		}
 		if(collision.transform.tag == "Enemy"){
 			if(enemy == E.JustGo ){

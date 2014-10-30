@@ -34,8 +34,13 @@ public class UpgradeController : MonoBehaviour
 						ShowSpaceShip ();
 				}
 				ShowButtons ();
+		ShowYourCredits ();
 
 		}
+	void ShowYourCredits(){
+		totalPoints.text = "Points: $" + global.status.TotalPoints;
+		}
+
 
 		void ShowButtons ()
 		{
@@ -91,7 +96,7 @@ public class UpgradeController : MonoBehaviour
 				if (spaceShips [spaceShipChose + 8].GetComponent<Status> ()) {
 
 						Status shipStatus = spaceShips [spaceShipChose + 8].GetComponent<Status> ();
-						status [0].value = shipStatus.damage;
+						status [0].value = shipStatus.damage * shipStatus.lvlDamage;
 						status [1].value = shipStatus.MaxLife;
 						status [2].value = shipStatus.speed;
 						status [3].value = shipStatus.stability;
@@ -115,7 +120,8 @@ public class UpgradeController : MonoBehaviour
 				string imageName = button.image.sprite.name.Substring (7, 1);
 		
 				int number = int.Parse (imageName);
-				if (number < 4) {
+		float price = button.GetComponent<UpgradeButton> ().Price;
+				if (number < 4 && global.status.TotalPoints - price > 0) {
 		
 						if (button.name == "NumberOfShoots" || button.name == "SpecialEnergy") {
 								if (number == 3)
@@ -124,6 +130,9 @@ public class UpgradeController : MonoBehaviour
 						Highlight (button);
 						button.GetComponent<UpgradeButton> ().Buy ();
 						ShowPrice (button);
+			spaceShips [spaceShipChose + 8].GetComponent<Status> ().CheckStatus();
+			global.status.TotalPoints -=price; 
+			ShowYourCredits();
 				}
 		}
 

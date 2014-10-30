@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-		public GUIText restart;
+		public GameObject restart;
+		public GameObject player;
+		public float speed;
+		public GameObject levelComplete;
 		public GameObject enemy1;
 		public GameObject enemy2;
 		public GameObject boss;
@@ -32,17 +36,16 @@ public class GameController : MonoBehaviour
 	public int s;
 	public GameObject[] players = new GameObject[4];
 	public GameObject planetas ;
+	GlobalStatus global ;
 
 
 		// Use this for initialization
 		void Start ()
 		{
-//		GlobalStatus global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
-//		if (global != null) {
-//						s = global.status.nave;
-//				} else {
-//			s =0;
-//				}
+		global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
+		if (global != null) {
+						s = global.status.nave;
+				}
 
 				 audios = GetComponents<AudioSource> ();
 				audios[s].Play();
@@ -60,12 +63,7 @@ public class GameController : MonoBehaviour
 						Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
 
 						GameObject enemy = ramdomEnemy ();
-						if (enemy == asteroid) {
-								Instantiate (enemy, spawnPosition, enemy.transform.rotation);
-								spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
-								Instantiate (enemy, spawnPosition, enemy.transform.rotation);
-								spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
-						}
+						
 						Instantiate (enemy, spawnPosition, enemy.transform.rotation);
 
 						yield return new WaitForSeconds (spawnWait);
@@ -113,20 +111,36 @@ public class GameController : MonoBehaviour
 				if (!GameObject.FindGameObjectWithTag ("Player")) {
 						if (!restart.gameObject.activeSelf) {
 								restart.gameObject.SetActive (true);
-						}
-						if (Input.GetKeyDown (KeyCode.R)) {
-								Application.LoadLevel (Application.loadedLevel);
 
 						}
+						
 
 				}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
-			SaveScript sa = SAVEaNDLOAD.Load(s);
+			/*SaveScript sa = SAVEaNDLOAD.Load(s);
 			sa.TotalPoints += GameObject.FindWithTag("Player").GetComponent<Status>().levelPoints;
 			sa.faseAtual +=1;
-			SAVEaNDLOAD.Save(sa,s);
-			Application.LoadLevel("upgrade");
-			
+			SAVEaNDLOAD.Save(sa,s);*/
+			player = GameObject.FindWithTag("Player");
+			player.GetComponent<PlayerController>().enabled = false;
+			player.transform.Translate(new Vector3(0,0,speed));
+			levelComplete.SetActive(true);
+			if(player.transform.position.z > 21f){
+				global.status.TotalPoints += player.GetComponent<Status>().levelPoints;
+				global.status.faseAtual =2;
+				Application.LoadLevel("HangarScene");
+			}else{
+				speed += 0.005f;
+			}
+
 		}
 		}
+	public void RestartLevel(){
+		Application.LoadLevel (Application.loadedLevel);
+
+	}
+	public void ExitLevel(){
+		Application.LoadLevel ("HangarScene");
+	}
+
 }

@@ -26,9 +26,9 @@ public class ColliderBoss : MonoBehaviour {
 
 		if(others.tag != "BossBullet" || others.tag != "BossLaser"){
 			if(others.tag == "BasicPlayerShoot")
-				SendMessageUpwards("AplyDamage",1);
+				SendMessageUpwards("AplyDamage",DamageController.shootList[0].damage);
 			if(others.tag == "PlayerLaser")
-				SendMessageUpwards("AplyDamage",0.2f);
+				SendMessageUpwards("AplyDamage",DamageController.shootList[2].damage);
 		}
 
 	}

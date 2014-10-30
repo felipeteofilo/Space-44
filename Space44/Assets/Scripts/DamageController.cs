@@ -10,7 +10,7 @@ public class Shooot{
 
 public class DamageController : MonoBehaviour {
 
-	public List <Shooot> shootList = new List<Shooot>();
+	public static List <Shooot> shootList = new List<Shooot>();
 	public TextAsset shootsReference; 
 
 	void Start () {
@@ -25,8 +25,9 @@ public class DamageController : MonoBehaviour {
 			shoot.damage = float.Parse(shootStatus[1]);
 			shootList.Add(shoot);
 		}
-		shootList[0].damage *=GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().damage*
+		shootList[0].damage =GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().damage*
 			GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().lvlDamage;
+
 	}
 
 	// Update is called once per frame

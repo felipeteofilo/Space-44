@@ -62,21 +62,28 @@ public class PlayerController : MonoBehaviour {
 		movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 		movement = movement * status.speed;
 
-		if (Input.GetAxis("Jump")!= 0 && status.actualShieldTime < status.timeShield) {
+		if (Input.GetAxis("Jump")!= 0){
+			if( status.actualShieldTime < status.timeShield) {
 						if (!shield.renderer.enabled ) {
 								shield.renderer.enabled = true;
 								shield.collider.enabled = true;
 								this.gameObject.collider.enabled = false;
 								initTimeShield = Time.time;
 								shieldAudio.Play ();
+								timeReloadShield = Time.time + status.actualShieldTime;
 						} 
-				} 
-		else {
+			}else {
+				initTimeShield =0;
+				shield.renderer.enabled = false;
+				this.gameObject.collider.enabled = true;
+				timeReloadShield = Time.time + status.actualShieldTime;
+				
+			}
+
+		}else {
 				
 				shield.renderer.enabled = false;
 				this.gameObject.collider.enabled = true;
-				initTimeShield = 0;
-				timeReloadShield = Time.time + status.actualShieldTime;
 				
 		}
 		
@@ -108,7 +115,8 @@ public class PlayerController : MonoBehaviour {
 
 		if(collision.transform.tag == "Enemy"){
 			SendMessage("AplyDamage",10f);
-			
+			GetComponent<ColissionController>().SendMessage("PiscaAe",0.03f);
+
 		}
 		if(collision.transform.tag == "Boss"){
 			Instantiate(explosion,transform.position,transform.rotation);
@@ -116,6 +124,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		if(collision.transform.tag == "Asteroid"){
 			SendMessage("AplyDamage",5f);
+			GetComponent<ColissionController>().SendMessage("PiscaAe",0.03f);
 			Instantiate(explosion,collision.transform.position,collision.transform.rotation);
 			Destroy(collision.gameObject,0.1f);
 			

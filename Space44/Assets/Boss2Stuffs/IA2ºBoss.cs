@@ -172,12 +172,12 @@ public class IA2ºBoss : MonoBehaviour
 				if (W == Weapon.Charging) {
 						turn = false;
 			if (Player.transform.position.x > Front.transform.position.x 
-			    &&(Front.transform.position.x >= X1+1 || Front.transform.position.x <= X2-1)) {
+			    &&(Front.transform.position.x >= X1+1.5f || Front.transform.position.x <= X2-1.5f)) {
 								Front.transform.Translate (new Vector3 (Speed2, 0, 0));
 
 						}
 						if (Player.transform.position.x < Front.transform.position.x
-			    &&(Front.transform.position.x >= X1+1 || Front.transform.position.x <= X2-1)) {
+			    &&(Front.transform.position.x >= X1+1.5f || Front.transform.position.x <= X2-1.5f)) {
 								Front.transform.Translate (new Vector3 (-Speed2, 0, 0));
 						}
 				}
@@ -454,7 +454,7 @@ public class IA2ºBoss : MonoBehaviour
 			
 		}
 		GameObject player = GameObject.FindGameObjectWithTag("Player");		
-		player.GetComponent<Status>().ReceivePoints(7500);
+		player.GetComponent<Status>().ReceivePoints(3500);
 		Instantiate (bigExplosion, SpotsOfExplosion [7].transform.position, SpotsOfExplosion [7].transform.rotation);
 		yield return new WaitForSeconds (0.75f);
 		Destroy (Front);

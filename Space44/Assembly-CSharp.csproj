@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Boss2Stuffs\IA2ºBoss.cs" />
+     <Compile Include="Assets\FlashBar.cs" />
      <Compile Include="Assets\Scripts\AsteroidIA.cs" />
      <Compile Include="Assets\Scripts\BarStatus.cs" />
      <Compile Include="Assets\Scripts\Bomb.cs" />
