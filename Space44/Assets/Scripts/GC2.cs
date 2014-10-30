@@ -125,7 +125,7 @@ public class GC2 : MonoBehaviour {
 				
 				
 			}
-		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 59.8f){
+		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 86.8f){
 			if(!cinturaoInstantiate){
 				Instantiate(Cinturao,new Vector3(0,0,41.50f),Cinturao.transform.rotation);
 				cinturaoInstantiate = true;
