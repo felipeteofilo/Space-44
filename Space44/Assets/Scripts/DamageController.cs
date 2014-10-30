@@ -27,7 +27,7 @@ public class DamageController : MonoBehaviour {
 		}
 		shootList[0].damage =GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().damage*
 			GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().lvlDamage;
-		Debug.Log(shootList[0].damage);
+
 	}
 
 	// Update is called once per frame

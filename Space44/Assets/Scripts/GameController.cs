@@ -62,12 +62,7 @@ public class GameController : MonoBehaviour
 						Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
 
 						GameObject enemy = ramdomEnemy ();
-						if (enemy == asteroid) {
-								Instantiate (enemy, spawnPosition, enemy.transform.rotation);
-								spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
-								Instantiate (enemy, spawnPosition, enemy.transform.rotation);
-								spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
-						}
+						
 						Instantiate (enemy, spawnPosition, enemy.transform.rotation);
 
 						yield return new WaitForSeconds (spawnWait);
