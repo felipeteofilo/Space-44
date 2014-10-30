@@ -37,12 +37,12 @@ public class GameController : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-		GlobalStatus global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
-		if (global != null) {
-						s = global.status.nave;
-				} else {
-			s =0;
-				}
+//		GlobalStatus global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
+//		if (global != null) {
+//						s = global.status.nave;
+//				} else {
+//			s =0;
+//				}
 
 				 audios = GetComponents<AudioSource> ();
 				audios[s].Play();

@@ -10,6 +10,8 @@ public class UpgradeController : MonoBehaviour
 		public int spaceShipChose;
 		public string[] names;
 		public TextMesh spaceShipName;
+		public TextMesh upgradePrice;
+		public TextMesh totalPoints;
 		public Slider[] status;
 		private GlobalStatus global;
 		public Button[] buttons;
@@ -31,7 +33,7 @@ public class UpgradeController : MonoBehaviour
 				for (int i = 0; i < spaceShipChose; i++) {
 						ShowSpaceShip ();
 				}
-		ShowButtons ();
+				ShowButtons ();
 
 		}
 
@@ -59,7 +61,30 @@ public class UpgradeController : MonoBehaviour
 
 
 		}
-	
+
+		public void ShowPrice (Button button)
+		{
+				string imageName = button.image.sprite.name.Substring (7, 1);
+		
+				int number = int.Parse (imageName);
+				if (number < 4) {
+
+						if (button.name == "NumberOfShoots" || button.name == "SpecialEnergy") {
+								if (number >= 3) {
+										return;
+								}
+						}
+						float price = button.GetComponent<UpgradeButton> ().Price;
+						upgradePrice.text = "Price: $" + price;
+						upgradePrice.gameObject.SetActive (true);
+				}
+		}
+
+		public void HidePrice ()
+		{
+
+				upgradePrice.gameObject.SetActive (false);
+		}
 		// Update is called once per frame
 		void Update ()
 		{
@@ -97,7 +122,8 @@ public class UpgradeController : MonoBehaviour
 										return;
 						}
 						Highlight (button);
-						button.GetComponent<UpgradeButton> ().Buy (global);
+						button.GetComponent<UpgradeButton> ().Buy ();
+						ShowPrice (button);
 				}
 		}
 

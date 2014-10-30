@@ -19,7 +19,7 @@ public class HangarController : MonoBehaviour
 		void Update ()
 		{
 				if (saveText.gameObject.activeSelf && Time.time - tempoAparecendo > tempoAparecerSave) {
-						saveText.gameObject.SetActive(false);
+						saveText.gameObject.SetActive (false);
 				}
 
 
@@ -43,7 +43,10 @@ public class HangarController : MonoBehaviour
 
 		void MainMenu ()
 		{
-
+				if (GameObject.FindGameObjectWithTag ("Global")) {
+			GameObject global = GameObject.FindGameObjectWithTag ("Global");
+						Destroy (global);
+				}
 				Application.LoadLevel ("CenaMenu");
 
 		}
@@ -52,7 +55,7 @@ public class HangarController : MonoBehaviour
 		{
 
 				SAVEaNDLOAD.Save (global.status, 0);
-		saveText.gameObject.SetActive(true);
+				saveText.gameObject.SetActive (true);
 				tempoAparecendo = Time.time;
 		}
 }
