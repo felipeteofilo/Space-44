@@ -118,9 +118,8 @@ public class GC2 : MonoBehaviour {
 
 
 			if (!GameObject.FindGameObjectWithTag ("Player")) {
-				if (!restart.gameObject.activeSelf) {
-				Time.timeScale =0;
-					restart.gameObject.SetActive (true);
+				if (!restart.gameObject.activeSelf) {					
+				restart.gameObject.SetActive (true);
 				}
 				
 				

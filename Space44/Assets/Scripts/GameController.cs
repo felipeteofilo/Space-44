@@ -115,7 +115,6 @@ public class GameController : MonoBehaviour
 				if (!GameObject.FindGameObjectWithTag ("Player")) {
 						if (!restart.gameObject.activeSelf) {
 								restart.gameObject.SetActive (true);
-								Time.timeScale =0;
 
 						}
 						
@@ -140,11 +139,10 @@ public class GameController : MonoBehaviour
 		}
 	public void RestartLevel(){
 		Application.LoadLevel (Application.loadedLevel);
-		Time.timeScale =1;
+
 	}
 	public void ExitLevel(){
 		Application.LoadLevel ("NewGame");
-		Time.timeScale =1;
 	}
 
 }

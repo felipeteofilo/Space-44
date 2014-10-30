@@ -7,11 +7,9 @@ public class AsteroidIA : MonoBehaviour {
 	// Use this for initialization
 
 	void Update () {
-		if(Time.timeScale!=0){
 		Physics.IgnoreLayerCollision (13,12);
 		transform.Translate(transform.forward*-speed);
 		}
-	}
 	void AplyDamage(float f){
 		life -= f;
 	}
