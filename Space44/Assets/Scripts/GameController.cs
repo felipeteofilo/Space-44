@@ -99,8 +99,8 @@ public class GameController : MonoBehaviour
 						for (int i =0; i< stars.Length; i++) {
 								stars [i].Pause ();
 						}
-						Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, 30);
-						Instantiate (boss, spawnPosition, boss.transform.rotation);
+						Vector3 spawnPosition = new Vector3 (0, 0, 30);
+						Instantiate(boss, spawnPosition, boss.transform.rotation);
 						bossIstantiate = true;
 				}
 		}
@@ -117,10 +117,7 @@ public class GameController : MonoBehaviour
 
 				}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
-			/*SaveScript sa = SAVEaNDLOAD.Load(s);
-			sa.TotalPoints += GameObject.FindWithTag("Player").GetComponent<Status>().levelPoints;
-			sa.faseAtual +=1;
-			SAVEaNDLOAD.Save(sa,s);*/
+
 			player = GameObject.FindWithTag("Player");
 			player.GetComponent<PlayerController>().enabled = false;
 			player.transform.Translate(new Vector3(0,0,speed));
