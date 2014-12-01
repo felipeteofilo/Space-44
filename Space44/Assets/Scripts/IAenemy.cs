@@ -9,7 +9,7 @@ public class IAenemy : MonoBehaviour
 		public float Life;//Vida do inimigo
 		public float DmgPerColison;//Dano ao colidir 
 		public float Speed;//velocidade de movimento
-	public float speed2;
+		public float speed2;
 		public GameObject Way;//Caminho ate Player
 		public Vector3 destiny;//Vector 3 do Caminho
 		public GameObject Target;//Player marcado como alvo de tiros
@@ -19,12 +19,11 @@ public class IAenemy : MonoBehaviour
 		public float cooldown = 2.0f;//cooldown de tiro pra outro
 		private float nextFire; //tempo para o proximo tiro
 		public GameObject explosion;
-		
-	private bool BulletRain = false;
-	public Vector3 positionForRain;
-	private int rotateControl = 0;
-	private int speedrotate =3;
-	public ParticleSystem Tiro2;
+		private bool BulletRain = false;
+		public Vector3 positionForRain;
+		private int rotateControl = 0;
+		private int speedrotate = 3;
+		public ParticleSystem Tiro2;
 
 
 		public enum E
@@ -54,11 +53,8 @@ public class IAenemy : MonoBehaviour
 				}
 
 				if (enemy == E.JustGo) {
-						Speed = 0.1f;
-						if (Way != null) {
-								destiny = Way.transform.position;
-								transform.LookAt (destiny);
-						}
+						Speed = 0.05f;
+						
 				}
 				if (enemy == E.Foward) {
 						Speed = 0.12f;
@@ -67,10 +63,11 @@ public class IAenemy : MonoBehaviour
 						Speed = 0.1f;
 						speed2 = Speed;
 
-			}if (enemy == E.Follower) {
+				}
+				if (enemy == E.Follower) {
 						Speed = 0.2f;
 			
-		}
+				}
 	
 		}
 	
@@ -81,8 +78,21 @@ public class IAenemy : MonoBehaviour
 
 
 
-				Physics.IgnoreLayerCollision (8,12);
+				Physics.IgnoreLayerCollision (8, 12);
 				if (enemy == E.JustGo) {
+						if (Way != null) {
+								destiny = Way.transform.position;
+
+								if (transform.position.z <= 7.5f) {
+										transform.Translate (0, 0, Speed * 3);
+								} else {
+										if (transform.position.x > destiny.x) {
+												transform.Translate (Speed, 0, 0);
+										} else {
+												transform.Translate (-Speed, 0, 0);
+										}
+								}
+						}
 						transform.Translate (new Vector3 (0, 0, Speed));
 
 				}
@@ -99,7 +109,7 @@ public class IAenemy : MonoBehaviour
 
 								Vector3 v = destiny - transform.position;
 								transform.Translate (new Vector3 (0, 0, Speed));
-								transform.forward = Vector3.Lerp (transform.forward, v.normalized, Time.deltaTime*5 );
+								transform.forward = Vector3.Lerp (transform.forward, v.normalized, Time.deltaTime * 5);
 				
 						} else {
 								transform.Translate (new Vector3 (0, 0, Speed));
@@ -108,89 +118,84 @@ public class IAenemy : MonoBehaviour
 			
 				}
 
-					if(enemy == E.FromHell){
+				if (enemy == E.FromHell) {
 						
-			if( !BulletRain){
-				transform.Translate (new Vector3 (0, 0, Speed));
+						if (!BulletRain) {
+								transform.Translate (new Vector3 (0, 0, Speed));
 
-			}
+						}
 
-			if(transform.position.z > positionForRain.z-0.1f && transform.position.z < positionForRain.z+0.1f){
-				BulletRain = true;
+						if (transform.position.z > positionForRain.z - 0.1f && transform.position.z < positionForRain.z + 0.1f) {
+								BulletRain = true;
 
-			}
-					}
-
-
-
-		if(weapon != W.Rain){
-				if (weapon == W.InTarget) {
-						if (Target != null) {
-								Bullet = Target.transform.position;
-			
-								Aim.transform.LookAt (Bullet);
 						}
 				}
-				//Tiro na direçao em que nave olhar
-				//Nao se faz nada
-				if (Time.time > nextFire && Target != null && transform.position.z > Target.transform.position.z) {	
-						Tiro.Emit (1);
-						nextFire = Time.time + cooldown;
-			}
-		}else{
-			if(BulletRain){
-				if(rotateControl == 360 ){
-					speedrotate *=-1;
-				}
 
-				if(rotateControl == 720){
-					BulletRain = false;
+
+
+				if (weapon != W.Rain) {
+						if (weapon == W.InTarget) {
+								if (Target != null) {
+										Bullet = Target.transform.position;
+			
+										Aim.transform.LookAt (Bullet);
+								}
+						}
+						//Tiro na direçao em que nave olhar
+						//Nao se faz nada
+						if (Time.time > nextFire && Target != null && transform.position.z > Target.transform.position.z) {	
+								Tiro.Emit (1);
+								nextFire = Time.time + cooldown;
+						}
+				} else {
+						if (BulletRain) {
+								if (rotateControl == 360) {
+										speedrotate *= -1;
+								}
+
+								if (rotateControl == 720) {
+										BulletRain = false;
 					
-				}else{
+								} else {
 
-					transform.Rotate(new Vector3(0,speedrotate,0));
-					rotateControl +=3;
+										transform.Rotate (new Vector3 (0, speedrotate, 0));
+										rotateControl += 3;
+
+								}
+
+
+								if (nextFire < Time.time) {
+
+										Tiro.Emit (1);
+										Tiro2.Emit (1);
+										nextFire = Time.time + cooldown;
+								}
+
+						}
+				}
+		}
+
+		void OnCollisionEnter (Collision collision)
+		{
+				if (collision.transform.tag == "Player") {
+						Instantiate (explosion, transform.position, transform.rotation);
+						GetComponent<ColissionController> ().SendMessage ("PiscaAe", 0.03f);
+						Destroy (gameObject);
 
 				}
 
-
-				if(nextFire < Time.time){
-
-					Tiro.Emit(1);
-					Tiro2.Emit(1);
-					nextFire = Time.time + cooldown;
+				if (collision.transform.tag == "Boss") {
+						Instantiate (explosion, transform.position, transform.rotation);
+						Destroy (gameObject);
 				}
+				if (collision.transform.tag == "Asteroid") {
+						SendMessage ("AplyDamage", 1f);
+						Destroy (collision.gameObject, 0.5f);
 
-			}
-		}
-		}
-
-	void OnCollisionEnter (Collision collision){
-		if(collision.transform.tag == "Player"){
-			Instantiate(explosion,transform.position,transform.rotation);
-			GetComponent<ColissionController>().SendMessage("PiscaAe",0.03f);
-			Destroy(gameObject);
-
-		}
-		if(collision.transform.tag == "Enemy"){
-			if(enemy == E.JustGo ){
-				destiny = new Vector3(-destiny.x,destiny.y,destiny.z);
-				transform.LookAt(destiny);
-			}
-
-		}
-		if(collision.transform.tag == "Boss"){
-			Instantiate(explosion,transform.position,transform.rotation);
-			Destroy(gameObject);
-		}
-		if(collision.transform.tag == "Asteroid"){
-			SendMessage("AplyDamage",1f);
-			Destroy(collision.gameObject,0.5f);
-
-		}
+				}
 		 
 
 		
-	}
-	}
+		}
+}
 
