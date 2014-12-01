@@ -15,7 +15,7 @@ public	float CurrentLife;
 	public Slider[] Hud;
 	public Text Pontos;
 	public int levelPoints;
-	bool onTurn = false;
+	//bool onTurn = false;
 	float tester;
 	float width;
 	// Use this for initialization

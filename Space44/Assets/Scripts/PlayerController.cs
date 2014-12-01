@@ -119,8 +119,7 @@ public class PlayerController : MonoBehaviour {
 
 		}
 		if(collision.transform.tag == "Boss"){
-			Instantiate(explosion,transform.position,transform.rotation);
-			Destroy(gameObject);
+			SendMessage("AplyDamage",100f);
 		}
 		if(collision.transform.tag == "Asteroid"){
 			SendMessage("AplyDamage",5f);

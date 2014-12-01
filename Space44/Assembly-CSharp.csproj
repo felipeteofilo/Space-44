@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Boss2Stuffs\IA2ºBoss.cs" />
+     <Compile Include="Assets\Boss3 e 4\BombCharge.cs" />
+     <Compile Include="Assets\Boss3 e 4\IA3ºBoss.cs" />
+     <Compile Include="Assets\Boss3 e 4\IAFinalBoss.cs" />
+     <Compile Include="Assets\Boss3 e 4\JustDie.cs" />
      <Compile Include="Assets\FlashBar.cs" />
      <Compile Include="Assets\Scripts\AsteroidIA.cs" />
      <Compile Include="Assets\Scripts\BarStatus.cs" />
@@ -56,6 +60,7 @@
      <Compile Include="Assets\Scripts\ColliderBoss.cs" />
      <Compile Include="Assets\Scripts\DamageController.cs" />
      <Compile Include="Assets\Scripts\EnemyStatus.cs" />
+     <Compile Include="Assets\Scripts\ExpandingE.cs" />
      <Compile Include="Assets\Scripts\ExperienceMoviment.cs" />
      <Compile Include="Assets\Scripts\Father.cs" />
      <Compile Include="Assets\Scripts\FuzilFPS.cs" />

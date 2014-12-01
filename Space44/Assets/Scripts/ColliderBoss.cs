@@ -18,11 +18,12 @@ public class ColliderBoss : MonoBehaviour {
 	void OnParticleCollision(GameObject others){
 		//conferir as particulas
 		//setar dmg
+		if(others.tag == "BasicPlayerShoot"||others.tag =="PlayerLaser"){
 		if (Time.time > timeNextFlash && this.gameObject.collider.enabled == true) {
 			timeNextFlash = Time.time + timeToFlash;
 			StartCoroutine (FlashPlayer (0.03f));
 
-		}
+			}}
 
 		if(others.tag != "BossBullet" || others.tag != "BossLaser"){
 			if(others.tag == "BasicPlayerShoot")

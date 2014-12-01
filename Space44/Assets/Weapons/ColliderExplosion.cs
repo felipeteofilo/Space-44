@@ -20,7 +20,7 @@ public class ColliderExplosion : MonoBehaviour {
 
 	}
 	void OnTriggerEnter(Collider c){
-
+		if(c.tag =="Enemy"||c.tag =="Boss" )
 			c.SendMessageUpwards("AplyDamage",Dmg);
 			
 

@@ -11,6 +11,7 @@ public class Shooot{
 public class DamageController : MonoBehaviour {
 
 	public static List <Shooot> shootList = new List<Shooot>();
+	public  List <Shooot> shootListCopy = new List<Shooot>();
 	public TextAsset shootsReference; 
 
 	void Start () {
@@ -27,6 +28,7 @@ public class DamageController : MonoBehaviour {
 		}
 		shootList[0].damage =GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().damage*
 			GameObject.FindGameObjectWithTag("Player").GetComponent<Status>().lvlDamage;
+		shootListCopy = shootList;
 
 	}
 
