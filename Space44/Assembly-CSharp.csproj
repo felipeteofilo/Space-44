@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Father.cs" />
      <Compile Include="Assets\Scripts\FuzilFPS.cs" />
      <Compile Include="Assets\Scripts\GC2.cs" />
+     <Compile Include="Assets\Scripts\GC3.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GlobalStatus.cs" />
      <Compile Include="Assets\Scripts\HUDscript.cs" />

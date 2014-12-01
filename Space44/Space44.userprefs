@@ -1,9 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\JogosUnity\Jogo2DSonic\Assets\Scripts\SonicMove.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController.cs">
     <Files>
-      <File FileName="..\..\..\JogosUnity\Jogo2DSonic\Assets\Scripts\Controller.cs" Line="21" Column="51" />
-      <File FileName="..\..\..\JogosUnity\Jogo2DSonic\Assets\Scripts\SonicMove.cs" Line="237" Column="7" />
+      <File FileName="Assets\Scripts\GC2.cs" Line="30" Column="13" />
+      <File FileName="Assets\Scripts\GC3.cs" Line="61" Column="20" />
+      <File FileName="Assets\Scripts\Status.cs" Line="94" Column="6" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="103" Column="60" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

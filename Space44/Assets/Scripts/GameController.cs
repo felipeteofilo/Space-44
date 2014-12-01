@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
 		public GameObject boss;
 		public GameObject background;
 		public GameObject background2;
+		public GameObject background3;
 		public GameObject asteroid;
 		public Vector3 spawnWaves;
 		[Range(0,100)]
@@ -28,7 +29,7 @@ public class GameController : MonoBehaviour
 //	public int percentThirdEnemy;
 //	public int percentFourthEnemy;
 		public float spawnWait;
-		public float startWait;
+		private float startWait;
 		private float earlierX;
 		private AudioSource bossSong;
 		bool bossIstantiate;
@@ -42,33 +43,21 @@ public class GameController : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-		global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
-		if (global != null) {
-						s = global.status.nave;
-				}
+		//global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
+		//if (global != null) {
+			//			s = global.status.nave;
+			//	}
 
 				 audios = GetComponents<AudioSource> ();
 				audios[s].Play();
 				bossSong = audios [4];
-				StartCoroutine (SpawnWaves ());
+				
 				Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
 
 	
 		}
 
-		IEnumerator SpawnWaves ()
-		{
-				yield return new WaitForSeconds (startWait);
-				while (true) {
-						Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
 
-						GameObject enemy = ramdomEnemy ();
-						
-						Instantiate (enemy, spawnPosition, enemy.transform.rotation);
-
-						yield return new WaitForSeconds (spawnWait);
-				}
-		}
 
 		GameObject ramdomEnemy ()
 		{
@@ -90,6 +79,7 @@ public class GameController : MonoBehaviour
 				if (background.transform.localPosition.z > 2.6f) {
 						background.transform.Translate (background.transform.forward * -0.05f);
 						background2.transform.Translate (background2.transform.forward * -0.025f);
+						background3.transform.Translate(background3.transform.forward * -0.02f);
 						//planetas.transform.Translate (background.transform.forward * -0.025f);
 				} else if (!bossIstantiate) {
 						audios[s].Stop();
@@ -108,7 +98,18 @@ public class GameController : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				if (!GameObject.FindGameObjectWithTag ("Player")) {
+				
+
+		if (Time.time - startWait > spawnWait && !bossIstantiate) {
+			startWait = Time.time;
+			Vector3 spawnPosition = new Vector3 (Random.Range (-spawnWaves.x, spawnWaves.x), spawnWaves.y, spawnWaves.z);
+			
+			GameObject enemy = ramdomEnemy ();
+			
+			Instantiate (enemy, spawnPosition, enemy.transform.rotation);
+		}
+
+		if (!GameObject.FindGameObjectWithTag ("Player")) {
 						if (!restart.gameObject.activeSelf) {
 								restart.gameObject.SetActive (true);
 
