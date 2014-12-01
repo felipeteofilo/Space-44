@@ -41,6 +41,8 @@ public class PlayerPowerWeapons : MonoBehaviour {
 		
 		if ( Input.GetButton("Fire1")&& inUse != 2){ 
 
+
+
 			inUse = 1;
 			if( Time.time > nextFire  ) {
 					if(status.bullets ==1){

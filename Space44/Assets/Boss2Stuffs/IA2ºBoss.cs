@@ -171,15 +171,18 @@ public class IA2ºBoss : MonoBehaviour
 		if(Player != null ){
 				if (W == Weapon.Charging) {
 						turn = false;
-			if (Player.transform.position.x > Front.transform.position.x 
-			    &&(Front.transform.position.x >= X1+1.5f || Front.transform.position.x <= X2-1.5f)) {
-								Front.transform.Translate (new Vector3 (Speed2, 0, 0));
+				if(Front.transform.position.x >= X1+1.5f && Front.transform.position.x <= X2-1.5f){
 
+					if (Player.transform.position.x > Front.transform.position.x)
+	 					{
+								Front.transform.Translate (new Vector3 (Speed2, 0, 0));
 						}
-						if (Player.transform.position.x < Front.transform.position.x
-			    &&(Front.transform.position.x >= X1+1.5f || Front.transform.position.x <= X2-1.5f)) {
+				else if (Player.transform.position.x < Front.transform.position.x) {
 								Front.transform.Translate (new Vector3 (-Speed2, 0, 0));
-						}
+					}
+				}else{
+					Front.transform.Translate (new Vector3 (0, 0, 0));
+				}
 				}
 		if (W == Weapon.Laser){
 			if(Front.transform.position.x > Player.transform.position.x && !MovingLaserR){

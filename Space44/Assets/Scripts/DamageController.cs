@@ -52,6 +52,9 @@ public class DamageController : MonoBehaviour {
 
 
 		if(hitObject.tag == "Enemy" && !hitShoot.name.Contains("Enemy")){
+
+
+
 			hitObject.GetComponent<EnemyStatus>().life  -=  hitShoot.damage;
 
 

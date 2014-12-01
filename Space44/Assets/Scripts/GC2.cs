@@ -95,7 +95,7 @@ public class GC2 : MonoBehaviour {
 
 		if (background.transform.localPosition.z > -44.15f) {
 				background.transform.Translate (background.transform.forward * -0.075f);
-			background2.transform.Translate (background2.transform.forward * 0.05f);	
+			background2.transform.Translate (background2.transform.forward * -0.05f);	
 			//planetas.transform.Translate (background.transform.forward * -0.025f);
 
 
@@ -145,7 +145,7 @@ public class GC2 : MonoBehaviour {
 		if(Time.time > nextSpawn && !stopspwan){
 			nextSpawn = Time.time + spawnRate;
 			GameObject g = ramdomEnemy();
-			Instantiate(g,new Vector3(Random.Range(-6.5f,6.5f),0,23.5f),g.transform.rotation);
+			Instantiate(g,new Vector3(Random.Range(-12.75f,12.75f),0,23.5f),g.transform.rotation);
 
 
 		}

@@ -10,11 +10,8 @@ public class Menu : MonoBehaviour
 		}
 	void Load(){
 
-		GlobalStatus global = GameObject.FindGameObjectWithTag ("Global").GetComponent<GlobalStatus> ();
-		global.status = SAVEaNDLOAD.Load (0);
-		if (global.status != null) {
-						Application.LoadLevel ("HangarScene");
-				}
+		Application.LoadLevel ("LoadScene");
+				
 	}
 	void Credits(){
 

@@ -56,8 +56,9 @@ public class HangarController : MonoBehaviour
 		void Save ()
 		{
 
-				SAVEaNDLOAD.Save (global.status, 0);
-				saveText.gameObject.SetActive (true);
-				tempoAparecendo = Time.time;
+//				SAVEaNDLOAD.Save (global.status, 0);
+//				saveText.gameObject.SetActive (true);
+//				tempoAparecendo = Time.time;
+		Application.LoadLevel("SaveScene");
 		}
 }

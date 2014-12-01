@@ -68,7 +68,7 @@ public class IAenemy : MonoBehaviour
 						speed2 = Speed;
 
 			}if (enemy == E.Follower) {
-						Speed = 0.1f;
+						Speed = 0.2f;
 			
 		}
 	
@@ -95,8 +95,11 @@ public class IAenemy : MonoBehaviour
 								destiny = Way.transform.position;
 						}
 						if (transform.position.z > destiny.z + 2.5f) {
-								transform.LookAt (destiny);
+
+
+								Vector3 v = destiny - transform.position;
 								transform.Translate (new Vector3 (0, 0, Speed));
+								transform.forward = Vector3.Lerp (transform.forward, v.normalized, Time.deltaTime*5 );
 				
 						} else {
 								transform.Translate (new Vector3 (0, 0, Speed));

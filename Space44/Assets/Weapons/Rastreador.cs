@@ -46,6 +46,7 @@ public class Rastreador : MonoBehaviour
 						}
 				}
 				if (GameObject.FindGameObjectWithTag ("Boss") != null) {
+
 			target =  GameObject.FindGameObjectWithTag ("Boss");
 						
 				}
@@ -60,7 +61,7 @@ public class Rastreador : MonoBehaviour
 						Vector3 dir = target.transform.position - pai.transform.position;
 						pai.transform.Translate (new Vector3 (0, 0, speed));
 						//pai.transform.forward=dir;
-						pai.transform.forward = Vector3.Lerp (pai.transform.forward, dir.normalized, Time.deltaTime * 2);
+						pai.transform.forward = Vector3.Lerp (pai.transform.forward, dir.normalized, Time.deltaTime*5 );
 
 				} else {
 						pai.transform.Translate (new Vector3 (0, 0, speed));

@@ -55,7 +55,10 @@ public class ColissionController : MonoBehaviour
 				}
 		}
 	void PiscaAe(float t){
-		StartCoroutine(FlashPlayer(t));
+		if (Time.time > timeNextFlash && this.gameObject.collider.enabled == true) {
+						timeNextFlash = Time.time + timeToFlash;
+						StartCoroutine (FlashPlayer (t));
+		}
 	}
 
 		

@@ -9,6 +9,11 @@ public class GlobalStatus : MonoBehaviour {
 	void Start () {
 		a = GetComponents<AudioSource>();
 		GameObject.DontDestroyOnLoad (gameObject);
+
+		status.lvlDamage = 1;
+		status.bullets = 1;
+		status.levelButtons [1] = 1;
+		status.levelButtons [4] = 1;
 	
 	}
 	void Update(){
