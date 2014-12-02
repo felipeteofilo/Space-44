@@ -188,11 +188,7 @@ public class IAenemy : MonoBehaviour
 						Instantiate (explosion, transform.position, transform.rotation);
 						Destroy (gameObject);
 				}
-				if (collision.transform.tag == "Asteroid") {
-						SendMessage ("AplyDamage", 1f);
-						Destroy (collision.gameObject, 0.5f);
-
-				}
+				
 		 
 
 		

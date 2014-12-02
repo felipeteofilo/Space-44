@@ -76,14 +76,17 @@ public class GameController : MonoBehaviour
 		
 		void FixedUpdate ()
 		{
-				if (background.transform.localPosition.z > 2.6f) {
+				if (background.transform.localPosition.z > -285) {
 						background.transform.Translate (background.transform.forward * -0.05f);
 						background2.transform.Translate (background2.transform.forward * -0.025f);
 						background3.transform.Translate(background3.transform.forward * -0.02f);
 						//planetas.transform.Translate (background.transform.forward * -0.025f);
 				} else if (!bossIstantiate) {
-						audios[0].Stop();
+						
+			audios[0].Stop();
+					
 						bossSong.Play ();
+
 						StopAllCoroutines ();
 						ParticleSystem[] stars = GameObject.FindGameObjectWithTag ("Stars").GetComponentsInChildren<ParticleSystem> ();
 						for (int i =0; i< stars.Length; i++) {
@@ -133,18 +136,29 @@ public class GameController : MonoBehaviour
 
 		}
 		if (audios [0].time > 36) {
-			spawnWait = 3;
+			spawnWait = 1.8f;
 		}
 		if(audios [0].time > 90){
-			spawnWait = 2;
+			spawnWait = 1.5f;
+			percentAsteroid = 15;
+			percentFirstEnemy = 85;
 		}
-		if(audios [0].time > 170){
-			spawnWait = 1;
+		if(audios [0].time > 150){
+			spawnWait = 1.0f;
+			percentSecondEnemy = 20;
+			percentFirstEnemy = 70;
+			percentAsteroid = 10;
 		}
-		if (audios [0].time > 206) {
-			spawnWait = 4;
+		if (audios [0].time > 195) {
+			spawnWait = 7f;
+			percentFirstEnemy = 100;
+			percentAsteroid = 0;
+			percentSecondEnemy = 0;
 		}
-		Debug.Log (audios [0].time);
+//		if (!audios [0].isPlaying && !bossSong.isPlaying) {
+//			bossSong.Play();
+//		}
+
 
 
 		}
