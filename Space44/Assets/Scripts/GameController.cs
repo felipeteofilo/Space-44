@@ -49,8 +49,8 @@ public class GameController : MonoBehaviour
 			//	}
 
 				 audios = GetComponents<AudioSource> ();
-				audios[s].Play();
-				bossSong = audios [4];
+				audios[0].Play();
+				bossSong = audios [1];
 				
 				Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
 
@@ -82,7 +82,7 @@ public class GameController : MonoBehaviour
 						background3.transform.Translate(background3.transform.forward * -0.02f);
 						//planetas.transform.Translate (background.transform.forward * -0.025f);
 				} else if (!bossIstantiate) {
-						audios[s].Stop();
+						audios[0].Stop();
 						bossSong.Play ();
 						StopAllCoroutines ();
 						ParticleSystem[] stars = GameObject.FindGameObjectWithTag ("Stars").GetComponentsInChildren<ParticleSystem> ();
@@ -132,6 +132,21 @@ public class GameController : MonoBehaviour
 			}
 
 		}
+		if (audios [0].time > 36) {
+			spawnWait = 3;
+		}
+		if(audios [0].time > 90){
+			spawnWait = 2;
+		}
+		if(audios [0].time > 170){
+			spawnWait = 1;
+		}
+		if (audios [0].time > 206) {
+			spawnWait = 4;
+		}
+		Debug.Log (audios [0].time);
+
+
 		}
 	public void RestartLevel(){
 		Application.LoadLevel (Application.loadedLevel);
