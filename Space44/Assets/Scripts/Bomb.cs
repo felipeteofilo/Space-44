@@ -63,7 +63,7 @@ public class Bomb : MonoBehaviour {
 		
 			}
 		}else{
-			transform.Translate(new Vector3(0,0,-speed));
+			transform.Translate(new Vector3(0,0,speed));
 			if(Time.time - X > Timer  ){
 				Destroy(gameObject);
 				Instantiate (explosion,transform.position,transform.rotation);

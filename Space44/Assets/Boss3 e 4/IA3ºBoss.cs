@@ -200,7 +200,7 @@ public class IA3ºBoss : MonoBehaviour
 		{
 				if (Time.time > nextBomb) {
 
-						Instantiate (Bomb, Spawners [0].transform.position, Quaternion.Euler (0, 0, 0));
+			Instantiate (Bomb, Spawners [0].transform.position, Spawners [0].transform.rotation);
 						nextBomb = Time.time + bombRate;
 				}
 

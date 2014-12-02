@@ -169,13 +169,7 @@ public class IAenemy : MonoBehaviour
 			Destroy(gameObject);
 
 		}
-		if(collision.transform.tag == "Enemy"){
-			if(enemy == E.JustGo ){
-				destiny = new Vector3(-destiny.x,destiny.y,destiny.z);
-				transform.LookAt(destiny);
-			}
 
-		}
 		if(collision.transform.tag == "Boss"){
 			Instantiate(explosion,transform.position,transform.rotation);
 			Destroy(gameObject);
@@ -188,6 +182,7 @@ public class IAenemy : MonoBehaviour
 		 
 
 		
+	
 	}
-	}
+}
 

@@ -9,6 +9,7 @@ public class IAFinalBoss : MonoBehaviour {
 	private float Recovery;
 
 	public ParticleSystem[] bullets;
+	int b =0;
 	private float nextFire;
 	public float FireRate;
 
@@ -21,7 +22,11 @@ public class IAFinalBoss : MonoBehaviour {
 	private bool OnDie;
 
 	public ParticleSystem[] lasers;
-
+	private int L =0;
+	private bool alfaMode = true;
+	private bool betaMode = true;
+	public float ModeRate;
+	private float nextMode;
 	public GameObject biglaser;
 
 	public GameObject[] spawns;
@@ -53,6 +58,7 @@ public class IAFinalBoss : MonoBehaviour {
 		Recovery = (HpMax/100) *0.25f;
 		nextChange = Time.time + ChangeRate;
 		Dieposition = transform.position;
+		nextMode = Time.time + ModeRate;
 	}
 	
 	// Update is called once per frame
@@ -89,21 +95,45 @@ public class IAFinalBoss : MonoBehaviour {
 		}
 	}
 	void AlfaMode(){
-		RotRate = 0.2f;
+
+		if(alfaMode){
+			for(int i = 0; i<lasers.Length;i++){
+				lasers[i].enableEmission = false;
+			}
 		if(Time.time > nextFire){
-		for(int i = 0; i<bullets.Length;i++){
+			if(b == 0){
+		for(int i = 0; i<bullets.Length/2;i++){
 				bullets[i].Emit(1);
 			}
 			nextFire = Time.time + FireRate;
-		}
+				b = 1;
+			}else{
+				for(int i = 4; i<bullets.Length;i++){
+					bullets[i].Emit(1);
+				}
+				b = 0;
+				nextFire = Time.time + FireRate;
+			}
+			}
+		}else{
 		if(Time.time > nextRot){
+			if(L == 0){
+				lasers[0].enableEmission =true;
+				lasers[1].enableEmission =false;
+				L =1;
+			}else if(L == 1){
+				lasers[1].enableEmission =true;
+				lasers[0].enableEmission =false;
+				L =0;
+			}
 		for(int i = 0; i<lasers.Length;i++){
-			lasers[i].enableEmission = true;
 			if(target != null){
 			lasers[i].transform.LookAt(target.transform);
 			}
 			}
 			nextRot = Time.time + RotRate;
+
+			}
 		}
 		if(OnDie){
 			if(Time.time > nextbomb){
@@ -111,22 +141,28 @@ public class IAFinalBoss : MonoBehaviour {
 				nextbomb = bombRate + Time.time;
 			}
 		}
+		if(Time.time > nextMode){
+			nextMode = Time.time + ModeRate;
+			alfaMode = !alfaMode;
+		}
 		biglaser.SetActive(false);
 	}
 	void BetaMode(){
-		RotRate = 0.1f;
 		for(int i = 0; i<lasers.Length;i++){
 			lasers[i].enableEmission = false;
 		}
+		if(betaMode){
 		biglaser.SetActive(true);
-		if(target != null){
-			if(Time.time > nextRot){
-		//biglaser.transform.LookAt(target.transform);
-				nextRot = Time.time + RotRate;
-			}
-		}if(Time.time > nextbomb){
-		BombParty();
+		}else{
+			biglaser.SetActive(false);
+		if(Time.time > nextbomb){
+			BombParty();
 			nextbomb = bombRate + Time.time;
+			}
+		}
+		if(Time.time > nextMode){
+			nextMode = Time.time + ModeRate;
+			betaMode = !betaMode;
 		}
 	}
 	void BombParty(){
