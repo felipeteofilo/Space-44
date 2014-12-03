@@ -16,6 +16,7 @@ public class GC3 : MonoBehaviour {
 	public GameObject Enemy3;
 	public GameObject background;
 	public GameObject background2;
+	public GameObject background3;
 	
 
 	private bool stopspwan = false;
@@ -43,6 +44,7 @@ public class GC3 : MonoBehaviour {
 	private AudioSource bossSong;
 	bool bossIstantiate;
 	bool cinturaoInstantiate = false;
+	bool enemyInstatiate = true;
 	
 	public int s;
 	public GameObject[] players = new GameObject[4];
@@ -58,8 +60,8 @@ public class GC3 : MonoBehaviour {
 		//	s = global.status.nave;
 		//}
 		audios = GetComponents<AudioSource> ();
-		audios[s].Play();
-		bossSong = audios [4];
+		audios[0].Play();
+		bossSong = audios [0];
 		Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
 		
 		
@@ -92,14 +94,15 @@ public class GC3 : MonoBehaviour {
 		
 		
 		
-		if (background.transform.localPosition.z > -44.15f) {
-			background.transform.Translate (background.transform.forward * -0.075f);
-			background2.transform.Translate (background2.transform.forward * -0.05f);	
+		if (background.transform.localPosition.z > -285) {
+			background.transform.Translate (background.transform.forward * -0.05f);
+			background2.transform.Translate (background2.transform.forward * -0.025f);
+			background3.transform.Translate(background3.transform.forward * - 0.02f);	
 			//planetas.transform.Translate (background.transform.forward * -0.025f);
 			
 			
 		} else if (!bossIstantiate) {
-			audios[s].Stop();
+			audios[0].Stop();
 			bossSong.Play ();
 			ParticleSystem[] stars = GameObject.FindGameObjectWithTag ("Stars").GetComponentsInChildren<ParticleSystem> ();
 			for (int i =0; i< stars.Length; i++) {
@@ -108,6 +111,8 @@ public class GC3 : MonoBehaviour {
 			Vector3 spawnPosition = new Vector3 (0,0, 15);
 			Instantiate (boss, spawnPosition, boss.transform.rotation);
 			bossIstantiate = true;
+			enemyInstatiate = false;
+
 		}
 	}
 	
@@ -124,13 +129,31 @@ public class GC3 : MonoBehaviour {
 			
 		}
 
-		if(Time.time > nextSpawn ){
+		if(Time.time > nextSpawn && enemyInstatiate ){
 			nextSpawn = Time.time + spawnRate;
 			GameObject g = ramdomEnemy();
-			Instantiate(g,new Vector3(Random.Range(-12.75f,12.75f),0,23.5f),g.transform.rotation);
-			
-			
+			Instantiate(g,new Vector3(Random.Range(-12.75f,12.75f),0,0),g.transform.rotation);
 		}
+
+
+		if (audios [0].time > 21) {
+			spawnRate = 10f;
+		}
+		if (audios [0].time > 70) {
+			spawnRate = 8.0f;
+		}
+		if (audios [0].time > 120) {
+			spawnRate = 6f;
+		}
+		if (audios [0].time > 180) {
+			spawnRate = 25f;
+		}
+		if (audios [0].time > 220 && audios[0].isPlaying) {
+			audios[0].Stop();
+		}
+
+
+
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
 			
 			player = GameObject.FindWithTag("Player");

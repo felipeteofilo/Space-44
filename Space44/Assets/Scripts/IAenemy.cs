@@ -57,10 +57,10 @@ public class IAenemy : MonoBehaviour
 						
 				}
 				if (enemy == E.Foward) {
-						Speed = 0.12f;
+						Speed = 0.05f;
 				}
 				if (enemy == E.FromHell) {
-						Speed = 0.1f;
+						Speed = 0.05f;
 						speed2 = Speed;
 
 				}

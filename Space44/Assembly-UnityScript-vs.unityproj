@@ -53,7 +53,7 @@
      <None Include="Assets\Músicas - PI - Fase 1 e 2\Som - Selecionar Opção Desejada\Site - sounddogs\Site - fonte download.txt" />
      <None Include="Assets\Músicas - PI - Fase 1 e 2\Som - Selecionar Opção Desejada\Site - soundjay\Site - fonte download.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Users/felipe/Desktop/Projetos Unity/Space-44/Space44/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/Felipe/Desktop/Space-44/Space44/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
