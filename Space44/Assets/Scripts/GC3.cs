@@ -108,7 +108,7 @@ public class GC3 : MonoBehaviour {
 			for (int i =0; i< stars.Length; i++) {
 				stars [i].Pause ();
 			}
-			Vector3 spawnPosition = new Vector3 (0,0, 15);
+			Vector3 spawnPosition = new Vector3 (0,0, 31);
 			Instantiate (boss, spawnPosition, boss.transform.rotation);
 			bossIstantiate = true;
 			enemyInstatiate = false;
@@ -145,7 +145,7 @@ public class GC3 : MonoBehaviour {
 		if (audios [0].time > 120) {
 			spawnRate = 6f;
 		}
-		if (audios [0].time > 180) {
+		if (audios [0].time > 210) {
 			spawnRate = 25f;
 		}
 		if (audios [0].time > 220 && audios[0].isPlaying) {
