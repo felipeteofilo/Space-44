@@ -6,7 +6,7 @@ public class ExpandingE : MonoBehaviour {
 	public float growingSpeed;
 	private float atual =0;
 	public float limit;
-	private float dmg = 2;
+	private float dmg =0.5f;
 
 	// Use this for initialization
 	void Start () {
