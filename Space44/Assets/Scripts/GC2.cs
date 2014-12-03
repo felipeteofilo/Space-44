@@ -148,7 +148,7 @@ public class GC2 : MonoBehaviour {
 			spawnRate = 5.5f;
 		}
 		if (audios [0].time > 145) {
-			spawnRate = 2.0f;
+			spawnRate = 2.5f;
 		}
 		if (audios [0].time > 210) {
 			spawnRate = 10f;
@@ -157,12 +157,12 @@ public class GC2 : MonoBehaviour {
 			audios[0].Stop();
 		}
 
-		Debug.Log (audios [0].time);
+
 
 		if(Time.time > nextSpawn && !stopspwan){
 			nextSpawn = Time.time + spawnRate;
 			GameObject g = ramdomEnemy();
-			Instantiate(g,new Vector3(Random.Range(-12.75f,12.75f),0,23.5f),g.transform.rotation);
+			Instantiate(g,new Vector3(Random.Range(-12.75f,12.75f),0,0),g.transform.rotation);
 		}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
 
