@@ -17,6 +17,7 @@ public class GC2 : MonoBehaviour {
 	public GameObject Enemy3;
 		public GameObject background;
 	public GameObject background2;
+	public GameObject background3;
 
 	public Vector3 spawnWaves;
 	private bool stopspwan = false;
@@ -54,13 +55,13 @@ public class GC2 : MonoBehaviour {
 		// Use this for initialization
 		void Start ()
 		{
-		global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
-		if (global != null) {
-			s = global.status.nave;
-		}
+//		global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
+//		if (global != null) {
+//			s = global.status.nave;
+//		}
 			 audios = GetComponents<AudioSource> ();
-				audios[s].Play();
-				bossSong = audios [4];
+				audios[0].Play();
+				bossSong = audios [1];
 			Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
 			
 			
@@ -93,9 +94,10 @@ public class GC2 : MonoBehaviour {
 			
 
 
-		if (background.transform.localPosition.z > -44.15f) {
-				background.transform.Translate (background.transform.forward * -0.075f);
-			background2.transform.Translate (background2.transform.forward * -0.05f);	
+		if (background.transform.localPosition.z > -285) {
+				background.transform.Translate (background.transform.forward * -0.05f);
+			background2.transform.Translate (background2.transform.forward * -0.025f);
+			background3.transform.Translate(background3.transform.forward * - 0.02f);
 			//planetas.transform.Translate (background.transform.forward * -0.025f);
 
 
@@ -109,6 +111,7 @@ public class GC2 : MonoBehaviour {
 				Vector3 spawnPosition = new Vector3 (0,0, 15);
 				Instantiate (boss, spawnPosition, boss.transform.rotation);
 				bossIstantiate = true;
+				stopspwan = true;
 			}
 		}
 		
@@ -125,7 +128,9 @@ public class GC2 : MonoBehaviour {
 				
 				
 			}
-		if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 86.8f){
+		//if(background.transform.localPosition.z < 215f && background.transform.localPosition.z > 86.8f)
+		
+		if(audios[0].time  >= 107 && audios[0].time <= 143){
 			if(!cinturaoInstantiate){
 				Instantiate(Cinturao,new Vector3(0,0,41.50f),Cinturao.transform.rotation);
 				cinturaoInstantiate = true;
@@ -135,19 +140,29 @@ public class GC2 : MonoBehaviour {
 			cinturaoInstantiate = false;
 			stopspwan= false;
 		}
-		if(background.transform.localPosition.z < -30){
-			stopspwan= true;
 
+
+
+
+		if (audios [0].time > 17) {
+			spawnRate = 5.5f;
+		}
+		if (audios [0].time > 145) {
+			spawnRate = 2.0f;
+		}
+		if (audios [0].time > 210) {
+			spawnRate = 10f;
+		}
+		if (audios [0].time > 220 && audios[0].isPlaying) {
+			audios[0].Stop();
 		}
 
-
+		Debug.Log (audios [0].time);
 
 		if(Time.time > nextSpawn && !stopspwan){
 			nextSpawn = Time.time + spawnRate;
 			GameObject g = ramdomEnemy();
 			Instantiate(g,new Vector3(Random.Range(-12.75f,12.75f),0,23.5f),g.transform.rotation);
-
-
 		}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
 
@@ -158,7 +173,7 @@ public class GC2 : MonoBehaviour {
 			if(player.transform.position.z > 21f){
 
 				global.status.TotalPoints += player.GetComponent<Status>().levelPoints;
-				global.status.faseAtual =1;
+				global.status.faseAtual =3;
 				Application.LoadLevel("HangarScene");
 			}else{
 				speed += 0.005f;
