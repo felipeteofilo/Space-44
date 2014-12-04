@@ -421,6 +421,8 @@ public class IA3ºBoss : MonoBehaviour
 		Instantiate (bigExplosion,spots[z].transform.position,spots[z].transform.rotation);
 		yield return new WaitForSeconds (0.75f);
 		Destroy (gameObject);
+		GameObject player = GameObject.FindGameObjectWithTag("Player");		
+		player.GetComponent<Status>().ReceivePoints(5000);
 	}
 
 }

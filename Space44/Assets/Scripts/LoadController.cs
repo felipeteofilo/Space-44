@@ -25,6 +25,8 @@ public class LoadController : MonoBehaviour {
 		}
 	}
 	public void Back(){
+		GameObject g =GameObject.FindGameObjectWithTag ("Global");
+		Destroy(g);
 		Application.LoadLevel ("CenaMenu");
 	}
 

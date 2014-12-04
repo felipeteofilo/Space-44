@@ -17,7 +17,7 @@ public class GlobalStatus : MonoBehaviour {
 	
 	}
 	void Update(){
-		if(Application.loadedLevelName.Contains("lvl")){
+		if(Application.loadedLevelName.Contains("lvl")||Application.loadedLevelName.Equals("Credito")){
 			a[1].Stop();
 			a[0].Stop();
 		}else{
@@ -31,6 +31,9 @@ public class GlobalStatus : MonoBehaviour {
 				a[0].Play();
 			}
 
+		}
+		if(Application.loadedLevelName.Equals("Credito")){
+			Destroy(gameObject);
 		}
 
 	}

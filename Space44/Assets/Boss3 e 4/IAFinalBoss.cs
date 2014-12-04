@@ -216,5 +216,7 @@ public class IAFinalBoss : MonoBehaviour {
 		}
 		yield return new WaitForSeconds (1.25f);
 		allExplosions = true;
+		GameObject player = GameObject.FindGameObjectWithTag("Player");		
+		player.GetComponent<Status>().ReceivePoints(10000);
 	}
 }
