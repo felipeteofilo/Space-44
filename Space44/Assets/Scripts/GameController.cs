@@ -26,8 +26,7 @@ public class GameController : MonoBehaviour
 		public int
 				percentAsteroid;
 
-//	public int percentThirdEnemy;
-//	public int percentFourthEnemy;
+
 		public float spawnWait;
 		private float startWait;
 		private float earlierX;
@@ -43,10 +42,10 @@ public class GameController : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-		//global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
-		//if (global != null) {
-			//			s = global.status.nave;
-			//	}
+		global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
+		if (global != null) {
+						s = global.status.nave;
+				}
 
 				 audios = GetComponents<AudioSource> ();
 				audios[0].Play();
@@ -128,7 +127,9 @@ public class GameController : MonoBehaviour
 			levelComplete.SetActive(true);
 			if(player.transform.position.z > 21f){
 				global.status.TotalPoints += player.GetComponent<Status>().levelPoints;
+				if(global.status.faseAtual <=2){
 				global.status.faseAtual =2;
+				}
 				Application.LoadLevel("HangarScene");
 			}else{
 				speed += 0.005f;
@@ -155,9 +156,7 @@ public class GameController : MonoBehaviour
 			percentAsteroid = 0;
 			percentSecondEnemy = 0;
 		}
-//		if (!audios [0].isPlaying && !bossSong.isPlaying) {
-//			bossSong.Play();
-//		}
+
 
 
 

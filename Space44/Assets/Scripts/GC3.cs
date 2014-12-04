@@ -55,10 +55,10 @@ public class GC3 : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		//global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
-		//if (global != null) {
-		//	s = global.status.nave;
-		//}
+		global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
+		if (global != null) {
+			s = global.status.nave;
+		}
 		audios = GetComponents<AudioSource> ();
 		audios[0].Play();
 		bossSong = audios [0];
@@ -163,7 +163,9 @@ public class GC3 : MonoBehaviour {
 			if(player.transform.position.z > 21f){
 				
 				global.status.TotalPoints += player.GetComponent<Status>().levelPoints;
-				global.status.faseAtual =1;
+				if(global.status.faseAtual <=4){
+					global.status.faseAtual =4;
+				}
 				Application.LoadLevel("HangarScene");
 			}else{
 				speed += 0.005f;

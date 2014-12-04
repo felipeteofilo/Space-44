@@ -54,7 +54,6 @@ public class IAFinalBoss : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		HpAtual = HpMax;
-		target = GameObject.FindGameObjectWithTag("Player");
 		Recovery = (HpMax/100) *0.25f;
 		nextChange = Time.time + ChangeRate;
 		Dieposition = transform.position;
@@ -63,6 +62,7 @@ public class IAFinalBoss : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		target = GameObject.FindGameObjectWithTag("Player");
 		LifeController();
 		if(m == Mode.ModeA){
 			AlfaMode();

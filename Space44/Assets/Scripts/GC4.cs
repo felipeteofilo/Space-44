@@ -14,6 +14,7 @@ public class GC4 : MonoBehaviour {
 		public GameObject boss;
 		public GameObject background;
 		public GameObject background2;
+		public GameObject background3;
 		private int Enemys = 1;
 
 		public Vector3 spawnWaves;
@@ -47,18 +48,19 @@ public class GC4 : MonoBehaviour {
 		public GameObject[] players = new GameObject[4];
 		public GameObject planetas ;
 		AudioSource[] audios;
+		GlobalStatus global;
 		
 		// Use this for initialization
 		void Start ()
 		{
-		/*GlobalStatus global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
+		 global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
 		if (global != null) {
 			s = global.status.nave;
-		}*/
+		}
 			 audios = GetComponents<AudioSource> ();
 				audios[0].Play();
 				bossSong = audios [1];
-			//Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
+			Instantiate(players[s],new Vector3(0,0,1),Quaternion.Euler(new Vector3(0,0,0)));
 			
 			
 		}
@@ -89,17 +91,27 @@ public class GC4 : MonoBehaviour {
 		
 		void FixedUpdate ()
 		{
-		if(background.transform.localPosition.z < 200){
+		if(audios[0].time > 48){
 			Enemys = 2;
 
 		}
-		if(background.transform.localPosition.z < 125){
+		if(audios[0].time > 120){
+			Enemys = 1;
+		}
+		if(audios[0].time > 165){
 			Enemys = 3;
+		}
+		if(audios[0].time > 195){
+			Enemys = 1;
+		}
+		if (audios [0].time > 220 && audios[0].isPlaying) {
+			audios[0].Stop();
 		}
 
 		if (background.transform.localPosition.z > -44.15f) {
-				background.transform.Translate (background.transform.forward * -0.075f);
-			background2.transform.Translate (background2.transform.forward * 0.05f);	
+			background.transform.Translate (background.transform.forward * -0.05f);
+			background2.transform.Translate (background2.transform.forward * -0.025f);
+			background3.transform.Translate(background3.transform.forward * - 0.02f);		
 			//planetas.transform.Translate (background.transform.forward * -0.025f);
 
 
@@ -141,16 +153,15 @@ public class GC4 : MonoBehaviour {
 			nextSpawn = Time.time + spawnRate;
 		}
 		if(bossIstantiate && GameObject.FindGameObjectWithTag("Boss")== null){
-			/*SaveScript sa = SAVEaNDLOAD.Load(s);
-			sa.TotalPoints += GameObject.FindWithTag("Player").GetComponent<Status>().levelPoints;
-			sa.faseAtual +=1;
-			SAVEaNDLOAD.Save(sa,s);*/
+
 			player = GameObject.FindWithTag("Player");
 			player.GetComponent<PlayerController>().enabled = false;
 			player.transform.Translate(new Vector3(0,0,speed));
 			levelComplete.SetActive(true);
 			if(player.transform.position.z > 21f){
-				Application.LoadLevel("NewGame");
+				
+				global.status.TotalPoints += player.GetComponent<Status>().levelPoints;
+				Application.LoadLevel("HangarScene");
 			}else{
 				speed += 0.005f;
 			}
