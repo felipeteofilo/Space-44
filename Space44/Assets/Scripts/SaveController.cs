@@ -18,4 +18,7 @@ public class SaveController : MonoBehaviour {
 		SAVEaNDLOAD.Save (global.status, slot);
 		Application.LoadLevel("HangarScene");
 	}
+	public void Back(){
+		Application.LoadLevel ("HangarScene");
+	}
 }

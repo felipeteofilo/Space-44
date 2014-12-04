@@ -56,9 +56,9 @@ public class GC3 : MonoBehaviour {
 	void Start ()
 	{
 		global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
-		if (global != null) {
+	if (global != null) {
 			s = global.status.nave;
-		}
+	}
 		audios = GetComponents<AudioSource> ();
 		audios[0].Play();
 		bossSong = audios [0];

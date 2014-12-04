@@ -40,7 +40,7 @@ public class Status : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-			//	s = GameObject.FindGameObjectWithTag ("Global").GetComponent<GlobalStatus> ().status;
+				s = GameObject.FindGameObjectWithTag ("Global").GetComponent<GlobalStatus> ().status;
 
 				MinLife = MaxLife;
 				MinSpeed = speed;

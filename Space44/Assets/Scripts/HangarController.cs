@@ -8,6 +8,7 @@ public class HangarController : MonoBehaviour
 		public Text saveText;
 		public float tempoAparecerSave;
 		private float tempoAparecendo;
+		public Text Points;
 		// Use this for initialization
 		void Start ()
 		{
@@ -21,8 +22,8 @@ public class HangarController : MonoBehaviour
 				if (saveText.gameObject.activeSelf && Time.time - tempoAparecendo > tempoAparecerSave) {
 						saveText.gameObject.SetActive (false);
 				}
-
-
+				Points.text ="Points:"+global.status.TotalPoints;
+				
 	
 		}
 
@@ -33,14 +34,15 @@ public class HangarController : MonoBehaviour
 
 		void PlayLevel ()
 		{
-				GlobalStatus global = GameObject.FindGameObjectWithTag ("Global").GetComponent<GlobalStatus> ();
-
-
-				if (global != null) {
-						Application.LoadLevel ("lvl" + global.status.faseAtual);
-				} else {
-						Application.LoadLevel ("lvl1");
-				}
+//				GlobalStatus global = GameObject.FindGameObjectWithTag ("Global").GetComponent<GlobalStatus> ();
+//
+//
+//				if (global != null) {
+//						Application.LoadLevel ("lvl" + global.status.faseAtual);
+//				} else {
+//						Application.LoadLevel ("lvl1");
+//				}
+		Application.LoadLevel("LevelLoader");
 		}
 
 		void MainMenu ()

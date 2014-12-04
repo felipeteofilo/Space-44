@@ -22,6 +22,7 @@ public class ColliderExplosion : MonoBehaviour {
 	void OnTriggerEnter(Collider c){
 
 			c.SendMessageUpwards("AplyDamage",Dmg);
+			c.transform.SendMessageUpwards("PiscaAe",0.03f);
 			
 
 	}

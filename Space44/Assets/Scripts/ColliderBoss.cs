@@ -53,5 +53,11 @@ public class ColliderBoss : MonoBehaviour {
 			rendererBoss.renderer.material.color = color;
 		}
 	}
+	void PiscaAe(float t){
+		if (Time.time > timeNextFlash && this.gameObject.collider.enabled == true) {
+			timeNextFlash = Time.time + timeToFlash;
+			StartCoroutine (FlashPlayer (t));
+		}
+	}
 
 }

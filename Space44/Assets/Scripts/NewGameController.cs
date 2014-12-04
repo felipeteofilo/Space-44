@@ -26,16 +26,16 @@ public class NewGameController : MonoBehaviour
 		void Update ()
 		{
 
-				if (spaceShips [spaceShipChose +8].GetComponent<Status> ()) {
+				if (spaceShips [spaceShipChose +4].GetComponent<Status> ()) {
 						
-						Status shipStatus = spaceShips [spaceShipChose + 8].GetComponent<Status> ();
+						Status shipStatus = spaceShips [spaceShipChose + 4].GetComponent<Status> ();
 						status [0].value = shipStatus.damage;
 						status [1].value = shipStatus.MaxLife;
 						status [2].value = shipStatus.speed;
 						status [3].value = shipStatus.stability;
 				}
 
-				if (spaceShipChose >= spaceShips.Length / 3 - 1) {
+				if (spaceShipChose >= spaceShips.Length / 2 - 1) {
 						previous.interactable = false;
 
 				} else if (spaceShipChose <= 0) {
@@ -47,9 +47,9 @@ public class NewGameController : MonoBehaviour
 	void Status(){
 		GlobalStatus global = GameObject.FindGameObjectWithTag("Global").GetComponent<GlobalStatus>();
 
-		if (spaceShips [spaceShipChose +8].GetComponent<Status> ()) {
+		if (spaceShips [spaceShipChose +4].GetComponent<Status> ()) {
 			
-			Status shipStatus = spaceShips [spaceShipChose + 8].GetComponent<Status> ();
+			Status shipStatus = spaceShips [spaceShipChose + 4].GetComponent<Status> ();
 			global.status.lvlDamage = shipStatus.lvlDamage;
 			global.status.BonusLife = shipStatus.BonusLife;
 			global.status.BonusRate = shipStatus.bonusRate;
@@ -74,8 +74,8 @@ public class NewGameController : MonoBehaviour
 		void PreviousSpaceShip ()
 		{
 				spaceShipChose += 1;
-				if (spaceShipChose >= spaceShips.Length / 3) {
-						spaceShipChose = spaceShips.Length / 3 - 1;
+				if (spaceShipChose >= spaceShips.Length / 2) {
+						spaceShipChose = spaceShips.Length / 2 - 1;
 						
 				} else {
 						next.interactable = true;

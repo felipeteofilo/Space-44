@@ -39,6 +39,7 @@ public class Expanding : MonoBehaviour {
 		if(c.transform.tag != "Player" ){
 			 
 			c.transform.SendMessageUpwards("AplyDamage",dmg);
+			c.transform.SendMessageUpwards("PiscaAe",0.03f);
 		}
 
 	}

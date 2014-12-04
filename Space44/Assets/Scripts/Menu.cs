@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
 	}
 	void Credits(){
 
-		Debug.Log("Creditos");
+		Application.LoadLevel ("Credito");
 
 		}
 	void Exit(){

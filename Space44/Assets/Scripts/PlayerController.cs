@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour {
 			status.life =0;
 		}
 
+		Physics.IgnoreLayerCollision (9, 12);
 		float moveHorizontal =Input.GetAxis("Horizontal");
 		float moveVertical = Input.GetAxis("Vertical");
 		

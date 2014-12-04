@@ -24,6 +24,9 @@ public class LoadController : MonoBehaviour {
 			Application.LoadLevel ("HangarScene");
 		}
 	}
+	public void Back(){
+		Application.LoadLevel ("CenaMenu");
+	}
 
 
 

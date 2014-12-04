@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
-     <None Include="Assets\Prefabs\armas.txt" />
+     <None Include="Assets\Scripts\armas.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Músicas - PI - Fase 1 e 2\Som - Selecionar Opção Desejada\Site - sounddogs\Site - fonte download.txt" />
      <None Include="Assets\Músicas - PI - Fase 1 e 2\Som - Selecionar Opção Desejada\Site - soundjay\Site - fonte download.txt" />

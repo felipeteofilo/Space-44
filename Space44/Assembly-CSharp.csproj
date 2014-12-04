@@ -52,6 +52,7 @@
      <Compile Include="Assets\Boss3 e 4\IA3ºBoss.cs" />
      <Compile Include="Assets\Boss3 e 4\IAFinalBoss.cs" />
      <Compile Include="Assets\Boss3 e 4\JustDie.cs" />
+     <Compile Include="Assets\Creditos.cs" />
      <Compile Include="Assets\FlashBar.cs" />
      <Compile Include="Assets\Scripts\AsteroidIA.cs" />
      <Compile Include="Assets\Scripts\BarStatus.cs" />
@@ -74,7 +75,9 @@
      <Compile Include="Assets\Scripts\IA1ºBoss.cs" />
      <Compile Include="Assets\Scripts\IAenemy.cs" />
      <Compile Include="Assets\Scripts\LoadController.cs" />
+     <Compile Include="Assets\Scripts\Loading.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
+     <Compile Include="Assets\Scripts\MonitorController.cs" />
      <Compile Include="Assets\Scripts\MoveNave.cs" />
      <Compile Include="Assets\Scripts\NewGameController.cs" />
      <Compile Include="Assets\Scripts\OutOfView.cs" />
@@ -97,7 +100,7 @@
      <Compile Include="Assets\Weapons\Expanding.cs" />
      <Compile Include="Assets\Weapons\PlayerDefenseWeapons.cs" />
      <Compile Include="Assets\Weapons\Rastreador.cs" />
-     <None Include="Assets\Prefabs\armas.txt" />
+     <None Include="Assets\Scripts\armas.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Músicas - PI - Fase 1 e 2\Som - Selecionar Opção Desejada\Site - sounddogs\Site - fonte download.txt" />
      <None Include="Assets\Músicas - PI - Fase 1 e 2\Som - Selecionar Opção Desejada\Site - soundjay\Site - fonte download.txt" />
